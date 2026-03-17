@@ -4,23 +4,23 @@ export default function Home() {
   return (
     <div className="w-full">
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-950 via-blue-950 to-slate-950 pt-20 pb-20 overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-10 right-10 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 left-10 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{animationDelay: "2s"}}></div>
+      <section className="relative min-h-screen flex items-center justify-center bg-[#09090b] pt-20 pb-20 overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-10 right-10 w-96 h-96 bg-emerald-500/20 rounded-full mix-blend-screen filter blur-[100px] animate-pulse"></div>
+          <div className="absolute bottom-10 left-10 w-96 h-96 bg-cyan-500/20 rounded-full mix-blend-screen filter blur-[100px] animate-pulse" style={{animationDelay: "2s"}}></div>
         </div>
         
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
-            <div className="space-y-8" data-animate style={{opacity: 0, transform: "translateY(20px)", transition: "all 0.8s ease"}}>
+            <div className="space-y-8" data-animate data-animate-variant="fade-right" style={{ transitionDelay: "0.1s" }}>
               <div className="space-y-4">
-                <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full border border-blue-200">
-                  <p className="text-sm font-semibold text-blue-700">Welcome to My Portfolio</p>
+                <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-100/10 to-purple-100/10 rounded-full border border-blue-200/20 backdrop-blur-sm">
+                  <p className="text-sm font-semibold text-blue-300">Welcome to My Portfolio</p>
                 </div>
-                <h1 className="text-5xl sm:text-6xl font-bold text-white leading-tight">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight">
                   Iman Yunar<br />
-                  <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Noviadhi</span>
+                  <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Noviadhi</span>
                 </h1>
               </div>
               
@@ -34,10 +34,10 @@ export default function Home() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <a href="/portfolio" className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-lg transition-all transform hover:scale-105 hover:-translate-y-1 flex items-center justify-center gap-2">
-                  <i className="fas fa-briefcase"></i> View Portfolio
+                <a href="#projects" className="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg shadow-lg shadow-emerald-500/20 transition-all transform hover:scale-105 flex items-center justify-center gap-2">
+                  <i className="fas fa-briefcase"></i> View Projects
                 </a>
-                <a href="/socials" className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg shadow-lg transition-all transform hover:scale-105 hover:-translate-y-1 flex items-center justify-center gap-2">
+                <a href="/socials" className="px-8 py-4 bg-zinc-800 hover:bg-zinc-700 text-white font-bold rounded-lg shadow-lg border border-zinc-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2">
                   <i className="fas fa-share-alt"></i> Connect
                 </a>
               </div>
@@ -57,15 +57,15 @@ export default function Home() {
             </div>
 
             {/* Right - Profile Image */}
-            <div className="flex justify-center" data-animate style={{opacity: 0, transform: "translateY(20px)", transition: "all 0.8s ease", transitionDelay: "0.2s"}}>
+            <div className="flex justify-center mt-12 md:mt-0" data-animate data-animate-variant="fade-left" style={{ transitionDelay: "0.3s" }}>
               <div className="relative w-64 h-64 sm:w-80 sm:h-80">
                 {/* Gradient Ring */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-3xl p-1 animate-spin" style={{animationDuration: "8s"}}>
-                  <div className="w-full h-full bg-slate-950 rounded-3xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 via-cyan-500 to-emerald-600 rounded-3xl p-1 animate-spin" style={{animationDuration: "8s"}}>
+                  <div className="w-full h-full bg-[#09090b] rounded-3xl"></div>
                 </div>
                 {/* Profile Image */}
-                <div className="absolute inset-0 m-1 bg-gradient-to-br from-blue-400 to-purple-500 rounded-3xl flex items-center justify-center overflow-hidden shadow-2xl">
-                  <div className="w-full h-full rounded-3xl bg-slate-900 flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0 m-1 bg-zinc-900 rounded-3xl flex items-center justify-center overflow-hidden shadow-2xl">
+                  <div className="w-full h-full rounded-3xl bg-zinc-900 flex items-center justify-center overflow-hidden">
                     {/* Ganti dengan path foto Anda di folder public */}
                     <img src="/profile-removebg-preview.png" alt="Profile" className="w-full h-full object-contain" />
                   </div>
@@ -84,14 +84,14 @@ export default function Home() {
       </section>
 
       {/* ABOUT */}
-      <section className="py-20 bg-slate-900" id="about">
+      <section className="py-20 bg-zinc-950 border-t border-zinc-900" id="about">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <div className="space-y-12">
             <div className="text-center space-y-4">
               <h2 className="text-4xl sm:text-5xl font-bold text-white">
                 About Me
               </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
+              <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto rounded-full"></div>
             </div>
 
             <div className="space-y-6">
@@ -106,7 +106,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-8">
               <div className="p-4 bg-blue-600 rounded-lg border border-blue-700 hover:-translate-y-1 transition-transform">
                 <p className="text-sm text-white font-bold">University</p>
                 <p className="text-lg font-bold text-white">UNNES</p>
@@ -128,102 +128,84 @@ export default function Home() {
         </div>
       </section>
 
-      {/* STATS */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <StatCard icon="📊" value="15+" label="Projects" />
-            <StatCard icon="📅" value="3+" label="Years" />
-            <StatCard icon="⚙️" value="25+" label="Tech Stack" />
-            <StatCard icon="👥" value="5+" label="Team" />
-          </div>
-        </div>
-      </section>
-
       {/* FEATURED PROJECTS */}
-      <section className="py-20 bg-slate-800" id="projects">
+      <section className="py-20 bg-[#09090b] border-t border-zinc-900" id="projects">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-          <div className="text-center space-y-4 mb-16">
+          <div className="text-center space-y-4 mb-16" data-animate>
             <h2 className="text-4xl sm:text-5xl font-bold text-white">
               Featured Projects
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2 max-w-4xl mx-auto" data-animate style={{ transitionDelay: "0.2s" }}>
             <ProjectCard 
-              icon="🧠"
-              title="Image Classification CNN"
-              description="CNN model with 95 percent accuracy for multi-class image classification"
-              gradient="from-blue-500 to-blue-600"
-              tags={["Python", "TensorFlow", "CNN"]}
-              color="blue"
+              icon="📈"
+              title="Crypto Price Prediction"
+              description="Machine learning application to predict cryptocurrency prices and market trends"
+              gradient="from-emerald-500 to-emerald-700"
+              tags={["Python", "Streamlit", "Machine Learning"]}
+              color="emerald"
+              link="https://crypto-predict-101.streamlit.app/"
             />
             <ProjectCard 
-              icon="💬"
-              title="Sentiment Analysis NLP"
-              description="Real-time sentiment analysis using BERT for social media detection"
-              gradient="from-purple-500 to-purple-600"
-              tags={["NLP", "BERT", "FastAPI"]}
-              color="purple"
-            />
-            <ProjectCard 
-              icon="⚙️"
-              title="Data Pipeline ETL"
-              description="Automated ETL pipeline processing 50TB daily data warehouse"
-              gradient="from-pink-500 to-pink-600"
-              tags={["Airflow", "PostgreSQL", "Docker"]}
-              color="pink"
+              icon="🩺"
+              title="Cancer Detection"
+              description="AI-powered web application for early cancer detection using medical imaging"
+              gradient="from-cyan-500 to-cyan-700"
+              tags={["Deep Learning", "Streamlit", "Healthcare"]}
+              color="cyan"
+              link="https://deteksikanker.streamlit.app/"
             />
           </div>
         </div>
       </section>
 
       {/* SKILLS */}
-      <section className="py-20 bg-slate-900">
+      <section className="py-20 bg-zinc-950 border-t border-zinc-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-          <div className="text-center space-y-4 mb-16">
+          <div className="text-center space-y-4 mb-16" data-animate>
             <h2 className="text-4xl sm:text-5xl font-bold text-white">
               Skills and Technologies
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4" data-animate style={{ transitionDelay: "0.2s" }}>
             <SkillCard 
               icon="🤖"
               title="Machine Learning" 
               items={["Scikit-learn", "XGBoost", "TensorFlow", "PyTorch"]}
-              gradient="from-blue-500 to-blue-600"
-              bgGradient="from-slate-800 to-slate-700"
-              borderColor="border-blue-600"
+              gradient="from-emerald-500 to-emerald-600"
+              bgGradient="from-zinc-900 to-zinc-800"
+              borderColor="border-emerald-500/30"
               textColor="text-white"
             />
             <SkillCard 
               icon="🧠"
               title="Deep Learning" 
               items={["CNN", "RNN", "BERT", "Transformers"]}
-              gradient="from-purple-500 to-purple-600"
-              bgGradient="from-slate-800 to-slate-700"
-              borderColor="border-purple-600"
+              gradient="from-cyan-500 to-cyan-600"
+              bgGradient="from-zinc-900 to-zinc-800"
+              borderColor="border-cyan-500/30"
               textColor="text-white"
             />
             <SkillCard 
               icon="⚙️"
               title="Data Engineering" 
               items={["Apache Airflow", "PostgreSQL", "MongoDB", "Docker"]}
-              gradient="from-pink-500 to-pink-600"
-              bgGradient="from-slate-800 to-slate-700"
-              borderColor="border-pink-600"
+              gradient="from-violet-500 to-violet-600"
+              bgGradient="from-zinc-900 to-zinc-800"
+              borderColor="border-violet-500/30"
               textColor="text-white"
             />
             <SkillCard 
               icon="💻"
               title="Web Development" 
               items={["Next.js", "React", "TypeScript", "Tailwind CSS"]}
-              gradient="from-green-500 to-green-600"
-              bgGradient="from-slate-800 to-slate-700"
-              borderColor="border-green-600"
+              gradient="from-amber-500 to-amber-600"
+              bgGradient="from-zinc-900 to-zinc-800"
+              borderColor="border-amber-500/30"
               textColor="text-white"
             />
           </div>
@@ -231,19 +213,19 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-slate-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center space-y-8">
+      <section className="py-20 bg-zinc-900 border-t border-zinc-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl text-center space-y-8" data-animate>
           <h2 className="text-4xl font-bold text-white">
             Ready to explore my work?
           </h2>
-          <p className="text-lg text-gray-200">
+          <p className="text-lg text-zinc-300">
             Check out my portfolio projects and get in touch with me on social media.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/portfolio" className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-lg transition-all transform hover:scale-105 hover:-translate-y-1 flex items-center justify-center gap-2">
+            <a href="#projects" className="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg shadow-lg shadow-emerald-500/20 transition-all transform hover:scale-105 flex items-center justify-center gap-2">
               <i className="fas fa-folder-open mr-2"></i>View Full Portfolio
             </a>
-            <a href="/socials" className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-lg shadow-lg transition-all transform hover:scale-105 hover:-translate-y-1 flex items-center justify-center gap-2">
+            <a href="/socials" className="px-8 py-4 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white font-bold rounded-lg shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2">
               <i className="fas fa-heart mr-2"></i>Connect With Me
             </a>
           </div>
@@ -251,9 +233,9 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-8 bg-slate-900 text-center border-t border-slate-800">
-        <p className="text-gray-300">Copyright 2025 Iman Yunar Noviadhi. All rights reserved.</p>
-        <p className="text-gray-500 text-sm">Built with love using Next.js 15 and TypeScript and Tailwind CSS</p>
+      <footer className="py-8 bg-[#09090b] text-center border-t border-zinc-900">
+        <p className="text-zinc-400">Copyright 2025 Iman Yunar Noviadhi. All rights reserved.</p>
+        <p className="text-zinc-600 text-sm mt-2">Built with love using Next.js 15, TypeScript and Tailwind CSS</p>
       </footer>
     </div>
   );
@@ -269,36 +251,39 @@ function StatCard({ icon, value, label }: { icon: string; value: string; label: 
   );
 }
 
-function ProjectCard({ icon, title, description, gradient, tags, color }: { 
+function ProjectCard({ icon, title, description, gradient, tags, color, link = "#" }: { 
   icon: string;
   title: string; 
   description: string; 
   gradient: string;
   tags: string[];
   color: string;
+  link?: string;
 }) {
   const colorMap: {[key: string]: string} = {
+    emerald: "border-emerald-500/30 hover:border-emerald-500 text-emerald-400 bg-emerald-500/10",
+    cyan: "border-cyan-500/30 hover:border-cyan-500 text-cyan-400 bg-cyan-500/10",
     blue: "border-blue-700",
     purple: "border-purple-700",
     pink: "border-pink-700",
   };
 
   return (
-    <div className={`bg-slate-800 rounded-lg shadow-lg hover:shadow-2xl transition-all transform hover:scale-105 hover:-translate-y-2 border ${colorMap[color]} overflow-hidden`}>
+    <div className={`bg-zinc-900/50 backdrop-blur-sm rounded-xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 border border-zinc-800 hover:border-zinc-600 overflow-hidden flex flex-col h-full`}>
       <div className={`h-48 bg-gradient-to-br ${gradient} flex items-center justify-center`}>
-        <div className="text-white text-6xl">{icon}</div>
+        <div className="text-white text-6xl drop-shadow-md">{icon}</div>
       </div>
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-grow">
         <h3 className="text-2xl font-bold text-white mb-3">{title}</h3>
-        <p className="text-gray-300 mb-4">{description}</p>
-        <div className="flex flex-wrap gap-2 mb-4">
+        <p className="text-zinc-400 mb-6 flex-grow">{description}</p>
+        <div className="flex flex-wrap gap-2 mb-6">
           {tags.map((tag, idx) => (
-            <span key={idx} className={`inline-block px-3 py-1 bg-${color}-900/50 text-${color}-300 text-xs font-semibold rounded-full border border-${color}-700`}>
+            <span key={idx} className={`inline-block px-3 py-1 ${colorMap[color]} text-xs font-semibold rounded-full border`}>
               {tag}
             </span>
           ))}
         </div>
-        <a href="#" className={`text-${color}-400 hover:text-${color}-300 font-bold inline-flex items-center`}>
+        <a href={link} target={link !== "#" ? "_blank" : "_self"} rel={link !== "#" ? "noopener noreferrer" : ""} className={`text-${color}-400 hover:text-${color}-300 font-bold inline-flex items-center`}>
           View Details
         </a>
       </div>
@@ -316,7 +301,7 @@ function SkillCard({ icon, title, items, gradient, bgGradient, borderColor, text
   textColor: string;
 }) {
   return (
-    <div className={`bg-gradient-to-br ${bgGradient} rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-2 border ${borderColor} p-6`}>
+    <div className={`bg-gradient-to-br ${bgGradient} rounded-xl shadow-lg border ${borderColor} p-6 hover:border-zinc-500 transition-colors`}>
       <div className="flex items-center gap-3 mb-4">
         <div className="text-3xl">{icon}</div>
         <div className={`inline-block w-10 h-10 bg-gradient-to-br ${gradient} rounded-lg`}></div>

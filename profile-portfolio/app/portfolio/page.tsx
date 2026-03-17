@@ -1,80 +1,85 @@
 export default function Portfolio() {
   const projects = [
-    {
-      title: "Image Classification CNN",
-      description: "Deep learning model achieving 95% accuracy on multi-class image classification using convolutional neural networks.",
-      icon: "🧠",
-      gradient: "from-blue-500 to-blue-600",
-      techs: ["Python", "TensorFlow", "Keras", "OpenCV"],
-      details: "Implemented a CNN architecture with data augmentation and transfer learning techniques to achieve state-of-the-art performance on image classification tasks."
-    },
-    {
-      title: "Sentiment Analysis with BERT",
-      description: "Real-time NLP sentiment detection achieving 92% accuracy using transformer models for social media analysis.",
-      icon: "💬",
-      gradient: "from-purple-500 to-purple-600",
-      techs: ["Python", "BERT", "Transformers", "FastAPI"],
-      details: "Built a production-ready API using fine-tuned BERT models to perform real-time sentiment analysis on social media streams and user reviews."
-    },
-    {
-      title: "Automated ETL Pipeline",
-      description: "Enterprise-grade data pipeline processing 50TB daily using Apache Airflow and PostgreSQL for data warehousing.",
-      icon: "⚙️",
-      gradient: "from-pink-500 to-pink-600",
-      techs: ["Python", "Airflow", "PostgreSQL", "Docker"],
-      details: "Designed and deployed a scalable ETL pipeline with error handling, monitoring, and automated recovery mechanisms for continuous data processing."
-    },
-    {
-      title: "Real-time Analytics Dashboard",
-      description: "Interactive web application for visualizing ML model performance metrics and business intelligence.",
-      icon: "📊",
-      gradient: "from-green-500 to-green-600",
-      techs: ["React", "Next.js", "D3.js", "PostgreSQL"],
-      details: "Created an interactive dashboard with real-time data streaming, advanced visualizations, and drill-down capabilities for business intelligence."
-    },
+      {
+        title: "Penerapan AI ChatBots dalam Pendidikan",
+        description: "Penelitian efektivitas penggunaan ChatBots untuk membantu pemahaman mahasiswa pada mata kuliah Sistem Operasi di Universitas Negeri Semarang.",
+        icon: "📝",
+        gradient: "from-amber-500 to-amber-700",
+        techs: ["Artificial Intelligence", "ChatBots", "Education", "Research"],
+        details: "Eksperimen, survei kualitatif, dan studi kasus yang membuktikan dampak positif ChatBots dalam meningkatkan motivasi belajar dan interaktivitas mahasiswa Teknik Informatika di era Industri 4.0 & Society 5.0.",
+        link: "http://jurnalilmiah.org/journal/index.php/mediasi/article/view/753"
+      },
+      {
+        title: "Crypto Price Prediction",
+        description: "Machine learning application to predict cryptocurrency prices and market trends.",
+        icon: "📈",
+        gradient: "from-emerald-500 to-emerald-700",
+        techs: ["Python", "Streamlit", "Machine Learning"],
+        details: "Built an interactive web app with time-series forecasting models to predict market trends and analyze cryptocurrency data.",
+        link: "https://crypto-predict-101.streamlit.app/"
+      },
+      {
+        title: "Cancer Detection",
+        description: "AI-powered web application for early cancer detection using medical imaging.",
+        icon: "🩺",
+        gradient: "from-cyan-500 to-cyan-700",
+        techs: ["Deep Learning", "Streamlit", "Healthcare"],
+        details: "Developed a computer vision system to analyze medical images and assist healthcare professionals in early cancer detection.",
+        link: "https://deteksikanker.streamlit.app/"
+      }
   ];
 
   return (
-    <div className="w-full bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <div className="w-full bg-[#09090b]">
       {/* Hero */}
-      <section className="py-20 pt-32 bg-gradient-to-br from-blue-600 to-purple-600">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center text-white space-y-4">
+      <section className="py-20 pt-32 bg-[#09090b] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-10 right-10 w-96 h-96 bg-emerald-500/20 rounded-full mix-blend-screen filter blur-[100px] animate-pulse"></div>
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center text-white space-y-4 relative z-10" data-animate>
           <h1 className="text-5xl font-bold">📁 My Portfolio</h1>
-          <p className="text-xl text-blue-100">Featured projects showcasing expertise in AI, ML, and Data Engineering</p>
+          <p className="text-xl text-zinc-400">Featured projects showcasing expertise in AI, ML, and Data Engineering</p>
         </div>
       </section>
 
       {/* Skills Grid */}
-      <section className="py-16 bg-slate-900">
+      <section className="py-16 bg-zinc-950 border-t border-zinc-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <h2 className="text-4xl font-bold text-white mb-12 text-center">⚙️ Skills & Technologies</h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            <SkillCard title="Machine Learning" items={["Scikit-learn", "XGBoost", "TensorFlow"]} icon="🤖" color="blue" />
-            <SkillCard title="Deep Learning" items={["CNN", "RNN", "BERT", "Transformers"]} icon="🧠" color="purple" />
-            <SkillCard title="Data Engineering" items={["Airflow", "PostgreSQL", "Docker"]} icon="⚙️" color="pink" />
-            <SkillCard title="Web Development" items={["Next.js", "React", "TypeScript"]} icon="💻" color="green" />
+          <h2 className="text-4xl font-bold text-white mb-12 text-center" data-animate>⚙️ Skills & Technologies</h2>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4" data-animate style={{ transitionDelay: "0.2s" }}>
+            <SkillCard title="Machine Learning" items={["Scikit-learn", "XGBoost", "TensorFlow"]} icon="🤖" color="emerald" />
+            <SkillCard title="Deep Learning" items={["CNN", "RNN", "BERT", "Transformers"]} icon="🧠" color="cyan" />
+            <SkillCard title="Data Engineering" items={["Airflow", "PostgreSQL", "Docker"]} icon="⚙️" color="violet" />
+            <SkillCard title="Web Development" items={["Next.js", "React", "TypeScript"]} icon="💻" color="amber" />
           </div>
         </div>
       </section>
 
       {/* Projects */}
-      <section className="py-20 bg-slate-800">
+      <section className="py-20 bg-[#09090b] border-t border-zinc-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <h2 className="text-4xl font-bold text-white mb-12 text-center">🚀 Featured Projects</h2>
-          <div className="grid gap-8 md:grid-cols-2">
+          <h2 className="text-4xl font-bold text-white mb-12 text-center" data-animate>🚀 Featured Projects</h2>
+          <div className="grid gap-8 md:grid-cols-2" data-animate style={{ transitionDelay: "0.2s" }}>
             {projects.map((project, idx) => (
-              <div key={idx} className={`bg-gradient-to-br ${project.gradient} rounded-lg p-8 text-white shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2`}>
-                <div className="text-5xl mb-4">{project.icon}</div>
+              <div key={idx} className={`bg-zinc-900/50 backdrop-blur-sm rounded-xl p-8 text-white shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-2 border border-zinc-800 hover:border-zinc-600 flex flex-col h-full`}>
+                <div className={`text-5xl mb-6 w-16 h-16 flex items-center justify-center rounded-2xl bg-gradient-to-br ${project.gradient}`}>{project.icon}</div>
                 <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
-                <p className="text-white/90 mb-4">{project.description}</p>
-                <p className="text-white/80 text-sm mb-6">{project.details}</p>
-                <div className="flex flex-wrap gap-2">
+                <p className="text-zinc-300 mb-4">{project.description}</p>
+                <p className="text-zinc-500 text-sm mb-8 flex-grow">{project.details}</p>
+                <div className="flex flex-wrap gap-2 mb-6">
                   {project.techs.map((tech, i) => (
-                    <span key={i} className="px-3 py-1 bg-white/20 rounded-full text-sm font-semibold">
+                    <span key={i} className="px-3 py-1 bg-zinc-800 text-zinc-300 border border-zinc-700 rounded-full text-xs font-semibold">
                       {tech}
                     </span>
                   ))}
                 </div>
+                {project.link && (
+                  <div className="mt-auto">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-bold text-cyan-400 hover:text-cyan-300 transition-colors">
+                      View Project / Paper <i className="fas fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -82,8 +87,8 @@ export default function Portfolio() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 bg-slate-900 text-center border-t border-slate-800">
-        <p className="text-gray-300">© 2025 Iman Yunar Noviadhi. All rights reserved.</p>
+      <footer className="py-8 bg-[#09090b] text-center border-t border-zinc-900">
+        <p className="text-zinc-400">© 2025 Iman Yunar Noviadhi. All rights reserved.</p>
       </footer>
     </div>
   );
@@ -91,27 +96,27 @@ export default function Portfolio() {
 
 function SkillCard({ title, items, icon, color }: { title: string; items: string[]; icon: string; color: string }) {
   const colorMap = {
-    blue: "from-slate-800 to-slate-700 border-blue-600",
-    purple: "from-slate-800 to-slate-700 border-purple-600",
-    pink: "from-slate-800 to-slate-700 border-pink-600",
-    green: "from-slate-800 to-slate-700 border-green-600"
+    emerald: "from-zinc-900 to-zinc-800 border-emerald-500/30",
+    cyan: "from-zinc-900 to-zinc-800 border-cyan-500/30",
+    violet: "from-zinc-900 to-zinc-800 border-violet-500/30",
+    amber: "from-zinc-900 to-zinc-800 border-amber-500/30"
   };
 
   const textColor = {
-    blue: "text-blue-200",
-    purple: "text-purple-200",
-    pink: "text-pink-200",
-    green: "text-green-200"
+    emerald: "text-emerald-400",
+    cyan: "text-cyan-400",
+    violet: "text-violet-400",
+    amber: "text-amber-400"
   };
 
   return (
-    <div className={`bg-gradient-to-br ${colorMap[color as keyof typeof colorMap]} rounded-lg p-6 border hover:shadow-lg transition-all transform hover:-translate-y-2`}>
+    <div className={`bg-gradient-to-br ${colorMap[color as keyof typeof colorMap]} rounded-xl p-6 border hover:border-zinc-500 hover:shadow-lg transition-all transform hover:-translate-y-2`}>
       <p className="text-3xl mb-3">{icon}</p>
       <h3 className="text-lg font-bold text-white mb-4">{title}</h3>
       <ul className="space-y-2">
         {items.map((item, idx) => (
-          <li key={idx} className={`text-sm ${textColor[color as keyof typeof textColor]} font-semibold flex items-center`}>
-            <span className="mr-2">▸</span> {item}
+          <li key={idx} className={`text-sm text-zinc-300 flex items-center`}>
+            <span className={`mr-2 ${textColor[color as keyof typeof textColor]}`}>▸</span> {item}
           </li>
         ))}
       </ul>

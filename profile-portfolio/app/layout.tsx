@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ClientLoader from "./components/ClientLoader";
+import Navbar from "./components/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Tailwind CDN */}
         <script src="https://cdn.tailwindcss.com"></script>
       </head>
-      <body className={`${inter.className} bg-gradient-to-b from-slate-950 via-blue-950 to-slate-950 text-white`}>
+      <body className={`${inter.className} bg-[#09090b] text-zinc-100`}>
         <script dangerouslySetInnerHTML={{
           __html: `
             document.addEventListener('DOMContentLoaded', function() {
@@ -44,27 +45,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             });
           `
         }} />
-        <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-md z-50 border-b border-blue-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              <a href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                IYN
-              </a>
-              <div className="hidden md:flex space-x-8">
-                <a href="/" className="text-slate-700 hover:text-blue-600 font-medium transition-colors">Home</a>
-                <a href="/portfolio" className="text-slate-700 hover:text-blue-600 font-medium transition-colors">Portfolio</a>
-                <a href="/socials" className="text-slate-700 hover:text-blue-600 font-medium transition-colors">Connect</a>
-              </div>
-              <div className="md:hidden">
-                <button className="text-slate-700 hover:text-blue-600">
-                  <i className="fas fa-bars text-xl"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </nav>
+        <Navbar />
         <ClientLoader />
-        <main className="pt-16 animate-page-enter">{children}</main>
+        <main className="pt-16">{children}</main>
 
         {/* Inline utilities: theme, smooth-scroll anchor handling, reveal observer */}
         <script
