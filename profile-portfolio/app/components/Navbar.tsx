@@ -17,58 +17,73 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${scrolled ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-md border-blue-100/20 dark:border-slate-800' : 'bg-transparent border-transparent'}`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-3' : 'py-5'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform">
-            IYN
-          </Link>
-          
-          <div className="hidden md:flex space-x-8">
-            <Link href="/" className={`font-medium transition-colors hover:text-blue-500 ${scrolled ? 'text-slate-700 dark:text-slate-200' : 'text-white'}`}>Home</Link>
-            <Link href="/portfolio" className={`font-medium transition-colors hover:text-blue-500 ${scrolled ? 'text-slate-700 dark:text-slate-200' : 'text-white'}`}>Portfolio</Link>
-            <Link href="/socials" className={`font-medium transition-colors hover:text-blue-500 ${scrolled ? 'text-slate-700 dark:text-slate-200' : 'text-white'}`}>Connect</Link>
-          </div>
+        <div className={`transition-all duration-500 rounded-2xl ${scrolled ? 'glass px-6 shadow-2xl' : 'bg-transparent px-0'}`}>
+          <div className="flex justify-between items-center h-14">
+            <Link href="/" className="text-2xl font-black tracking-tighter text-gradient hover:scale-105 transition-transform">
+              IYN
+            </Link>
+            
+            <div className="hidden md:flex items-center space-x-8">
+              <NavLink href="/" label="Home" />
+              <NavLink href="/portfolio" label="Portfolio" />
+              <NavLink href="/socials" label="Connect" />
+              <Link 
+                href="/socials" 
+                className="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold rounded-xl shadow-lg shadow-emerald-600/20 transition-all hover:-translate-y-0.5"
+              >
+                Hire Me
+              </Link>
+            </div>
 
-          <div className="md:hidden">
-            <button 
-              onClick={() => setIsOpen(!isOpen)} 
-              className={`p-2 rounded-md focus:outline-none transition-colors ${scrolled ? 'text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800' : 'text-white hover:bg-white/10'}`}
-            >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+            <div className="md:hidden">
+              <button 
+                onClick={() => setIsOpen(!isOpen)} 
+                className="p-2 text-white hover:bg-white/10 rounded-xl transition-colors"
+              >
+                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
       <div 
-        className={`md:hidden absolute w-full bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 transition-all duration-300 ease-in-out overflow-hidden origin-top ${isOpen ? 'max-h-64 opacity-100 scale-y-100' : 'max-h-0 opacity-0 scale-y-0'}`}
+        className={`md:hidden absolute top-20 left-4 right-4 glass rounded-2xl overflow-hidden transition-all duration-300 transform origin-top ${isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
       >
-        <div className="px-4 pt-2 pb-6 space-y-2 shadow-2xl">
-          <Link 
-            href="/" 
-            className="block px-4 py-3 text-base font-medium text-slate-200 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
-            onClick={() => setIsOpen(false)}
-          >
-            Home
-          </Link>
-          <Link 
-            href="/portfolio" 
-            className="block px-4 py-3 text-base font-medium text-slate-200 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
-            onClick={() => setIsOpen(false)}
-          >
-            Portfolio
-          </Link>
-          <Link 
-            href="/socials" 
-            className="block px-4 py-3 text-base font-medium text-slate-200 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
-            onClick={() => setIsOpen(false)}
-          >
-            Connect
-          </Link>
+        <div className="p-4 space-y-2">
+          <MobileNavLink href="/" label="Home" onClick={() => setIsOpen(false)} />
+          <MobileNavLink href="/portfolio" label="Portfolio" onClick={() => setIsOpen(false)} />
+          <MobileNavLink href="/socials" label="Connect" onClick={() => setIsOpen(false)} />
         </div>
       </div>
     </nav>
   );
 }
+
+function NavLink({ href, label }: { href: string, label: string }) {
+  return (
+    <Link 
+      href={href} 
+      className="text-sm font-semibold text-zinc-400 hover:text-white transition-colors relative group"
+    >
+      {label}
+      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all group-hover:w-full"></span>
+    </Link>
+  );
+}
+
+function MobileNavLink({ href, label, onClick }: { href: string, label: string, onClick: () => void }) {
+  return (
+    <Link 
+      href={href} 
+      className="block px-4 py-3 text-zinc-300 hover:text-white hover:bg-white/5 rounded-xl transition-all"
+      onClick={onClick}
+    >
+      {label}
+    </Link>
+  );
+}
+
