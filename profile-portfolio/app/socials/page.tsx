@@ -1,12 +1,12 @@
 'use client';
 
 import { motion, Variants } from 'framer-motion';
-import { 
-  Github, 
-  Linkedin, 
-  Mail, 
-  Twitter, 
-  ArrowLeft, 
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Twitter,
+  ArrowLeft,
   Send,
   ExternalLink,
   MessageSquare,
@@ -60,18 +60,18 @@ export default function Socials() {
           >
             Communication Hub
           </motion.div>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight"
           >
             Bridge to <span className="text-gradient">Alpha.</span>
           </motion.h1>
-          <motion.p 
-             initial={{ opacity: 0, y: 20 }}
-             animate={{ opacity: 1, y: 0 }}
-             transition={{ delay: 0.1 }}
-             className="text-xl text-slate-500 max-w-2xl mx-auto font-medium"
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-xl text-slate-500 max-w-2xl mx-auto font-medium"
           >
             Open for algorithmic research, quantitative partnerships, and high-impact engineering collaborations.
           </motion.p>
@@ -81,7 +81,7 @@ export default function Socials() {
       {/* Social Cards Grid */}
       <section className="py-24">
         <div className="container mx-auto px-6 max-w-7xl">
-          <motion.div 
+          <motion.div
             variants={container}
             initial="initial"
             whileInView="animate"
@@ -89,7 +89,7 @@ export default function Socials() {
             className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
           >
             {socials.map((social, idx) => (
-              <motion.a 
+              <motion.a
                 key={idx}
                 href={social.url}
                 target="_blank"
@@ -129,22 +129,22 @@ export default function Socials() {
               </div>
 
               <div className="space-y-6">
-                <ContactFeature 
-                  icon={<MessageSquare className="text-indigo-600" />} 
-                  title="Collaborative Spirit" 
-                  text="I believe the best results come from diverse perspectives working together." 
+                <ContactFeature
+                  icon={<MessageSquare className="text-indigo-600" />}
+                  title="Collaborative Spirit"
+                  text="I believe the best results come from diverse perspectives working together."
                 />
-                <ContactFeature 
-                  icon={<Sparkles className="text-amber-600" />} 
-                  title="Fast Responses" 
-                  text="I aim to respond to all professional inquiries within 24 hours." 
+                <ContactFeature
+                  icon={<Sparkles className="text-amber-600" />}
+                  title="Fast Responses"
+                  text="I aim to respond to all professional inquiries within 24 hours."
                 />
               </div>
             </div>
 
             {/* Quick Form */}
             <div className="lg:col-span-7">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
