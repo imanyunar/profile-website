@@ -82,7 +82,7 @@ export default function Portfolio() {
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight"
           >
-            Engineering <span className="text-gradient">Portfolio.</span>
+Iman Yunar<span className="text-gradient"> Portfolio.</span>
           </m.h1>
           <m.p 
              initial={{ opacity: 0, y: 20 }}

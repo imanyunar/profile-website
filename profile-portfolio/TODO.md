@@ -1,9 +1,28 @@
-# Task: Add Task Tracker project to portfolio
+# SEO Optimization for Netlify Deployment - Progress Tracker
 
-## Plan Steps:
-- [x] 1. Create TODO.md with steps (done)
-- [x] 2. Edit app/portfolio/page.tsx to add new project to 'projects' array
-- [ ] 3. Optionally: Edit app/page.tsx to add featured ProjectCard to home (skipped per minimal changes)
-- [x] 4. Verify changes and complete task
+Current status: Following approved plan for STEP 2-4 of guide.
 
-Current status: Ready for edits.
+## TODO List:
+### Config Files (STEP 2) ✓
+- [x] public/sitemap.xml (replace with guide content)
+- [x] public/robots.txt (replace with guide content)
+- [x] netlify.toml (replace with guide config)
+- [x] .env.local (replace with guide env vars)
+
+### Code Files (STEP 3) ✓
+- [x] app/portfolio/metadata.tsx (full replace)
+- [x] app/layout.tsx (metadata, schemas, LazyMotion)
+- [x] app/portfolio/page.tsx (H1 edit)
+- [x] app/layout-schema.tsx (URL update)
+
+### Deploy (STEP 4)
+- [ ] git add .
+- [ ] git commit
+- [ ] git push
+- [ ] Verify Netlify deploy & public files accessible
+
+## Next Steps After Completion
+- Test: https://iman-yunar-noviadhi.netlify.app/sitemap.xml & /robots.txt
+- Google Search Console: Verify domain, submit sitemap (manual)
+
+Updated: Initial creation

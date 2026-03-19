@@ -3,28 +3,62 @@ const PersonSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Iman Yunar Noviadhi",
-  "alternateName": "Iman Yunar",
-  "jobTitle": "Quantitative Trader & AI Engineer",
-  "description": "Specialist in algorithmic trading, machine learning, AI systems, and full-stack development.",
-  "url": "YOUR_NETLIFY_URL", // Update with Netlify URL
+  "alternateName": ["Iman Yunar", "imanyunar"],
+  "jobTitle": [
+    "AI Engineer",
+    "Quantitative Trader",
+    "Machine Learning Specialist",
+    "Full-Stack Developer",
+  ],
+  "description":
+    "AI Engineer and Quantitative Trader specializing in machine learning, algorithmic trading, and full-stack development.",
+  "url": "https://iman-yunar-noviadhi.netlify.app",
+  "image": "https://iman-yunar-noviadhi.netlify.app/profile.png",
+  "email": "imanyunar@gmail.com",
   "sameAs": [
     "https://github.com/imanyunar",
-    "https://www.linkedin.com/in/iman-yunar-noviadhi-87313a284/"
+    "https://www.linkedin.com/in/iman-yunar-noviadhi-87313a284/",
   ],
-  "knowsAbout": ["Quantitative Trading", "Machine Learning", "AI Engineering", "Vue.js", "Laravel", "PyTorch"],
-  "hasCredential": {
-    "@type": "EducationalOrganization",
-    "name": "UNNES"
+  "knowsAbout": [
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Deep Learning",
+    "Quantitative Trading",
+    "Algorithmic Trading",
+    "Data Science",
+    "Python",
+    "PyTorch",
+    "TensorFlow",
+    "Vue.js",
+    "Laravel",
+    "Full-Stack Development",
+    "Computer Vision",
+    "Time Series Analysis",
+    "LSTM",
+    "Neural Networks",
+  ],
+  "workLocation": {
+    "@type": "Place",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "ID",
+    },
   },
-  "makesOffer": {
-    "@type": "Offer",
-    "itemOffered": {
-      "@type": "Service",
-      "name": "AI & Trading Development",
-      "description": "Custom algorithmic trading systems, ML models, full-stack apps"
-    }
-  }
 };
 
-// Usage in layout: <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PersonSchema) }} />
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Iman Yunar",
+  "description": "AI Engineering & Quantitative Trading Portfolio",
+  "url": "https://iman-yunar-noviadhi.netlify.app",
+  "sameAs": [
+    "https://github.com/imanyunar",
+    "https://www.linkedin.com/in/iman-yunar-noviadhi-87313a284/",
+  ],
+};
+
+// Usage in layout: 
+// <Script id="person-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PersonSchema) }} />
+// <Script id="organization-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
 
