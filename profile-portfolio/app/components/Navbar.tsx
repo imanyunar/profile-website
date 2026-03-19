@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
@@ -26,14 +26,22 @@ export default function Navbar() {
           className={`transition-all duration-700 rounded-3xl ${scrolled ? 'glass px-8 py-1 shadow-lg shadow-indigo-500/5 border-white/40' : 'bg-transparent px-0'}`}
         >
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="text-2xl font-black tracking-tighter text-gradient group flex items-center gap-1">
-              <motion.span
-                whileHover={{ scale: 1.1, rotate: -5 }}
-                className="inline-block"
-              >
-                IYN
-              </motion.span>
-            </Link>
+            <div className="flex items-center gap-6">
+              <Link href="/" className="text-2xl font-black tracking-tighter text-gradient group flex items-center gap-1 shrink-0">
+                <motion.span
+                  whileHover={{ scale: 1.1, rotate: -5 }}
+                  className="inline-block"
+                >
+                  IYN
+                </motion.span>
+              </Link>
+              
+              <div className="hidden lg:flex items-center gap-4 pl-4 border-l border-slate-200/60">
+                <SocialIcon href="https://github.com/imanyunar" icon={<Github className="w-4 h-4" />} />
+                <SocialIcon href="https://www.linkedin.com/in/iman-yunar-noviadhi-87313a284/" icon={<Linkedin className="w-4 h-4" />} />
+                <SocialIcon href="mailto:imanyunar@gmail.com" icon={<Mail className="w-4 h-4" />} />
+              </div>
+            </div>
             
             <div className="hidden md:flex items-center space-x-1">
               <NavLink href="/" label="Home" />
@@ -114,6 +122,20 @@ function MobileNavLink({ href, label, onClick }: { href: string; label: string; 
     >
       {label}
     </Link>
+  );
+}
+
+function SocialIcon({ href, icon }: { href: string; icon: React.ReactNode }) {
+  return (
+    <motion.a 
+      href={href} 
+      target="_blank"
+      rel="noopener noreferrer"
+      whileHover={{ y: -2, scale: 1.1 }}
+      className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-indigo-600 hover:border-indigo-200 transition-all shadow-sm"
+    >
+      {icon}
+    </motion.a>
   );
 }
 

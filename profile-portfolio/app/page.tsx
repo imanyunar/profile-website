@@ -97,12 +97,6 @@ export default function Home() {
                   Let's Connect
                 </Link>
               </motion.div>
-
-              <motion.div variants={fadeInUp} className="flex items-center gap-6 pt-4">
-                <SocialIcon href="https://github.com/imanyunar" icon={<Github />} label="GitHub" />
-                <SocialIcon href="https://www.linkedin.com/in/iman-yunar-noviadhi-87313a284/" icon={<Linkedin />} label="LinkedIn" />
-                <SocialIcon href="mailto:imanyunar@gmail.com" icon={<Mail />} label="Email" />
-              </motion.div>
             </motion.div>
 
             {/* Right Content - Visual */}
@@ -157,30 +151,25 @@ export default function Home() {
       {/* PROJECTS SECTION */}
       <section className="py-32 bg-slate-50/50" id="projects">
         <div className="container mx-auto px-6 max-w-7xl">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+          <div className="text-center space-y-4 mb-20 max-w-3xl mx-auto">
             <motion.div 
               variants={fadeInUp}
               initial="initial"
-              animate="animate"
+              whileInView="animate"
               viewport={{ once: true }}
               className="space-y-4"
             >
-              <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight">
-                Selected <span className="text-indigo-600">Projects</span>
+              <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight">
+                Selected <span className="text-gradient">Projects.</span>
               </h2>
-              <p className="text-lg text-slate-500 max-w-xl font-medium">
+              <p className="text-xl text-slate-500 font-medium leading-relaxed">
                 Deep dive into some of my most impactful machine learning and software engineering works.
               </p>
-            </motion.div>
-            <motion.div 
-               variants={fadeInUp}
-               initial="initial"
-               animate="animate"
-               viewport={{ once: true }}
-            >
-              <Link href="/portfolio" className="inline-flex items-center gap-2 font-bold text-indigo-600 hover:text-slate-900 transition-colors">
-                Explore All Projects <ChevronRight className="w-5 h-5" />
-              </Link>
+              <div className="pt-4 flex justify-center">
+                <Link href="/portfolio" className="inline-flex items-center gap-2 px-8 py-3 bg-white border border-slate-200 rounded-2xl font-bold text-slate-600 hover:text-indigo-600 hover:border-indigo-100 transition-all shadow-sm">
+                  Explore All Projects <ChevronRight className="w-5 h-5" />
+                </Link>
+              </div>
             </motion.div>
           </div>
 
@@ -206,41 +195,44 @@ export default function Home() {
       </section>
 
       {/* SKILLS SECTION */}
-      <section className="py-32 bg-white">
+      <section className="py-32 bg-white border-t border-slate-50">
         <div className="container mx-auto px-6 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+          <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+            <motion.h2 
+              variants={fadeInUp}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight"
+            >
+              Technical <span className="text-gradient">Expertise.</span>
+            </motion.h2>
+            <p className="text-xl text-slate-500 font-medium leading-relaxed">
+              Specializing in the full lifecycle of AI products, from rigorous data engineering to deploying scalable neural networks.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <motion.div 
               variants={staggerContainer}
               initial="initial"
-              animate="animate"
+              whileInView="animate"
               viewport={{ once: true }}
-              className="lg:col-span-5 space-y-8"
+              className="space-y-6"
             >
-              <motion.div variants={fadeInUp} className="space-y-4">
-                <h2 className="text-4xl md:text-5xl font-black text-slate-900 leading-tight">
-                  Technical <br /> <span className="text-amber-600 tracking-tighter italic font-extrabold text-7xl">Expertise.</span>
-                </h2>
-                <p className="text-lg text-slate-500 font-medium leading-relaxed">
-                  I specialize in the full lifecycle of AI products, from rigorous data engineering to deploying scalable neural networks.
-                </p>
-              </motion.div>
-
-              <motion.div variants={fadeInUp} className="space-y-4">
-                <SkillSet icon={<TrendingUp />} title="Quantitative Trading" skills={["Algorithmic Trading", "Backtesting", "Risk Management", "HFT"]} />
-                <SkillSet icon={<Brain />} title="Machine Learning" skills={["Predictive Analytics", "Deep Learning", "Reinforcement Learning"]} />
-                <SkillSet icon={<Code2 />} title="Fullstack Dev" skills={["Vue.js", "Next.js", "TypeScript", "TailwindCSS"]} />
-                <SkillSet icon={<Database />} title="Data Systems" skills={["Data Pipelines", "Real-time Processing", "PostgreSQL", "Docker"]} />
-              </motion.div>
+              <SkillSet icon={<TrendingUp />} title="Quantitative Trading" skills={["Algorithmic Trading", "Backtesting", "Risk Management", "HFT"]} />
+              <SkillSet icon={<Brain />} title="Machine Learning" skills={["Predictive Analytics", "Deep Learning", "Reinforcement Learning"]} />
+              <SkillSet icon={<Code2 />} title="Fullstack Dev" skills={["Vue.js", "Next.js", "TypeScript", "TailwindCSS"]} />
+              <SkillSet icon={<Database />} title="Data Systems" skills={["Data Pipelines", "Real-time Processing", "PostgreSQL", "Docker"]} />
             </motion.div>
 
             <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="lg:col-span-7"
             >
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 <SkillIcon label="Python" />
                 <SkillIcon label="Vue.js" />
                 <SkillIcon label="TypeScript" />
@@ -309,20 +301,6 @@ export default function Home() {
   );
 }
 
-function SocialIcon({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
-  return (
-    <motion.a 
-      href={href} 
-      whileHover={{ y: -5, color: '#4f46e5' }}
-      className="text-slate-400 transition-colors flex items-center gap-2 group"
-      aria-label={label}
-    >
-      <span className="w-10 h-10 border border-slate-200 rounded-xl flex items-center justify-center bg-white group-hover:border-indigo-200 shadow-sm">
-        {icon}
-      </span>
-    </motion.a>
-  );
-}
 
 function ProjectCard({ image, title, category, description, tags, link }: { 
   image: string;
