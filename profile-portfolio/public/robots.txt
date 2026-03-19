@@ -1,5 +1,15 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /.next/
+Disallow: /private/
 
-Sitemap: https://your-netlify-site.netlify.app/sitemap.xml
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
 
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+Sitemap: https://iman-yunar-noviadhi.netlify.app/sitemap.xml
