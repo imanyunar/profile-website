@@ -175,7 +175,7 @@ export default function Home() {
               title="Cancer Detection"
               category="Computer Vision"
               description="A medical imaging platform utilizing CNNs for high-precision cancer detection and clinical decision support."
-              tags={["PyTorch", "OpenCV", "HealthTech", "REST API"]}
+              tags={["PyTorch", "OpenCV", "HealthTech"]}
               link="https://deteksikanker.streamlit.app/"
             />
           </div>
@@ -210,7 +210,7 @@ export default function Home() {
             >
               <SkillSet icon={<TrendingUp />} title="Quantitative Trading" skills={["Algorithmic Trading", "Backtesting", "Risk Management", "HFT"]} />
               <SkillSet icon={<Brain />} title="Machine Learning" skills={["Predictive Analytics", "Deep Learning", "Reinforcement Learning"]} />
-              <SkillSet icon={<Code2 />} title="Fullstack Dev" skills={["Vue.js", "Next.js", "TypeScript", "TailwindCSS"]} />
+              <SkillSet icon={<Code2 />} title="Fullstack Dev" skills={["Vue.js", "Next.js", "TypeScript", "TailwindCSS", "REST API"]} />
               <SkillSet icon={<Database />} title="Data Systems" skills={["Data Pipelines", "Real-time Processing", "PostgreSQL", "Docker"]} />
             </m.div>
 
@@ -230,6 +230,7 @@ export default function Home() {
                 <SkillIcon label="FastAPI" />
                 <SkillIcon label="Docker" />
                 <SkillIcon label="SQL" />
+                <SkillIcon label="REST API" />
               </div>
             </m.div>
           </div>

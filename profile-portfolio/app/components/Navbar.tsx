@@ -26,8 +26,11 @@ export default function Navbar() {
           className={`transition-all duration-700 rounded-[32px] ${scrolled ? 'glass-pill px-8 py-2 shadow-2xl shadow-indigo-500/10 border-white/40' : 'bg-transparent py-4'}`}
         >
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-4">
-              <div className="hidden lg:flex items-center gap-4">
+            <div className="flex items-center gap-8">
+              <Link href="/" className="text-2xl font-black text-slate-900 tracking-tighter hover:text-indigo-600 transition-colors">
+                Iman<span className="text-indigo-600">.</span>
+              </Link>
+              <div className="hidden lg:flex items-center gap-3 border-l border-slate-200 pl-8">
                 <SocialIcon href="https://github.com/imanyunar" icon={<Github className="w-4 h-4" />} />
                 <SocialIcon href="https://www.linkedin.com/in/iman-yunar-noviadhi-87313a284/" icon={<Linkedin className="w-4 h-4" />} />
                 <SocialIcon href="mailto:imanyunar@gmail.com" icon={<Mail className="w-4 h-4" />} />

@@ -39,7 +39,7 @@ const projects = [
     description: "Deep learning system for early cancer identification through medical image analysis.",
     icon: <Activity className="w-8 h-8" />,
     color: "bg-rose-100 text-rose-600",
-    techs: ["PyTorch", "Computer Vision", "HealthTech", "REST API"],
+    techs: ["PyTorch", "Computer Vision", "HealthTech"],
     details: "High-accuracy neural network achieving 95%+ validation accuracy in clinical image processing.",
     link: "https://deteksikanker.streamlit.app/"
   }
@@ -98,7 +98,7 @@ export default function Portfolio() {
             <SkillCard icon={<TrendingUp />} title="Quantitative Trading" skills={["Algorithmic Trading", "Backtesting", "HFT"]} />
             <SkillCard icon={<Brain />} title="Machine Learning" skills={["Predictive Analytics", "Deep Learning", "RL"]} />
             <SkillCard icon={<Database />} title="Data Engineering" skills={["Real-time Pipelines", "PostgreSQL", "Docker"]} />
-            <SkillCard icon={<Terminal />} title="Frontend Stack" skills={["Vue.js", "Next.js", "TypeScript"]} />
+            <SkillCard icon={<Terminal />} title="Frontend Stack" skills={["Vue.js", "Next.js", "TypeScript", "REST API"]} />
           </m.div>
         </div>
       </section>

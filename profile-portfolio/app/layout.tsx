@@ -27,12 +27,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
       <body className={`${inter.className} bg-white text-slate-900 antialiased`}>
-        <Navbar />
-        <main className="min-h-screen">
-          <LazyMotion features={domMax}>
+        <LazyMotion features={domMax}>
+          <Navbar />
+          <main className="min-h-screen">
             {children}
-          </LazyMotion>
-        </main>
+          </main>
+        </LazyMotion>
       </body>
     </html>
   );
