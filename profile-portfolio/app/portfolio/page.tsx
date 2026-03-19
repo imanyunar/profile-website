@@ -42,8 +42,18 @@ const projects = [
     techs: ["PyTorch", "Computer Vision", "HealthTech"],
     details: "High-accuracy neural network achieving 95%+ validation accuracy in clinical image processing.",
     link: "https://deteksikanker.streamlit.app/"
+  },
+  {
+    title: "Task Tracker - Company Management",
+    description: "Full-stack company management system with comprehensive HR and Project Management features.",
+    icon: <FileText className="w-8 h-8" />,
+    color: "bg-emerald-100 text-emerald-600",
+    techs: ["Laravel", "Vue 3", "TypeScript", "Tailwind CSS"],
+    details: "Complete features: Employee/department/role management, projects/tasks with priority/status/realtime chat, login/register with API token, profile editing/avatar upload.",
+    link: "https://task-tracker-vue-livid.vercel.app/"
   }
 ];
+
 
 const container: Variants = {
   animate: { transition: { staggerChildren: 0.1 } }
