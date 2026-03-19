@@ -72,7 +72,7 @@ export default function Socials() {
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight"
           >
-            Let's <span className="text-gradient">Connect.</span>
+            Bridge to <span className="text-gradient">Alpha.</span>
           </motion.h1>
           <motion.p 
              initial={{ opacity: 0, y: 20 }}
@@ -80,7 +80,7 @@ export default function Socials() {
              transition={{ delay: 0.1 }}
              className="text-xl text-slate-500 max-w-2xl mx-auto font-medium"
           >
-            I'm always interested in hearing about new projects, innovative ideas, or even just a friendly tech chat.
+            Open for algorithmic research, quantitative partnerships, and high-impact engineering collaborations.
           </motion.p>
         </div>
       </section>
@@ -102,16 +102,16 @@ export default function Socials() {
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={item}
-                className={`elegant-card p-10 rounded-[40px] flex flex-col items-center text-center space-y-6 group hover:border-black/5 ${social.color}`}
+                className={`elegant-card p-10 rounded-[40px] flex flex-col items-center text-center space-y-6 group hover:border-indigo-500/20 ${social.color}`}
               >
-                <div className="p-4 bg-white rounded-2xl shadow-sm group-hover:scale-110 transition-transform duration-500 border border-inherit">
+                <div className="p-4 bg-white rounded-2xl shadow-sm group-hover:scale-110 transition-transform duration-500 border border-slate-100 group-hover:border-indigo-100">
                   {social.icon}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-black text-slate-900 mb-2">{social.name}</h3>
+                  <h3 className="text-2xl font-black text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">{social.name}</h3>
                   <p className="text-slate-500 text-sm font-medium leading-relaxed">{social.description}</p>
                 </div>
-                <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-900 pt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-indigo-600 pt-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   Visit Profile <ExternalLink className="w-3 h-3" />
                 </div>
               </motion.a>

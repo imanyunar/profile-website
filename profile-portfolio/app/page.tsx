@@ -13,7 +13,8 @@ import {
   Terminal,
   Sparkles,
   ChevronRight,
-  Code2
+  Code2,
+  TrendingUp
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -78,12 +79,12 @@ export default function Home() {
                 </div>
                 
                 <h1 className="text-6xl sm:text-7xl md:text-8xl font-black text-slate-900 leading-[0.95] tracking-tight">
-                  Crafting <br />
+                  Trading <br />
                   <span className="text-gradient">Intelligence.</span>
                 </h1>
                 
                 <p className="text-xl md:text-2xl text-slate-500 max-w-2xl leading-relaxed">
-                  I'm <span className="text-slate-900 font-bold">Iman Yunar</span>, an AI Engineer dedicated to building sophisticated Machine Learning solutions that bridge the gap between data and impact.
+                  I'm <span className="text-slate-900 font-bold">Iman Yunar</span>, a <span className="text-indigo-600 font-bold">Quantitative Trader</span> & AI Engineer building high-frequency systems and predictive models that turn data into alpha.
                 </p>
               </motion.div>
 
@@ -128,23 +129,23 @@ export default function Home() {
                 <motion.div 
                   animate={{ y: [0, -15, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -bottom-16 -left-12 bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 hidden xl:block"
+                  className="absolute -bottom-16 -left-12 bg-white p-6 rounded-3xl shadow-xl border border-slate-50 hidden xl:block"
                 >
-                  <p className="text-3xl font-black text-indigo-600">4+</p>
-                  <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Major AI Models</p>
+                  <p className="text-3xl font-black text-emerald-500">95%+</p>
+                  <p className="text-xs font-bold text-slate-500 uppercase tracking-widest text-center">Backtest Accuracy</p>
                 </motion.div>
                 
                 <motion.div 
                   animate={{ y: [0, 15, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="absolute -top-12 -right-10 bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 flex items-center gap-4 hidden xl:flex"
+                  className="absolute -top-12 -right-10 bg-white p-6 rounded-3xl shadow-xl border border-slate-50 flex items-center gap-4 hidden xl:flex"
                 >
-                  <div className="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center text-amber-600">
-                    <Sparkles className="w-5 h-5" />
+                  <div className="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600">
+                    <TrendingUp className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-sm font-black text-slate-900">AI Specialist</p>
-                    <p className="text-[10px] font-bold text-slate-400 uppercase">Top Tier Skills</p>
+                    <p className="text-sm font-black text-slate-900">Quant Specialist</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase">Algorithmic Trading</p>
                   </div>
                 </motion.div>
               </div>
@@ -225,10 +226,10 @@ export default function Home() {
               </motion.div>
 
               <motion.div variants={fadeInUp} className="space-y-4">
-                <SkillSet icon={<Brain />} title="Machine Learning" skills={["Scikit-Learn", "CatBoost", "XGBoost", "Deep Learning"]} />
-                <SkillSet icon={<Cpu />} title="Computer Vision" skills={["PyTorch", "CNNs", "Object Detection", "Image Segmentation"]} />
-                <SkillSet icon={<Database />} title="Data Engineering" skills={["Airflow", "PostgreSQL", "Data Pipelines", "Docker"]} />
-                <SkillSet icon={<Code2 />} title="Fullstack Dev" skills={["Next.js", "TypeScript", "FastAPI", "TailwindCSS"]} />
+                <SkillSet icon={<TrendingUp />} title="Quantitative Trading" skills={["Algorithmic Trading", "Backtesting", "Risk Management", "HFT"]} />
+                <SkillSet icon={<Brain />} title="Machine Learning" skills={["Predictive Analytics", "Deep Learning", "Reinforcement Learning"]} />
+                <SkillSet icon={<Code2 />} title="Fullstack Dev" skills={["Vue.js", "Next.js", "TypeScript", "TailwindCSS"]} />
+                <SkillSet icon={<Database />} title="Data Systems" skills={["Data Pipelines", "Real-time Processing", "PostgreSQL", "Docker"]} />
               </motion.div>
             </motion.div>
 
@@ -241,13 +242,13 @@ export default function Home() {
             >
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
                 <SkillIcon label="Python" />
+                <SkillIcon label="Vue.js" />
+                <SkillIcon label="TypeScript" />
                 <SkillIcon label="PyTorch" />
                 <SkillIcon label="TensorFlow" />
-                <SkillIcon label="TypeScript" />
                 <SkillIcon label="Next.js" />
-                <SkillIcon label="Docker" />
                 <SkillIcon label="FastAPI" />
-                <SkillIcon label="Git" />
+                <SkillIcon label="Docker" />
                 <SkillIcon label="SQL" />
               </div>
             </motion.div>

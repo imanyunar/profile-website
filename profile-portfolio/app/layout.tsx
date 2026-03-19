@@ -10,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Iman Yunar Noviadhi | AI Engineer & ML Specialist",
+  title: "Iman Yunar Noviadhi | Quantitative Trader & AI Engineer",
   description:
-    "Portfolio website of Iman Yunar Noviadhi — AI Engineer, ML & Data Engineer",
+    "Portfolio of Iman Yunar Noviadhi — Quantitative Trader, AI Engineer, and Machine Learning Specialist.",
 };
 
 export const viewport: Viewport = {

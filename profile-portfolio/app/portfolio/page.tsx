@@ -95,10 +95,10 @@ export default function Portfolio() {
             viewport={{ once: true }}
             className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
           >
-            <SkillCard icon={<Brain />} title="Machine Learning" skills={["Scikit-learn", "XGBoost", "TensorFlow"]} />
-            <SkillCard icon={<Cpu />} title="Computer Vision" skills={["CNN", "RNN", "Transformers"]} />
-            <SkillCard icon={<Database />} title="Data Engineering" skills={["Airflow", "PostgreSQL", "Docker"]} />
-            <SkillCard icon={<Terminal />} title="Web Frameworks" skills={["Next.js", "React", "TypeScript"]} />
+            <SkillCard icon={<TrendingUp />} title="Quantitative Trading" skills={["Algorithmic Trading", "Backtesting", "HFT"]} />
+            <SkillCard icon={<Brain />} title="Machine Learning" skills={["Predictive Analytics", "Deep Learning", "RL"]} />
+            <SkillCard icon={<Database />} title="Data Engineering" skills={["Real-time Pipelines", "PostgreSQL", "Docker"]} />
+            <SkillCard icon={<Terminal />} title="Frontend Stack" skills={["Vue.js", "Next.js", "TypeScript"]} />
           </motion.div>
         </div>
       </section>
@@ -135,7 +135,7 @@ export default function Portfolio() {
                 
                 <div className="flex flex-wrap gap-2 mb-8">
                   {project.techs.map((tech, i) => (
-                    <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 border border-slate-100 rounded-lg text-[10px] font-bold uppercase tracking-tight">
+                    <span key={i} className="px-3 py-1 bg-slate-50 text-slate-500 border border-slate-100 rounded-lg text-[10px] font-black uppercase tracking-tight">
                       {tech}
                     </span>
                   ))}

@@ -23,7 +23,7 @@ export default function Navbar() {
         <motion.div 
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className={`transition-all duration-500 rounded-2xl ${scrolled ? 'glass px-6 shadow-sm' : 'bg-transparent px-0'}`}
+          className={`transition-all duration-700 rounded-3xl ${scrolled ? 'glass px-8 py-1 shadow-lg shadow-indigo-500/5 border-white/40' : 'bg-transparent px-0'}`}
         >
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="text-2xl font-black tracking-tighter text-gradient group flex items-center gap-1">

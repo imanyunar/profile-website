@@ -3,13 +3,13 @@
 :root {
   --nav-height: 5rem;
   --primary: #4f46e5; /* Indigo 600 */
-  --secondary: #d97706; /* Amber 600 - Gold/Elegant */
-  --accent: #6366f1; /* Indigo 500 */
+  --secondary: #10b981; /* Emerald 500 - Quant/Growth feel */
+  --accent: #06b6d4; /* Cyan 500 - Tech/Data feel */
   --background: #ffffff;
-  --foreground: #0f172a; /* Slate 900 */
-  --muted: #64748b; /* Slate 500 */
+  --foreground: #020617; /* Slate 950 - Deeper contrast */
+  --muted: #64748b;
   --card-bg: #ffffff;
-  --border: rgba(0, 0, 0, 0.05);
+  --border: rgba(0, 0, 0, 0.04);
 }
 
 * {
@@ -29,79 +29,67 @@ body {
   scroll-behavior: smooth;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbar - Bright Palette */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 20px;
+  background: #e2e8f0;
+  border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #cbd5e1;
 }
 
-/* Elegant Mesh Background - Updated for brightness */
+/* Elegant Mesh Background - Updated for Quant Aesthetic */
 .mesh-gradient {
   background-color: #ffffff;
   background-image: 
-    radial-gradient(at 0% 0%, hsla(231, 80%, 61%, 0.05) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(38, 92%, 50%, 0.05) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, hsla(231, 80%, 61%, 0.05) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, hsla(38, 92%, 50%, 0.05) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, hsla(231, 80%, 61%, 0.04) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(160, 84%, 39%, 0.04) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(187, 92%, 45%, 0.04) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(231, 80%, 61%, 0.04) 0px, transparent 50%);
 }
 
-/* Elegant Soft Shadows & Cards */
 .elegant-card {
   background: #ffffff;
   border: 1px solid var(--border);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .elegant-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  border-color: rgba(79, 70, 229, 0.2);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  border-color: rgba(79, 70, 229, 0.15);
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
 }
 
-/* Text Gradient - Focused on elegance */
+/* Text Gradient - Focused on Quant colors */
 .text-gradient {
-  background: linear-gradient(135deg, #4f46e5 0%, #d97706 100%);
+  background: linear-gradient(135deg, #4f46e5 0%, #10b981 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Button & Active States */
-.btn-primary {
-  background: #4f46e5;
-  color: white;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.btn-primary:active {
-  transform: scale(0.95);
-}
-
-/* Premium Divider */
-.divider {
-  height: 2px;
-  background: linear-gradient(to right, transparent, rgba(79, 70, 229, 0.1), transparent);
+.text-gradient-alt {
+  background: linear-gradient(135deg, #06b6d4 0%, #4f46e5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Section Anchor Padding */
