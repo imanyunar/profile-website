@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { 
   ArrowRight, 
   Github, 
@@ -17,6 +17,7 @@ import {
   TrendingUp
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -38,38 +39,22 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="relative min-h-screen flex items-center pt-24 pb-20 overflow-hidden mesh-gradient">
         {/* Decorative Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div 
-            animate={{ 
-              scale: [1, 1.1, 1],
-              opacity: [0.3, 0.5, 0.3],
-              rotate: [0, 90, 0]
-            }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] bg-indigo-50 rounded-full blur-[120px]"
-          />
-          <motion.div 
-            animate={{ 
-              scale: [1, 1.2, 1],
-              opacity: [0.2, 0.4, 0.2],
-              rotate: [0, -90, 0]
-            }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            className="absolute -bottom-1/4 -right-1/4 w-[800px] h-[800px] bg-amber-50 rounded-full blur-[120px]"
-          />
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+          <div className="absolute -top-1/4 -left-1/4 w-[600px] h-[600px] bg-indigo-50 rounded-full blur-[100px]" />
+          <div className="absolute -bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-amber-50 rounded-full blur-[100px]" />
         </div>
 
         <div className="container mx-auto px-6 lg:px-8 max-w-7xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             {/* Left Content */}
-            <motion.div 
+            <m.div 
               variants={staggerContainer}
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
               className="lg:col-span-7 space-y-10"
             >
-              <motion.div variants={fadeInUp} className="space-y-6">
+              <m.div variants={fadeInUp} className="space-y-6">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-indigo-50 border border-indigo-100 rounded-full">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
@@ -86,9 +71,9 @@ export default function Home() {
                 <p className="text-xl md:text-2xl text-slate-500 max-w-2xl leading-relaxed">
                   I'm <span className="text-slate-900 font-bold">Iman Yunar</span>, a <span className="text-indigo-600 font-bold">Quantitative Trader</span> & AI Engineer building high-frequency systems and predictive models that turn data into alpha.
                 </p>
-              </motion.div>
+              </m.div>
 
-              <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
+              <m.div variants={fadeInUp} className="flex flex-wrap gap-4">
                 <Link href="/portfolio" className="px-10 py-4 bg-indigo-600 hover:bg-slate-900 text-white font-bold rounded-2xl shadow-xl shadow-indigo-600/20 transition-all hover:-translate-y-1 flex items-center gap-3 group">
                   View Portfolio
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -96,11 +81,11 @@ export default function Home() {
                 <Link href="/socials" className="px-10 py-4 bg-white border border-slate-200 text-slate-900 font-bold rounded-2xl hover:bg-slate-50 transition-all hover:-translate-y-1 flex items-center gap-3">
                   Let's Connect
                 </Link>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
 
             {/* Right Content - Visual */}
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -111,25 +96,28 @@ export default function Home() {
                 {/* Decorative Shapes */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-indigo-100 to-amber-100 rounded-[60px] transform rotate-6 border border-white/50 shadow-2xl"></div>
                 
-                <div className="absolute inset-0 glass rounded-[60px] p-6 shadow-2xl flex items-center justify-center">
-                  <img 
+                <div className="absolute inset-0 glass rounded-[60px] p-6 shadow-2xl flex items-center justify-center overflow-hidden">
+                  <Image 
                     src="/profile-removebg-preview.png" 
                     alt="Iman Yunar Noviadhi" 
+                    width={500}
+                    height={500}
+                    priority
                     className="max-w-full max-h-full object-contain filter drop-shadow-2xl hover:scale-105 transition-all duration-700" 
                   />
                 </div>
 
                 {/* Floating Stats */}
-                <motion.div 
+                <m.div 
                   animate={{ y: [0, -15, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute -bottom-16 -left-12 bg-white p-6 rounded-3xl shadow-xl border border-slate-50 hidden xl:block"
                 >
                   <p className="text-3xl font-black text-emerald-500">95%+</p>
                   <p className="text-xs font-bold text-slate-500 uppercase tracking-widest text-center">Backtest Accuracy</p>
-                </motion.div>
+                </m.div>
                 
-                <motion.div 
+                <m.div 
                   animate={{ y: [0, 15, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                   className="absolute -top-12 -right-10 bg-white p-6 rounded-3xl shadow-xl border border-slate-50 flex items-center gap-4 hidden xl:flex"
@@ -141,9 +129,9 @@ export default function Home() {
                     <p className="text-sm font-black text-slate-900">Quant Specialist</p>
                     <p className="text-[10px] font-bold text-slate-400 uppercase">Algorithmic Trading</p>
                   </div>
-                </motion.div>
+                </m.div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -152,7 +140,7 @@ export default function Home() {
       <section className="py-32 bg-slate-50/50" id="projects">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center space-y-4 mb-20 max-w-3xl mx-auto">
-            <motion.div 
+            <m.div 
               variants={fadeInUp}
               initial="initial"
               whileInView="animate"
@@ -170,7 +158,7 @@ export default function Home() {
                   Explore All Projects <ChevronRight className="w-5 h-5" />
                 </Link>
               </div>
-            </motion.div>
+            </m.div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -198,7 +186,7 @@ export default function Home() {
       <section className="py-32 bg-white border-t border-slate-50">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-            <motion.h2 
+            <m.h2 
               variants={fadeInUp}
               initial="initial"
               whileInView="animate"
@@ -206,14 +194,14 @@ export default function Home() {
               className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight"
             >
               Technical <span className="text-gradient">Expertise.</span>
-            </motion.h2>
+            </m.h2>
             <p className="text-xl text-slate-500 font-medium leading-relaxed">
               Specializing in the full lifecycle of AI products, from rigorous data engineering to deploying scalable neural networks.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <motion.div 
+            <m.div 
               variants={staggerContainer}
               initial="initial"
               whileInView="animate"
@@ -224,9 +212,9 @@ export default function Home() {
               <SkillSet icon={<Brain />} title="Machine Learning" skills={["Predictive Analytics", "Deep Learning", "Reinforcement Learning"]} />
               <SkillSet icon={<Code2 />} title="Fullstack Dev" skills={["Vue.js", "Next.js", "TypeScript", "TailwindCSS"]} />
               <SkillSet icon={<Database />} title="Data Systems" skills={["Data Pipelines", "Real-time Processing", "PostgreSQL", "Docker"]} />
-            </motion.div>
+            </m.div>
 
-            <motion.div 
+            <m.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
@@ -243,7 +231,7 @@ export default function Home() {
                 <SkillIcon label="Docker" />
                 <SkillIcon label="SQL" />
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -251,7 +239,7 @@ export default function Home() {
       {/* CTA SECTION */}
       <section className="py-24">
         <div className="container mx-auto px-6 max-w-7xl">
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -283,7 +271,7 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -311,7 +299,7 @@ function ProjectCard({ image, title, category, description, tags, link }: {
   link: string;
 }) {
   return (
-    <motion.div 
+    <m.div 
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -348,7 +336,7 @@ function ProjectCard({ image, title, category, description, tags, link }: {
           Explore Project <ExternalLink className="w-4 h-4" />
         </a>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -368,11 +356,11 @@ function SkillSet({ icon, title, skills }: { icon: React.ReactNode; title: strin
 
 function SkillIcon({ label }: { label: string }) {
   return (
-    <motion.div 
+    <m.div 
       whileHover={{ y: -5, borderColor: '#4f46e5' }}
       className="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm text-center font-bold text-slate-600 hover:text-indigo-600 transition-all"
     >
       <div className="text-xs uppercase tracking-widest">{label}</div>
-    </motion.div>
+    </m.div>
   );
 }

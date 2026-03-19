@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X, ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,25 +18,16 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'py-3' : 'py-6'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+    <nav className={`fixed top-0 left-1/2 -translate-x-1/2 z-50 transition-all duration-700 ${scrolled ? 'top-4 w-[95%] max-w-5xl' : 'top-0 w-full'}`}>
+      <div className={`${scrolled ? 'px-0' : 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'}`}>
+        <m.div 
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className={`transition-all duration-700 rounded-3xl ${scrolled ? 'glass px-8 py-1 shadow-lg shadow-indigo-500/5 border-white/40' : 'bg-transparent px-0'}`}
+          className={`transition-all duration-700 rounded-[32px] ${scrolled ? 'glass-pill px-8 py-2 shadow-2xl shadow-indigo-500/10 border-white/40' : 'bg-transparent py-4'}`}
         >
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-6">
-              <Link href="/" className="text-2xl font-black tracking-tighter text-gradient group flex items-center gap-1 shrink-0">
-                <motion.span
-                  whileHover={{ scale: 1.1, rotate: -5 }}
-                  className="inline-block"
-                >
-                  IYN
-                </motion.span>
-              </Link>
-              
-              <div className="hidden lg:flex items-center gap-4 pl-4 border-l border-slate-200/60">
+            <div className="flex items-center gap-4">
+              <div className="hidden lg:flex items-center gap-4">
                 <SocialIcon href="https://github.com/imanyunar" icon={<Github className="w-4 h-4" />} />
                 <SocialIcon href="https://www.linkedin.com/in/iman-yunar-noviadhi-87313a284/" icon={<Linkedin className="w-4 h-4" />} />
                 <SocialIcon href="mailto:imanyunar@gmail.com" icon={<Mail className="w-4 h-4" />} />
@@ -68,13 +59,13 @@ export default function Navbar() {
               </button>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0, scale: 0.95, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -20 }}
@@ -92,7 +83,7 @@ export default function Navbar() {
                 Get in Touch
               </Link>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </nav>
@@ -106,7 +97,7 @@ function NavLink({ href, label }: { href: string; label: string }) {
       className="text-sm font-bold px-4 py-2 text-slate-500 hover:text-indigo-600 transition-colors relative group"
     >
       {label}
-      <motion.span 
+      <m.span 
         className="absolute bottom-1 left-4 right-4 h-0.5 bg-indigo-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
       />
     </Link>
@@ -127,7 +118,7 @@ function MobileNavLink({ href, label, onClick }: { href: string; label: string; 
 
 function SocialIcon({ href, icon }: { href: string; icon: React.ReactNode }) {
   return (
-    <motion.a 
+    <m.a 
       href={href} 
       target="_blank"
       rel="noopener noreferrer"
@@ -135,7 +126,7 @@ function SocialIcon({ href, icon }: { href: string; icon: React.ReactNode }) {
       className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-indigo-600 hover:border-indigo-200 transition-all shadow-sm"
     >
       {icon}
-    </motion.a>
+    </m.a>
   );
 }
 

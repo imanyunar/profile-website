@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, Variants } from 'framer-motion';
+import { m, Variants } from 'framer-motion';
 import {
   Github,
   Linkedin,
@@ -53,35 +53,35 @@ export default function Socials() {
       {/* Hero */}
       <section className="relative pt-40 pb-20 mesh-gradient border-b border-slate-100 overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl relative z-10 text-center space-y-6">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 border border-indigo-100 rounded-2xl text-indigo-700 font-bold text-sm uppercase tracking-widest"
           >
             Communication Hub
-          </motion.div>
-          <motion.h1
+          </m.div>
+          <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight"
           >
             Bridge to <span className="text-gradient">Alpha.</span>
-          </motion.h1>
-          <motion.p
+          </m.h1>
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="text-xl text-slate-500 max-w-2xl mx-auto font-medium"
           >
             Open for algorithmic research, quantitative partnerships, and high-impact engineering collaborations.
-          </motion.p>
+          </m.p>
         </div>
       </section>
 
       {/* Social Cards Grid */}
       <section className="py-24">
         <div className="container mx-auto px-6 max-w-7xl">
-          <motion.div
+          <m.div
             variants={container}
             initial="initial"
             whileInView="animate"
@@ -89,7 +89,7 @@ export default function Socials() {
             className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
           >
             {socials.map((social, idx) => (
-              <motion.a
+              <m.a
                 key={idx}
                 href={social.url}
                 target="_blank"
@@ -107,9 +107,9 @@ export default function Socials() {
                 <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-indigo-600 pt-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   Visit Profile <ExternalLink className="w-3 h-3" />
                 </div>
-              </motion.a>
+              </m.a>
             ))}
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -144,7 +144,7 @@ export default function Socials() {
 
             {/* Quick Form */}
             <div className="lg:col-span-7">
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -169,7 +169,7 @@ export default function Socials() {
                     Send Message <Send className="w-5 h-5" />
                   </button>
                 </form>
-              </motion.div>
+              </m.div>
             </div>
           </div>
         </div>

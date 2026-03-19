@@ -21,13 +21,17 @@ export const viewport: Viewport = {
   themeColor: "#ffffff",
 };
 
+import { LazyMotion, domMax } from "framer-motion";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
       <body className={`${inter.className} bg-white text-slate-900 antialiased`}>
         <Navbar />
         <main className="min-h-screen">
-          {children}
+          <LazyMotion features={domMax}>
+            {children}
+          </LazyMotion>
         </main>
       </body>
     </html>

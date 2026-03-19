@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, Variants } from 'framer-motion';
+import { m, Variants } from 'framer-motion';
 import { 
   FileText, 
   TrendingUp, 
@@ -60,35 +60,35 @@ export default function Portfolio() {
       {/* Hero */}
       <section className="relative pt-40 pb-20 mesh-gradient border-b border-slate-100">
         <div className="container mx-auto px-6 max-w-7xl relative z-10 text-center space-y-6">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 border border-indigo-100 rounded-2xl text-indigo-700 font-bold text-sm uppercase tracking-widest"
           >
             Project Archives
-          </motion.div>
-          <motion.h1 
+          </m.div>
+          <m.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight"
           >
             Engineering <span className="text-gradient">Portfolio.</span>
-          </motion.h1>
-          <motion.p 
+          </m.h1>
+          <m.p 
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ delay: 0.1 }}
              className="text-xl text-slate-500 max-w-2xl mx-auto font-medium"
           >
             A curated selection of my works in Artificial Intelligence, Data Engineering, and Research.
-          </motion.p>
+          </m.p>
         </div>
       </section>
 
       {/* Skills Showcase */}
       <section className="py-24 bg-slate-50/50">
         <div className="container mx-auto px-6 max-w-7xl">
-          <motion.div 
+          <m.div 
             variants={container}
             initial="initial"
             whileInView="animate"
@@ -99,7 +99,7 @@ export default function Portfolio() {
             <SkillCard icon={<Brain />} title="Machine Learning" skills={["Predictive Analytics", "Deep Learning", "RL"]} />
             <SkillCard icon={<Database />} title="Data Engineering" skills={["Real-time Pipelines", "PostgreSQL", "Docker"]} />
             <SkillCard icon={<Terminal />} title="Frontend Stack" skills={["Vue.js", "Next.js", "TypeScript"]} />
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -113,7 +113,7 @@ export default function Portfolio() {
             </h2>
           </div>
 
-          <motion.div 
+          <m.div 
             variants={container}
             initial="initial"
             whileInView="animate"
@@ -121,7 +121,7 @@ export default function Portfolio() {
             className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
           >
             {projects.map((project, idx) => (
-              <motion.div 
+              <m.div 
                 key={idx} 
                 variants={item}
                 className="elegant-card p-10 rounded-[40px] flex flex-col h-full bg-white group"
@@ -148,9 +148,9 @@ export default function Portfolio() {
                 >
                   View Case Study <ChevronRight className="w-5 h-5" />
                 </Link>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -167,7 +167,7 @@ export default function Portfolio() {
 
 function SkillCard({ icon, title, skills }: { icon: React.ReactNode; title: string, skills: string[] }) {
   return (
-    <motion.div 
+    <m.div 
       variants={item}
       whileHover={{ y: -5 }}
       className="p-8 bg-white border border-slate-100 rounded-[32px] shadow-sm flex flex-col items-center text-center space-y-4 hover:border-indigo-100 transition-colors"
@@ -181,6 +181,6 @@ function SkillCard({ icon, title, skills }: { icon: React.ReactNode; title: stri
           <span key={i} className="text-xs font-bold text-slate-400 uppercase tracking-tighter">{s}</span>
         ))}
       </div>
-    </motion.div>
+    </m.div>
   );
 }
