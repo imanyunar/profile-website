@@ -1,15 +1,15 @@
 'use client';
 
 import { m } from 'framer-motion';
-import { 
-  ArrowRight, 
-  Github, 
-  Linkedin, 
-  Mail, 
-  ExternalLink, 
-  Brain, 
-  Cpu, 
-  Database, 
+import {
+  ArrowRight,
+  Github,
+  Linkedin,
+  Mail,
+  ExternalLink,
+  Brain,
+  Cpu,
+  Database,
   Terminal,
   Sparkles,
   ChevronRight,
@@ -47,7 +47,7 @@ export default function Home() {
         <div className="container mx-auto px-6 lg:px-8 max-w-7xl relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             {/* Left Content */}
-            <m.div 
+            <m.div
               variants={staggerContainer}
               initial="initial"
               whileInView="animate"
@@ -62,12 +62,12 @@ export default function Home() {
                   </span>
                   <p className="text-xs font-bold text-indigo-700 uppercase tracking-widest">Open for Collaboration</p>
                 </div>
-                
+
                 <h1 className="text-6xl sm:text-7xl md:text-8xl font-black text-slate-900 leading-[0.95] tracking-tight">
                   Trading <br />
                   <span className="text-gradient">Intelligence.</span>
                 </h1>
-                
+
                 <p className="text-xl md:text-2xl text-slate-500 max-w-2xl leading-relaxed">
                   I'm <span className="text-slate-900 font-bold">Iman Yunar</span>, a <span className="text-indigo-600 font-bold">Quantitative Trader</span> & AI Engineer building high-frequency systems and predictive models that turn data into alpha.
                 </p>
@@ -85,7 +85,7 @@ export default function Home() {
             </m.div>
 
             {/* Right Content - Visual */}
-            <m.div 
+            <m.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -95,20 +95,20 @@ export default function Home() {
               <div className="relative aspect-square">
                 {/* Decorative Shapes */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-indigo-100 to-amber-100 rounded-[60px] transform rotate-6 border border-white/50 shadow-2xl"></div>
-                
+
                 <div className="absolute inset-0 glass rounded-[60px] p-6 shadow-2xl flex items-center justify-center overflow-hidden">
-                  <Image 
-                    src="/profile-removebg-preview.png" 
-                    alt="Iman Yunar Noviadhi" 
+                  <Image
+                    src="/profile-removebg-preview.png"
+                    alt="Iman Yunar Noviadhi"
                     width={500}
                     height={500}
                     priority
-                    className="max-w-full max-h-full object-contain filter drop-shadow-2xl hover:scale-105 transition-all duration-700" 
+                    className="max-w-full max-h-full object-contain filter drop-shadow-2xl hover:scale-105 transition-all duration-700"
                   />
                 </div>
 
                 {/* Floating Stats */}
-                <m.div 
+                <m.div
                   animate={{ y: [0, -15, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute -bottom-16 -left-12 bg-white p-6 rounded-3xl shadow-xl border border-slate-50 hidden xl:block"
@@ -116,8 +116,8 @@ export default function Home() {
                   <p className="text-3xl font-black text-emerald-500">95%+</p>
                   <p className="text-xs font-bold text-slate-500 uppercase tracking-widest text-center">Backtest Accuracy</p>
                 </m.div>
-                
-                <m.div 
+
+                <m.div
                   animate={{ y: [0, 15, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                   className="absolute -top-12 -right-10 bg-white p-6 rounded-3xl shadow-xl border border-slate-50 flex items-center gap-4 hidden xl:flex"
@@ -140,7 +140,7 @@ export default function Home() {
       <section className="py-32 bg-slate-50/50" id="projects">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center space-y-4 mb-20 max-w-3xl mx-auto">
-            <m.div 
+            <m.div
               variants={fadeInUp}
               initial="initial"
               whileInView="animate"
@@ -162,7 +162,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <ProjectCard 
+            <ProjectCard
               image="🤖"
               title="Crypto Market Forecast"
               category="Deep Learning"
@@ -170,9 +170,9 @@ export default function Home() {
               tags={["TensorFlow", "FastAPI", "Pandas"]}
               link="https://crypto-predict-101.streamlit.app/"
             />
-            <ProjectCard 
+            <ProjectCard
               image="🧬"
-              title="Oncology Diagnosis AI"
+              title="Cancer Detection AI"
               category="Computer Vision"
               description="A medical imaging platform utilizing CNNs for high-precision cancer detection and clinical decision support."
               tags={["PyTorch", "OpenCV", "HealthTech"]}
@@ -186,7 +186,7 @@ export default function Home() {
       <section className="py-32 bg-white border-t border-slate-50">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-            <m.h2 
+            <m.h2
               variants={fadeInUp}
               initial="initial"
               whileInView="animate"
@@ -201,7 +201,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <m.div 
+            <m.div
               variants={staggerContainer}
               initial="initial"
               whileInView="animate"
@@ -214,7 +214,7 @@ export default function Home() {
               <SkillSet icon={<Database />} title="Data Systems" skills={["Data Pipelines", "Real-time Processing", "PostgreSQL", "Docker"]} />
             </m.div>
 
-            <m.div 
+            <m.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
@@ -239,7 +239,7 @@ export default function Home() {
       {/* CTA SECTION */}
       <section className="py-24">
         <div className="container mx-auto px-6 max-w-7xl">
-          <m.div 
+          <m.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -290,16 +290,16 @@ export default function Home() {
 }
 
 
-function ProjectCard({ image, title, category, description, tags, link }: { 
+function ProjectCard({ image, title, category, description, tags, link }: {
   image: string;
-  title: string; 
+  title: string;
   category: string;
-  description: string; 
+  description: string;
   tags: string[];
   link: string;
 }) {
   return (
-    <m.div 
+    <m.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -327,10 +327,10 @@ function ProjectCard({ image, title, category, description, tags, link }: {
             </span>
           ))}
         </div>
-        <a 
-          href={link} 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-slate-900 font-black hover:text-indigo-600 transition-colors"
         >
           Explore Project <ExternalLink className="w-4 h-4" />
@@ -356,7 +356,7 @@ function SkillSet({ icon, title, skills }: { icon: React.ReactNode; title: strin
 
 function SkillIcon({ label }: { label: string }) {
   return (
-    <m.div 
+    <m.div
       whileHover={{ y: -5, borderColor: '#4f46e5' }}
       className="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm text-center font-bold text-slate-600 hover:text-indigo-600 transition-all"
     >
