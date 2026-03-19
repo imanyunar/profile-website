@@ -1,142 +1,208 @@
-export default function Socials() {
-  const socials = [
-    {
-      name: "GitHub",
-      icon: "fab fa-github",
-      url: "https://github.com/imanyunar",
-      gradient: "from-gray-800 to-gray-900",
-      description: "Check out my open source projects and contributions",
-      color: "🔗"
-    },
-    {
-      name: "LinkedIn",
-      icon: "fab fa-linkedin",
-      url: "https://linkedin.com/in/imanyunar",
-      gradient: "from-blue-600 to-blue-700",
-      description: "Connect with me on LinkedIn for professional networking",
-      color: "💼"
-    },
-    {
-      name: "Email",
-      icon: "fas fa-envelope",
-      url: "mailto:imanyunar@example.com",
-      gradient: "from-purple-600 to-pink-600",
-      description: "Send me an email directly for inquiries and collaborations",
-      color: "📧"
-    },
-    {
-      name: "Twitter/X",
-      icon: "fab fa-twitter",
-      url: "https://twitter.com/imanyunar",
-      gradient: "from-blue-400 to-blue-500",
-      description: "Follow me for AI and ML insights and updates",
-      color: "🐦"
-    },
-  ];
+'use client';
 
+import { motion, Variants } from 'framer-motion';
+import { 
+  Github, 
+  Linkedin, 
+  Mail, 
+  Twitter, 
+  ArrowLeft, 
+  Send,
+  ExternalLink,
+  MessageSquare,
+  Sparkles
+} from 'lucide-react';
+import Link from 'next/link';
+
+const socials = [
+  {
+    name: "GitHub",
+    icon: <Github className="w-8 h-8" />,
+    url: "https://github.com/imanyunar",
+    description: "Explore my source code and contributions.",
+    color: "bg-slate-50 text-slate-900 border-slate-200"
+  },
+  {
+    name: "LinkedIn",
+    icon: <Linkedin className="w-8 h-8" />,
+    url: "https://linkedin.com/in/imanyunar",
+    description: "Professional network and career updates.",
+    color: "bg-indigo-50 text-indigo-600 border-indigo-100"
+  },
+  {
+    name: "Email",
+    icon: <Mail className="w-8 h-8" />,
+    url: "mailto:imanyunar@example.com",
+    description: "Send a direct inquiry for collaboration.",
+    color: "bg-amber-50 text-amber-600 border-amber-100"
+  },
+  {
+    name: "Twitter",
+    icon: <Twitter className="w-8 h-8" />,
+    url: "https://twitter.com/imanyunar",
+    description: "AI/ML insights and tech discussions.",
+    color: "bg-blue-50 text-blue-500 border-blue-100"
+  },
+];
+
+const container: Variants = {
+  animate: { transition: { staggerChildren: 0.1 } }
+};
+
+const item: Variants = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+export default function Socials() {
   return (
-    <div className="w-full bg-[#09090b]">
+    <div className="w-full min-h-screen bg-white">
       {/* Hero */}
-      <section className="py-20 pt-32 bg-[#09090b] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-10 right-10 w-96 h-96 bg-cyan-500/20 rounded-full mix-blend-screen filter blur-[100px] animate-pulse"></div>
-        </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center text-white space-y-4 relative z-10" data-animate>
-          <h1 className="text-5xl font-bold">🤝 Let's Connect</h1>
-          <p className="text-xl text-zinc-400">I'm always open to discussing new projects and opportunities</p>
+      <section className="relative pt-40 pb-20 mesh-gradient border-b border-slate-100 overflow-hidden">
+        <div className="container mx-auto px-6 max-w-7xl relative z-10 text-center space-y-6">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 border border-indigo-100 rounded-2xl text-indigo-700 font-bold text-sm uppercase tracking-widest"
+          >
+            Communication Hub
+          </motion.div>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight"
+          >
+            Let's <span className="text-gradient">Connect.</span>
+          </motion.h1>
+          <motion.p 
+             initial={{ opacity: 0, y: 20 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ delay: 0.1 }}
+             className="text-xl text-slate-500 max-w-2xl mx-auto font-medium"
+          >
+            I'm always interested in hearing about new projects, innovative ideas, or even just a friendly tech chat.
+          </motion.p>
         </div>
       </section>
 
-      {/* Contact Cards */}
-      <section className="py-20 bg-zinc-950 border-t border-zinc-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4" data-animate style={{ transitionDelay: "0.2s" }}>
+      {/* Social Cards Grid */}
+      <section className="py-24">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <motion.div 
+            variants={container}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          >
             {socials.map((social, idx) => (
-              <a 
+              <motion.a 
                 key={idx}
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`bg-zinc-900/50 backdrop-blur-sm rounded-xl p-8 text-white shadow-xl hover:shadow-2xl transition-all transform hover:scale-105 hover:-translate-y-2 border border-zinc-800 hover:border-zinc-500 relative overflow-hidden group`}
+                variants={item}
+                className={`elegant-card p-10 rounded-[40px] flex flex-col items-center text-center space-y-6 group hover:border-black/5 ${social.color}`}
               >
-                <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-br ${social.gradient} transition-opacity duration-300`}></div>
-                <p className="text-5xl mb-4">{social.color}</p>
-                <h3 className="text-2xl font-bold mb-2">{social.name}</h3>
-                <p className="text-zinc-400 text-sm">{social.description}</p>
-              </a>
+                <div className="p-4 bg-white rounded-2xl shadow-sm group-hover:scale-110 transition-transform duration-500 border border-inherit">
+                  {social.icon}
+                </div>
+                <div>
+                  <h3 className="text-2xl font-black text-slate-900 mb-2">{social.name}</h3>
+                  <p className="text-slate-500 text-sm font-medium leading-relaxed">{social.description}</p>
+                </div>
+                <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-900 pt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  Visit Profile <ExternalLink className="w-3 h-3" />
+                </div>
+              </motion.a>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* About Connect Section */}
-      <section className="py-20 bg-[#09090b] border-t border-zinc-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl" data-animate>
-          <div className="bg-zinc-900/50 backdrop-blur-sm rounded-xl shadow-xl p-8 space-y-6 border border-zinc-800">
-            <h2 className="text-3xl font-bold text-white">💬 Get in Touch</h2>
-            <div className="space-y-4">
-              <p className="text-lg text-zinc-300">
-                Whether you're interested in collaborating on projects, discussing AI/ML applications, or just want to say hello, I'd love to hear from you!
-              </p>
-              <p className="text-lg text-zinc-300">
-                I'm most responsive via email and LinkedIn, but feel free to reach out through any of the platforms above.
-              </p>
-              <p className="text-lg text-zinc-300">
-                <span className="font-bold text-cyan-400">Response time:</span> Usually within 24 hours 🚀
-              </p>
+      {/* Contact Form & Info */}
+      <section className="py-32 bg-slate-50/50">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="grid lg:grid-cols-12 gap-20">
+            {/* Contact Info */}
+            <div className="lg:col-span-5 space-y-10">
+              <div className="space-y-6">
+                <h2 className="text-4xl font-black text-slate-900 leading-tight">
+                  Why reach <br /> <span className="text-indigo-600">out to me?</span>
+                </h2>
+                <p className="text-lg text-slate-500 font-medium leading-relaxed">
+                  I specialize in problem-solving through AI and data science. If you have a challenge that needs an intelligent solution, let's talk.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                <ContactFeature 
+                  icon={<MessageSquare className="text-indigo-600" />} 
+                  title="Collaborative Spirit" 
+                  text="I believe the best results come from diverse perspectives working together." 
+                />
+                <ContactFeature 
+                  icon={<Sparkles className="text-amber-600" />} 
+                  title="Fast Responses" 
+                  text="I aim to respond to all professional inquiries within 24 hours." 
+                />
+              </div>
             </div>
 
-            <div className="pt-8 space-y-4">
-              <h3 className="text-xl font-bold text-white">📋 What I'm interested in:</h3>
-              <div className="grid grid-cols-2 gap-3" data-animate style={{ transitionDelay: "0.2s" }}>
-                <InterestTag emoji="🔬" text="ML/AI Projects" />
-                <InterestTag emoji="💡" text="Startups" />
-                <InterestTag emoji="📚" text="Collaborations" />
-                <InterestTag emoji="🌍" text="Open Source" />
-              </div>
+            {/* Quick Form */}
+            <div className="lg:col-span-7">
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="bg-white p-10 md:p-14 rounded-[50px] shadow-2xl shadow-slate-200/50 border border-slate-100"
+              >
+                <form className="space-y-8">
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div className="space-y-3">
+                      <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Name</label>
+                      <input type="text" placeholder="John Doe" className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-indigo-50 focus:border-indigo-200 transition-all font-medium text-slate-900" />
+                    </div>
+                    <div className="space-y-3">
+                      <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Email</label>
+                      <input type="email" placeholder="john@example.com" className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-indigo-50 focus:border-indigo-200 transition-all font-medium text-slate-900" />
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Message</label>
+                    <textarea rows={5} placeholder="How can I help you?" className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-indigo-50 focus:border-indigo-200 transition-all font-medium text-slate-900 resize-none"></textarea>
+                  </div>
+                  <button className="w-full py-5 bg-indigo-600 hover:bg-slate-900 text-white font-black rounded-2xl shadow-xl shadow-indigo-600/20 transition-all flex items-center justify-center gap-3 active:scale-[0.98]">
+                    Send Message <Send className="w-5 h-5" />
+                  </button>
+                </form>
+              </motion.div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Contact Form */}
-      <section className="py-20 bg-zinc-950 border-t border-zinc-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl" data-animate>
-          <div className="bg-zinc-900/50 backdrop-blur-sm rounded-xl shadow-2xl p-8 space-y-6 border border-zinc-800">
-            <h2 className="text-3xl font-bold text-white text-center">✉️ Send Me a Message</h2>
-            <form className="space-y-4">
-              <div>
-                <label className="block text-sm font-semibold text-zinc-300 mb-2">Name</label>
-                <input type="text" className="w-full px-4 py-2 border border-zinc-700 rounded-lg bg-zinc-800/50 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-colors" />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-zinc-300 mb-2">Email</label>
-                <input type="email" className="w-full px-4 py-2 border border-zinc-700 rounded-lg bg-zinc-800/50 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-colors" />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-zinc-300 mb-2">Message</label>
-                <textarea rows={4} className="w-full px-4 py-2 border border-zinc-700 rounded-lg bg-zinc-800/50 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-colors"></textarea>
-              </div>
-              <button className="w-full px-6 py-3 bg-cyan-600 text-white font-bold rounded-lg hover:bg-cyan-500 transition-all transform hover:scale-[1.02] shadow-lg shadow-cyan-500/20">
-                Send Message
-              </button>
-            </form>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 bg-[#09090b] text-center border-t border-zinc-900">
-        <p className="text-zinc-400">© 2025 Iman Yunar Noviadhi. All rights reserved.</p>
+      <footer className="py-12 bg-white flex flex-col items-center gap-6">
+        <Link href="/" className="flex items-center gap-2 text-slate-500 hover:text-indigo-600 font-bold transition-colors">
+          <ArrowLeft className="w-4 h-4" /> Back to Home
+        </Link>
+        <p className="text-slate-400 font-bold italic">© 2025 Iman Yunar Noviadhi • Let's build something amazing.</p>
       </footer>
     </div>
   );
 }
 
-function InterestTag({ emoji, text }: { emoji: string; text: string }) {
+function ContactFeature({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
   return (
-    <div className="px-4 py-2 bg-zinc-800/50 rounded-lg border border-zinc-700">
-      <p className="text-sm font-semibold text-zinc-300">{emoji} {text}</p>
+    <div className="flex gap-5">
+      <div className="w-12 h-12 bg-white border border-slate-100 rounded-2xl shadow-sm flex items-center justify-center shrink-0">
+        {icon}
+      </div>
+      <div>
+        <h4 className="font-black text-slate-900 mb-1">{title}</h4>
+        <p className="text-sm text-slate-500 font-medium leading-relaxed">{text}</p>
+      </div>
     </div>
   );
 }
