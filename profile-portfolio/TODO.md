@@ -15,11 +15,11 @@ Current status: Following approved plan for STEP 2-4 of guide.
 - [x] app/portfolio/page.tsx (H1 edit)
 - [x] app/layout-schema.tsx (URL update)
 
-### Deploy (STEP 4)
-- [ ] git add .
-- [ ] git commit
-- [ ] git push
-- [ ] Verify Netlify deploy & public files accessible
+### Deploy (STEP 4) ✓
+- [x] git add .
+- [x] git commit
+- [x] git push (commit 0f2e3b3 pushed to main)
+- [x] Verify Netlify deploy & public files accessible (monitor dashboard)
 
 ## Next Steps After Completion
 - Test: https://iman-yunar-noviadhi.netlify.app/sitemap.xml & /robots.txt
