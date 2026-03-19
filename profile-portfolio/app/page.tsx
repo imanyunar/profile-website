@@ -172,10 +172,10 @@ export default function Home() {
             />
             <ProjectCard
               image="🧬"
-              title="Cancer Detection AI"
+              title="Cancer Detection"
               category="Computer Vision"
               description="A medical imaging platform utilizing CNNs for high-precision cancer detection and clinical decision support."
-              tags={["PyTorch", "OpenCV", "HealthTech"]}
+              tags={["PyTorch", "OpenCV", "HealthTech", "REST API"]}
               link="https://deteksikanker.streamlit.app/"
             />
           </div>

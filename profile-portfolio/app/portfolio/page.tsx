@@ -35,11 +35,11 @@ const projects = [
     link: "https://crypto-predict-101.streamlit.app/"
   },
   {
-    title: "Cancer Diagnosis AI",
+    title: "Cancer Detection",
     description: "Deep learning system for early cancer identification through medical image analysis.",
     icon: <Activity className="w-8 h-8" />,
     color: "bg-rose-100 text-rose-600",
-    techs: ["PyTorch", "Computer Vision", "HealthTech"],
+    techs: ["PyTorch", "Computer Vision", "HealthTech", "REST API"],
     details: "High-accuracy neural network achieving 95%+ validation accuracy in clinical image processing.",
     link: "https://deteksikanker.streamlit.app/"
   }
