@@ -89,8 +89,8 @@ export default function Home() {
               </motion.div>
 
               <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
-                <Link href="#projects" className="px-10 py-4 bg-indigo-600 hover:bg-slate-900 text-white font-bold rounded-2xl shadow-xl shadow-indigo-600/20 transition-all hover:-translate-y-1 flex items-center gap-3 group">
-                  View Portofolio
+                <Link href="/portfolio" className="px-10 py-4 bg-indigo-600 hover:bg-slate-900 text-white font-bold rounded-2xl shadow-xl shadow-indigo-600/20 transition-all hover:-translate-y-1 flex items-center gap-3 group">
+                  View Portfolio
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link href="/socials" className="px-10 py-4 bg-white border border-slate-200 text-slate-900 font-bold rounded-2xl hover:bg-slate-50 transition-all hover:-translate-y-1 flex items-center gap-3">
