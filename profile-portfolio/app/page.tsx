@@ -99,9 +99,9 @@ export default function Home() {
               </motion.div>
 
               <motion.div variants={fadeInUp} className="flex items-center gap-6 pt-4">
-                <SocialIcon href="#" icon={<Github />} label="GitHub" />
-                <SocialIcon href="#" icon={<Linkedin />} label="LinkedIn" />
-                <SocialIcon href="#" icon={<Mail />} label="Email" />
+                <SocialIcon href="https://github.com/imanyunar" icon={<Github />} label="GitHub" />
+                <SocialIcon href="https://www.linkedin.com/in/iman-yunar-noviadhi-87313a284/" icon={<Linkedin />} label="LinkedIn" />
+                <SocialIcon href="mailto:imanyunar@gmail.com" icon={<Mail />} label="Email" />
               </motion.div>
             </motion.div>
 
@@ -283,7 +283,7 @@ export default function Home() {
                 Whether you have a groundbreaking idea or a complex technical challenge, I'm ready to help you bring it to life.
               </p>
               <div className="flex flex-wrap gap-6 justify-center">
-                <Link href="mailto:contact@example.com" className="px-12 py-5 bg-white text-slate-900 font-bold rounded-2xl hover:bg-amber-400 transition-all hover:-translate-y-1 shadow-2xl">
+                <Link href="mailto:imanyunar@gmail.com" className="px-12 py-5 bg-white text-slate-900 font-bold rounded-2xl hover:bg-amber-400 transition-all hover:-translate-y-1 shadow-2xl">
                   Start a Project
                 </Link>
                 <Link href="/socials" className="px-12 py-5 bg-slate-800 text-white font-bold rounded-2xl border border-slate-700 hover:bg-slate-700 transition-all hover:-translate-y-1">
@@ -300,9 +300,8 @@ export default function Home() {
         <div className="container mx-auto px-6 text-center space-y-6">
           <p className="text-slate-500 font-bold">© 2025 Iman Yunar Noviadhi • Engineering with Purpose</p>
           <div className="flex justify-center gap-8">
-            <Link href="#" className="text-slate-400 hover:text-indigo-600 transition-colors font-bold text-sm">GitHub</Link>
-            <Link href="#" className="text-slate-400 hover:text-indigo-600 transition-colors font-bold text-sm">LinkedIn</Link>
-            <Link href="#" className="text-slate-400 hover:text-indigo-600 transition-colors font-bold text-sm">Dribbble</Link>
+            <Link href="https://github.com/imanyunar" target="_blank" className="text-slate-400 hover:text-indigo-600 transition-colors font-bold text-sm">GitHub</Link>
+            <Link href="https://www.linkedin.com/in/iman-yunar-noviadhi-87313a284/" target="_blank" className="text-slate-400 hover:text-indigo-600 transition-colors font-bold text-sm">LinkedIn</Link>
           </div>
         </div>
       </footer>

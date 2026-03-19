@@ -25,23 +25,16 @@ const socials = [
   {
     name: "LinkedIn",
     icon: <Linkedin className="w-8 h-8" />,
-    url: "https://linkedin.com/in/imanyunar",
+    url: "https://www.linkedin.com/in/iman-yunar-noviadhi-87313a284/",
     description: "Professional network and career updates.",
     color: "bg-indigo-50 text-indigo-600 border-indigo-100"
   },
   {
     name: "Email",
     icon: <Mail className="w-8 h-8" />,
-    url: "mailto:imanyunar@example.com",
+    url: "mailto:imanyunar@gmail.com",
     description: "Send a direct inquiry for collaboration.",
     color: "bg-amber-50 text-amber-600 border-amber-100"
-  },
-  {
-    name: "Twitter",
-    icon: <Twitter className="w-8 h-8" />,
-    url: "https://twitter.com/imanyunar",
-    description: "AI/ML insights and tech discussions.",
-    color: "bg-blue-50 text-blue-500 border-blue-100"
   },
 ];
 
