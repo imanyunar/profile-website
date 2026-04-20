@@ -48,6 +48,19 @@ const item: Variants = {
 };
 
 export default function Socials() {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const message = formData.get('message');
+    
+    const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    
+    window.location.href = `mailto:imanyunar@gmail.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <div className="w-full min-h-screen bg-white">
       {/* Hero */}
@@ -150,22 +163,22 @@ export default function Socials() {
                 viewport={{ once: true }}
                 className="bg-white p-10 md:p-14 rounded-[50px] shadow-2xl shadow-slate-200/50 border border-slate-100"
               >
-                <form className="space-y-8">
+                <form onSubmit={handleSubmit} className="space-y-8">
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-3">
-                      <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Name</label>
-                      <input type="text" placeholder="John Doe" className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-indigo-50 focus:border-indigo-200 transition-all font-medium text-slate-900" />
+                      <label htmlFor="name" className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Name</label>
+                      <input id="name" name="name" type="text" required placeholder="John Doe" className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-indigo-50 focus:border-indigo-200 transition-all font-medium text-slate-900" />
                     </div>
                     <div className="space-y-3">
-                      <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Email</label>
-                      <input type="email" placeholder="john@example.com" className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-indigo-50 focus:border-indigo-200 transition-all font-medium text-slate-900" />
+                      <label htmlFor="email" className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Email</label>
+                      <input id="email" name="email" type="email" required placeholder="john@example.com" className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-indigo-50 focus:border-indigo-200 transition-all font-medium text-slate-900" />
                     </div>
                   </div>
                   <div className="space-y-3">
-                    <label className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Message</label>
-                    <textarea rows={5} placeholder="How can I help you?" className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-indigo-50 focus:border-indigo-200 transition-all font-medium text-slate-900 resize-none"></textarea>
+                    <label htmlFor="message" className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Message</label>
+                    <textarea id="message" name="message" required rows={5} placeholder="How can I help you?" className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-indigo-50 focus:border-indigo-200 transition-all font-medium text-slate-900 resize-none"></textarea>
                   </div>
-                  <button className="w-full py-5 bg-indigo-600 hover:bg-slate-900 text-white font-black rounded-2xl shadow-xl shadow-indigo-600/20 transition-all flex items-center justify-center gap-3 active:scale-[0.98]">
+                  <button type="submit" className="w-full py-5 bg-indigo-600 hover:bg-slate-900 text-white font-black rounded-2xl shadow-xl shadow-indigo-600/20 transition-all flex items-center justify-center gap-3 active:scale-[0.98]">
                     Send Message <Send className="w-5 h-5" />
                   </button>
                 </form>
