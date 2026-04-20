@@ -13,6 +13,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import Link from 'next/link';
+import { useRef } from 'react';
 
 const socials = [
   {
@@ -48,39 +49,20 @@ const item: Variants = {
 };
 
 export default function Socials() {
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-    
-    // Optional: add a subject line automatically
-    data['_subject'] = 'New Contact from Portfolio Website';
-    // Disable captcha if preferred, though default is on
-    data['_captcha'] = 'false';
-    
-    try {
-      const response = await fetch("https://formsubmit.co/ajax/imanyunar@gmail.com", {
-        method: "POST",
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(data)
-      });
-      
-      if (response.ok) {
-        alert("Pesan berhasil dikirim ke alamat email Anda!");
-        e.currentTarget.reset();
-      } else {
-        alert("Pesan gagal dikirim. Silakan coba lagi.");
-      }
-    } catch (error) {
-      alert("Pesan gagal dikirim. Pastikan Anda tidak menggunakan AdBlocker yang memblokir request form, atau coba beberapa saat lagi.");
-    }
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    // Biarkan form melakukan submit asli (ke iframe)
+    setTimeout(() => {
+      alert("Pesan berhasil diteruskan! (Harap cek dan aktivasi di inbox email Anda pada percobaan pertama)");
+      if (formRef.current) formRef.current.reset();
+    }, 1000);
   };
 
   return (
     <div className="w-full min-h-screen bg-white">
+      {/* Hidden iframe untuk bypass CORS/Redirect */}
+      <iframe name="hidden_iframe" id="hidden_iframe" style={{ display: 'none' }}></iframe>
       {/* Hero */}
       <section className="relative pt-40 pb-20 mesh-gradient border-b border-slate-100 overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl relative z-10 text-center space-y-6">
@@ -181,7 +163,9 @@ export default function Socials() {
                 viewport={{ once: true }}
                 className="bg-white p-10 md:p-14 rounded-[50px] shadow-2xl shadow-slate-200/50 border border-slate-100"
               >
-                <form onSubmit={handleSubmit} className="space-y-8">
+                <form ref={formRef} onSubmit={handleSubmit} action="https://formsubmit.co/imanyunar@gmail.com" method="POST" target="hidden_iframe" className="space-y-8">
+                  <input type="hidden" name="_subject" value="New Contact from Portfolio Website" />
+                  <input type="hidden" name="_captcha" value="false" />
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-3">
                       <label htmlFor="name" className="text-xs font-black uppercase tracking-widest text-slate-400 ml-1">Name</label>
