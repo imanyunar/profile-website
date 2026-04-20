@@ -99,7 +99,7 @@ Iman Yunar<span className="text-gradient"> Portfolio.</span>
              transition={{ delay: 0.1 }}
              className="text-xl text-slate-500 max-w-2xl mx-auto font-medium"
           >
-            A curated selection of my works in Artificial Intelligence, Data Engineering, and Research.
+            A curated selection of my works in Artificial Intelligence, Data Engineering, and Fullstack Development.
           </m.p>
         </div>
       </section>
@@ -117,7 +117,7 @@ Iman Yunar<span className="text-gradient"> Portfolio.</span>
             <SkillCard icon={<TrendingUp />} title="Quantitative Trading" skills={["Algorithmic Trading", "Backtesting", "HFT"]} />
             <SkillCard icon={<Brain />} title="Machine Learning" skills={["Predictive Analytics", "Deep Learning", "RL"]} />
             <SkillCard icon={<Database />} title="Data Engineering" skills={["Real-time Pipelines", "PostgreSQL", "Docker"]} />
-            <SkillCard icon={<Terminal />} title="Frontend Stack" skills={["Vue.js", "Next.js", "TypeScript", "REST API"]} />
+            <SkillCard icon={<Terminal />} title="Fullstack Development" skills={["Frontend", "Backend", "PHP", "Laravel", "Vue.js", "Next.js", "TypeScript", "REST API"]} />
           </m.div>
         </div>
       </section>
