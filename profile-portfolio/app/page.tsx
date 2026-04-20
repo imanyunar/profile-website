@@ -218,7 +218,7 @@ export default function Home() {
             >
               <SkillSet icon={<TrendingUp />} title="Quantitative Trading" skills={["Algorithmic Trading", "Backtesting", "Risk Management", "HFT"]} />
               <SkillSet icon={<Brain />} title="Machine Learning" skills={["Predictive Analytics", "Deep Learning", "Reinforcement Learning"]} />
-              <SkillSet icon={<Code2 />} title="Fullstack Dev" skills={["Vue.js", "Next.js", "TypeScript", "TailwindCSS", "REST API"]} />
+              <SkillSet icon={<Code2 />} title="Fullstack Dev" skills={["Vue.js", "Next.js", "TypeScript", "TailwindCSS", "PHP", "Laravel", "REST API"]} />
               <SkillSet icon={<Database />} title="Data Systems" skills={["Data Pipelines", "Real-time Processing", "PostgreSQL", "Docker"]} />
             </m.div>
 
@@ -232,8 +232,10 @@ export default function Home() {
                 <SkillIcon label="Python" />
                 <SkillIcon label="Vue.js" />
                 <SkillIcon label="TypeScript" />
+                <SkillIcon label="PHP" />
                 <SkillIcon label="PyTorch" />
                 <SkillIcon label="TensorFlow" />
+                <SkillIcon label="Laravel" />
                 <SkillIcon label="Next.js" />
                 <SkillIcon label="FastAPI" />
                 <SkillIcon label="Docker" />
