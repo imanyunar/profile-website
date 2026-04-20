@@ -11,7 +11,8 @@ import {
   Cpu,
   Database,
   Terminal,
-  ChevronRight
+  ChevronRight,
+  PieChart
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -51,9 +52,17 @@ const projects = [
     techs: ["Laravel", "Vue 3", "TypeScript", "Tailwind CSS"],
     details: "Complete features: Employee/department/role management, projects/tasks with priority/status/realtime chat, login/register with API token, profile editing/avatar upload.",
     link: "https://task-tracker-vue-livid.vercel.app/"
+  },
+  {
+    title: "Equity Tracker - Personal Finance",
+    description: "Complete financial dashboard with expense tracking, budgeting, and multi-asset investment portfolio.",
+    icon: <PieChart className="w-8 h-8" />,
+    color: "bg-blue-100 text-blue-600",
+    techs: ["Laravel 11", "TailwindCSS", "Flutter", "Gemini AI"],
+    details: "Features include daily/monthly budgeting alerts, multi-asset tracking (Stocks, Crypto, Mutual Funds), Quant engine projection, and an AI market chatbot.",
+    link: "https://equity-tracker.alwaysdata.net/"
   }
 ];
-
 
 const container: Variants = {
   animate: { transition: { staggerChildren: 0.1 } }

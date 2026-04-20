@@ -161,7 +161,7 @@ export default function Home() {
             </m.div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <ProjectCard
               image="🤖"
               title="Crypto Market Forecast"
@@ -177,6 +177,14 @@ export default function Home() {
               description="A medical imaging platform utilizing CNNs for high-precision cancer detection and clinical decision support."
               tags={["PyTorch", "OpenCV", "HealthTech"]}
               link="https://deteksikanker.streamlit.app/"
+            />
+            <ProjectCard
+              image="💼"
+              title="Equity Tracker"
+              category="Fintech Dev"
+              description="Fullstack personal finance dashboard and multi-asset portfolio manager equipped with AI capabilities."
+              tags={["Laravel", "Flutter", "AI"]}
+              link="https://equity-tracker.alwaysdata.net/"
             />
           </div>
         </div>
