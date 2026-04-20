@@ -51,19 +51,21 @@ export default function Socials() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
     
     // Optional: add a subject line automatically
-    formData.append('_subject', 'New Contact from Portfolio Website');
+    data['_subject'] = 'New Contact from Portfolio Website';
     // Disable captcha if preferred, though default is on
-    formData.append('_captcha', 'false');
+    data['_captcha'] = 'false';
     
     try {
       const response = await fetch("https://formsubmit.co/ajax/imanyunar@gmail.com", {
         method: "POST",
         headers: { 
+          'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: formData
+        body: JSON.stringify(data)
       });
       
       if (response.ok) {
@@ -73,7 +75,7 @@ export default function Socials() {
         alert("Pesan gagal dikirim. Silakan coba lagi.");
       }
     } catch (error) {
-      alert("Terjadi kesalahan sistem saat menghubungi server pengiriman pesan.");
+      alert("Pesan gagal dikirim. Pastikan Anda tidak menggunakan AdBlocker yang memblokir request form, atau coba beberapa saat lagi.");
     }
   };
 
