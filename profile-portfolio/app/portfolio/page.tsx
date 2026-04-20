@@ -58,7 +58,7 @@ const projects = [
     description: "Complete financial dashboard with expense tracking, budgeting, and multi-asset investment portfolio.",
     icon: <PieChart className="w-8 h-8" />,
     color: "bg-blue-100 text-blue-600",
-    techs: ["Laravel 11", "TailwindCSS", "Flutter", "Gemini AI"],
+    techs: ["Laravel 11", "TailwindCSS", "Blade", "Gemini AI"],
     details: "Features include daily/monthly budgeting alerts, multi-asset tracking (Stocks, Crypto, Mutual Funds), Quant engine projection, and an AI market chatbot.",
     link: "https://equity-tracker.alwaysdata.net/"
   }

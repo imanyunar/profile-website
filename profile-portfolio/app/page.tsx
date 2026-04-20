@@ -183,7 +183,7 @@ export default function Home() {
               title="Equity Tracker"
               category="Fintech Dev"
               description="Fullstack personal finance dashboard and multi-asset portfolio manager equipped with AI capabilities."
-              tags={["Laravel", "Flutter", "AI"]}
+              tags={["Laravel", "Blade", "AI"]}
               link="https://equity-tracker.alwaysdata.net/"
             />
           </div>
