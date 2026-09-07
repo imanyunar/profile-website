@@ -1,90 +1,187 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { Menu, X, ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react';
+import { useState, useEffect, useCallback } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
+import { Menu, X, Download, Github, Linkedin, Mail } from 'lucide-react';
+
+const NAV_ITEMS = [
+  { href: '#hero', label: 'Home' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#achievements', label: 'Achievements' },
+  { href: '#contact', label: 'Contact' },
+];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+
+      // Scroll spy
+      const sections = NAV_ITEMS.map(item => item.href.replace('#', ''));
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 120) {
+            setActiveSection(sections[i]);
+            break;
+          }
+        }
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return (
-    <nav className={`fixed top-0 left-1/2 -translate-x-1/2 z-50 transition-all duration-700 ${scrolled ? 'top-4 w-[95%] max-w-5xl' : 'top-0 w-full'}`}>
-      <div className={`${scrolled ? 'px-0' : 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'}`}>
-        <m.div 
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          className={`transition-all duration-700 rounded-[32px] ${scrolled ? 'glass-pill px-8 py-2 shadow-2xl shadow-indigo-500/10 border-white/40' : 'bg-transparent py-4'}`}
-        >
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-8">
-              <Link href="/" className="text-2xl font-black text-slate-900 tracking-tighter hover:text-indigo-600 transition-colors">
-                Iman<span className="text-indigo-600">.</span>
-              </Link>
-              <div className="hidden lg:flex items-center gap-3 border-l border-slate-200 pl-8">
-                <SocialIcon href="https://github.com/imanyunar" icon={<Github className="w-4 h-4" />} />
-                <SocialIcon href="https://www.linkedin.com/in/iman-yunar-noviadhi-87313a284/" icon={<Linkedin className="w-4 h-4" />} />
-                <SocialIcon href="mailto:imanyunar@gmail.com" icon={<Mail className="w-4 h-4" />} />
-              </div>
-            </div>
-            
-            <div className="hidden md:flex items-center space-x-1">
-              <NavLink href="/" label="Home" />
-              <NavLink href="/portfolio" label="Portfolio" />
-              <NavLink href="/socials" label="Connect" />
-              <div className="pl-4">
-                <Link 
-                  href="/socials" 
-                  className="px-6 py-2.5 bg-indigo-600 hover:bg-slate-900 text-white text-sm font-bold rounded-xl transition-all flex items-center gap-2 group shadow-lg shadow-indigo-600/20"
-                >
-                  Hire Me
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </Link>
-              </div>
-            </div>
+  const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setIsOpen(false);
+    const el = document.querySelector(href);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []);
 
-            <div className="md:hidden">
-              <button 
-                onClick={() => setIsOpen(!isOpen)} 
-                className="p-2 text-slate-900 hover:bg-slate-100 rounded-xl transition-colors"
-                aria-label="Toggle menu"
+  const handleDownloadCV = useCallback(() => {
+    // Trigger dynamic PDF generation
+    const event = new CustomEvent('download-portfolio-pdf');
+    window.dispatchEvent(event);
+  }, []);
+
+  return (
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-[var(--color-border)] shadow-[0_1px_3px_rgba(0,0,0,0.03)]"
+    >
+      <div className="container-narrow">
+        <div className="flex justify-between items-center h-13 sm:h-14 md:h-16">
+          {/* Logo */}
+          <a
+            href="#hero"
+            onClick={(e) => handleNavClick(e, '#hero')}
+            className="group text-base sm:text-lg font-semibold tracking-tight text-[var(--color-primary)] hover:text-[var(--color-accent)] transition-all flex items-center gap-0.5"
+          >
+            <span className="transition-transform duration-200 group-hover:translate-x-0.5">Iman Yunar</span>
+            <span className="text-[var(--color-accent)] inline-block transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-125 font-bold">.</span>
+          </a>
+
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-1">
+            {NAV_ITEMS.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
+                className={`relative px-4 py-2 text-sm font-medium transition-all duration-200 hover:-translate-y-0.5 ${
+                  activeSection === item.href.replace('#', '')
+                    ? 'text-[var(--color-accent)] font-semibold'
+                    : 'text-[var(--color-text-muted)] hover:text-[var(--color-primary)]'
+                }`}
               >
-                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {item.label}
+                {activeSection === item.href.replace('#', '') && (
+                  <m.span
+                    layoutId="nav-indicator"
+                    className="absolute bottom-0 left-4 right-4 h-[2px] bg-[var(--color-accent)] shadow-[0_1px_4px_rgba(34,81,255,0.4)]"
+                    transition={{ type: 'spring', bounce: 0.15, duration: 0.4 }}
+                  />
+                )}
+              </a>
+            ))}
+
+            <div className="ml-4 pl-4 border-l border-[var(--color-border)] flex items-center gap-3">
+              {/* Social Icons */}
+              <a
+                href="https://github.com/imanyunar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1 text-[var(--color-text-muted)] hover:text-[var(--color-accent)] hover:scale-125 hover:-translate-y-0.5 active:scale-95 transition-all duration-200"
+                aria-label="GitHub"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/iman-yunar-noviadhi-87313a284/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1 text-[var(--color-text-muted)] hover:text-[var(--color-accent)] hover:scale-125 hover:-translate-y-0.5 active:scale-95 transition-all duration-200"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+
+              {/* Download CV Button */}
+              <button
+                onClick={handleDownloadCV}
+                className="btn-primary group ml-2 !py-2 !px-4 !text-[13px] hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all duration-200 cursor-pointer"
+              >
+                <Download className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-y-0.5" />
+                Download CV
               </button>
             </div>
           </div>
-        </m.div>
+
+          {/* Mobile Toggle */}
+          <div className="md:hidden flex items-center gap-3">
+            <button
+              onClick={handleDownloadCV}
+              className="btn-primary group !py-2 !px-3 !text-[12px] active:scale-95 transition-all cursor-pointer"
+            >
+              <Download className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-y-0.5" />
+              CV
+            </button>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 text-[var(--color-primary)] hover:bg-[var(--color-bg-alt)] hover:scale-105 active:scale-95 transition-all"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <m.div 
-            initial={{ opacity: 0, scale: 0.95, y: -20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: -20 }}
-            className="md:hidden absolute top-24 left-4 right-4 glass rounded-3xl overflow-hidden shadow-2xl border border-black/5"
+          <m.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden bg-white border-t border-[var(--color-border)] shadow-lg"
           >
-            <div className="p-6 space-y-3">
-              <MobileNavLink href="/" label="Home" onClick={() => setIsOpen(false)} />
-              <MobileNavLink href="/portfolio" label="Portfolio" onClick={() => setIsOpen(false)} />
-              <MobileNavLink href="/socials" label="Connect" onClick={() => setIsOpen(false)} />
-              <Link 
-                href="/socials" 
-                onClick={() => setIsOpen(false)}
-                className="block w-full text-center px-4 py-4 bg-indigo-600 text-white font-bold rounded-2xl shadow-xl shadow-indigo-600/20"
-              >
-                Get in Touch
-              </Link>
+            <div className="container-narrow py-4 space-y-1">
+              {NAV_ITEMS.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className={`block px-4 py-3 text-sm font-medium transition-colors ${
+                    activeSection === item.href.replace('#', '')
+                      ? 'text-[var(--color-accent)] bg-blue-50/50'
+                      : 'text-[var(--color-text-muted)] hover:text-[var(--color-primary)]'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              ))}
+              <div className="flex gap-4 px-4 pt-3 border-t border-[var(--color-border)]">
+                <a href="https://github.com/imanyunar" target="_blank" rel="noopener noreferrer" className="text-[var(--color-text-muted)]" aria-label="GitHub">
+                  <Github className="w-4 h-4" />
+                </a>
+                <a href="https://www.linkedin.com/in/iman-yunar-noviadhi-87313a284/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-text-muted)]" aria-label="LinkedIn">
+                  <Linkedin className="w-4 h-4" />
+                </a>
+                <a href="mailto:imanyunar@gmail.com" className="text-[var(--color-text-muted)]" aria-label="Email">
+                  <Mail className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </m.div>
         )}
@@ -92,44 +189,3 @@ export default function Navbar() {
     </nav>
   );
 }
-
-function NavLink({ href, label }: { href: string; label: string }) {
-  return (
-    <Link 
-      href={href} 
-      className="text-sm font-bold px-4 py-2 text-slate-500 hover:text-indigo-600 transition-colors relative group"
-    >
-      {label}
-      <m.span 
-        className="absolute bottom-1 left-4 right-4 h-0.5 bg-indigo-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
-      />
-    </Link>
-  );
-}
-
-function MobileNavLink({ href, label, onClick }: { href: string; label: string; onClick: () => void }) {
-  return (
-    <Link 
-      href={href} 
-      className="block px-6 py-4 text-slate-700 hover:text-indigo-600 font-bold hover:bg-indigo-50/50 rounded-2xl transition-all"
-      onClick={onClick}
-    >
-      {label}
-    </Link>
-  );
-}
-
-function SocialIcon({ href, icon }: { href: string; icon: React.ReactNode }) {
-  return (
-    <m.a 
-      href={href} 
-      target="_blank"
-      rel="noopener noreferrer"
-      whileHover={{ y: -2, scale: 1.1 }}
-      className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-indigo-600 hover:border-indigo-200 transition-all shadow-sm"
-    >
-      {icon}
-    </m.a>
-  );
-}
-

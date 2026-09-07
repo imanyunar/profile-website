@@ -1,43 +1,49 @@
-// Add to <head> in layout.tsx after metadata updates
+// Schema reference for SEO — mirrors layout.tsx structured data
+// Updated: Corporate positioning (Full-Stack Developer & AI Practitioner)
+
 const PersonSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Iman Yunar Noviadhi",
-  "alternateName": ["Iman Yunar", "imanyunar"],
-  "jobTitle": [
-    "AI Engineer",
-    "Quantitative Trader",
-    "Machine Learning Specialist",
+  name: "Iman Yunar Noviadhi",
+  alternateName: ["Iman Yunar", "imanyunar"],
+  jobTitle: [
     "Full-Stack Developer",
+    "AI Practitioner",
+    "Software Engineer",
   ],
-  "description":
-    "AI Engineer and Quantitative Trader specializing in machine learning, algorithmic trading, and full-stack development.",
-  "url": "https://iman-yunar-noviadhi.netlify.app",
-  "image": "https://iman-yunar-noviadhi.netlify.app/profile.png",
-  "email": "imanyunar@gmail.com",
-  "sameAs": [
+  description:
+    "Full-Stack Developer and AI Practitioner specializing in production-ready web applications, applied machine learning, and technical leadership.",
+  url: "https://imanyunar.my.id",
+  image: "https://imanyunar.my.id/profile.png",
+  email: "imanyunar@gmail.com",
+  sameAs: [
+    "https://imanyunar.my.id",
+    "https://iman-yunar-noviadhi.netlify.app",
     "https://github.com/imanyunar",
     "https://www.linkedin.com/in/iman-yunar-noviadhi-87313a284/",
   ],
-  "knowsAbout": [
+  knowsAbout: [
+    "Full-Stack Development",
     "Artificial Intelligence",
     "Machine Learning",
     "Deep Learning",
-    "Quantitative Trading",
-    "Algorithmic Trading",
-    "Data Science",
+    "Software Engineering",
     "Python",
-    "PyTorch",
-    "TensorFlow",
-    "Vue.js",
+    "TypeScript",
     "Laravel",
-    "Full-Stack Development",
-    "Computer Vision",
-    "Time Series Analysis",
-    "LSTM",
-    "Neural Networks",
+    "Vue.js",
+    "Next.js",
+    "PostgreSQL",
+    "REST API",
+    "DevOps",
+    "Leadership",
+    "Project Management",
   ],
-  "workLocation": {
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Universitas Negeri Semarang",
+  },
+  workLocation: {
     "@type": "Place",
     address: {
       "@type": "PostalAddress",
@@ -46,19 +52,19 @@ const PersonSchema = {
   },
 };
 
-const organizationSchema = {
+const websiteSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Iman Yunar",
-  "description": "AI Engineering & Quantitative Trading Portfolio",
-  "url": "https://iman-yunar-noviadhi.netlify.app",
-  "sameAs": [
+  "@type": "WebSite",
+  name: "Iman Yunar Noviadhi — Portfolio",
+  description: "Full-Stack Development & AI Portfolio",
+  url: "https://imanyunar.my.id",
+  sameAs: [
+    "https://iman-yunar-noviadhi.netlify.app",
     "https://github.com/imanyunar",
     "https://www.linkedin.com/in/iman-yunar-noviadhi-87313a284/",
   ],
 };
 
-// Usage in layout: 
+// Usage in layout:
 // <Script id="person-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PersonSchema) }} />
-// <Script id="organization-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
-
+// <Script id="website-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />

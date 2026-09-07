@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import Navbar from "./components/Navbar";
 import { LazyMotion, domMax } from "framer-motion";
 
 const inter = Inter({
@@ -12,22 +11,63 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Iman Yunar Noviadhi - AI Engineer & Quantitative Trader",
+  metadataBase: new URL("https://imanyunar.my.id"),
+  title: "Iman Yunar Noviadhi — Full-Stack Developer & AI Practitioner",
   description:
-    "Iman Yunar Noviadhi - AI Engineer and Quantitative Trader. Specializing in machine learning, algorithmic trading, and full-stack development.",
+    "Iman Yunar Noviadhi — Full-Stack Developer and AI Practitioner. Specializing in production-ready web applications, applied machine learning, and technical leadership. Computer Science at Universitas Negeri Semarang.",
+  keywords:
+    "Iman Yunar Noviadhi, full-stack developer, AI practitioner, software engineer, Laravel, Vue.js, Next.js, TypeScript, machine learning, UNNES",
   authors: [
     {
       name: "Iman Yunar Noviadhi",
-      url: "https://iman-yunar-noviadhi.netlify.app",
+      url: "https://imanyunar.my.id",
     },
   ],
   creator: "Iman Yunar Noviadhi",
+  alternates: {
+    canonical: "https://imanyunar.my.id",
+  },
+  openGraph: {
+    title: "Iman Yunar Noviadhi — Full-Stack Developer & AI Practitioner",
+    description:
+      "Building reliable digital systems. Full-stack development, applied AI, and technical leadership.",
+    url: "https://imanyunar.my.id",
+    siteName: "Iman Yunar Noviadhi",
+    images: [
+      {
+        url: "https://imanyunar.my.id/profile.png",
+        width: 1200,
+        height: 630,
+        alt: "Iman Yunar Noviadhi — Full-Stack Developer & AI Practitioner",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Iman Yunar Noviadhi — Full-Stack Developer & AI Practitioner",
+    description:
+      "Building reliable digital systems. Full-stack development, applied AI, and technical leadership.",
+    images: ["https://imanyunar.my.id/profile.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#ffffff",
+  themeColor: "#FFFFFF",
 };
 
 const personSchema = {
@@ -36,38 +76,42 @@ const personSchema = {
   name: "Iman Yunar Noviadhi",
   alternateName: ["Iman Yunar", "imanyunar"],
   jobTitle: [
-    "AI Engineer",
-    "Quantitative Trader",
-    "Machine Learning Specialist",
     "Full-Stack Developer",
+    "AI Practitioner",
+    "Software Engineer",
   ],
   description:
-    "AI Engineer and Quantitative Trader specializing in machine learning, algorithmic trading, and full-stack development.",
-  url: "https://iman-yunar-noviadhi.netlify.app",
-  image: "https://iman-yunar-noviadhi.netlify.app/profile.png",
+    "Full-Stack Developer and AI Practitioner specializing in production-ready web applications, applied machine learning, and technical leadership.",
+  url: "https://imanyunar.my.id",
+  image: "https://imanyunar.my.id/profile.png",
   email: "imanyunar@gmail.com",
   sameAs: [
+    "https://imanyunar.my.id",
+    "https://iman-yunar-noviadhi.netlify.app",
     "https://github.com/imanyunar",
     "https://www.linkedin.com/in/iman-yunar-noviadhi-87313a284/",
   ],
   knowsAbout: [
+    "Full-Stack Development",
     "Artificial Intelligence",
     "Machine Learning",
     "Deep Learning",
-    "Quantitative Trading",
-    "Algorithmic Trading",
-    "Data Science",
+    "Software Engineering",
     "Python",
-    "PyTorch",
-    "TensorFlow",
-    "Vue.js",
+    "TypeScript",
     "Laravel",
-    "Full-Stack Development",
-    "Computer Vision",
-    "Time Series Analysis",
-    "LSTM",
-    "Neural Networks",
+    "Vue.js",
+    "Next.js",
+    "PostgreSQL",
+    "REST API",
+    "DevOps",
+    "Leadership",
+    "Project Management",
   ],
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Universitas Negeri Semarang",
+  },
   workLocation: {
     "@type": "Place",
     address: {
@@ -77,13 +121,15 @@ const personSchema = {
   },
 };
 
-const organizationSchema = {
+const websiteSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Iman Yunar",
-  description: "AI Engineering & Quantitative Trading Portfolio",
-  url: "https://iman-yunar-noviadhi.netlify.app",
+  "@type": "WebSite",
+  name: "Iman Yunar Noviadhi — Portfolio",
+  description:
+    "Full-Stack Development & AI Portfolio",
+  url: "https://imanyunar.my.id",
   sameAs: [
+    "https://iman-yunar-noviadhi.netlify.app",
     "https://github.com/imanyunar",
     "https://www.linkedin.com/in/iman-yunar-noviadhi-87313a284/",
   ],
@@ -97,31 +143,42 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
       <head>
-        {/* ✅ GOOGLE SEARCH CONSOLE VERIFICATION */}
+        {/* Google Fonts: Material Symbols */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+        />
+
+        {/* Google Search Console Verification */}
         <meta
           name="google-site-verification"
           content="J6Z3a_PjAUg_GouneZhtcYiWeB0XiAGMHreEdlkSs8k"
         />
 
-        {/* ✅ PERSON SCHEMA */}
+        {/* Person Schema */}
         <Script
           id="person-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
 
-        {/* ✅ ORGANIZATION SCHEMA */}
+        {/* Website Schema */}
         <Script
-          id="organization-schema"
+          id="website-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
+            __html: JSON.stringify(websiteSchema),
           }}
         />
       </head>
-      <body className={`${inter.className} bg-white text-slate-900 antialiased`}>
+      <body className={`${inter.className} bg-white text-[#333333] antialiased`}>
         <LazyMotion features={domMax}>
-          <Navbar />
           <main className="min-h-screen">{children}</main>
         </LazyMotion>
       </body>
