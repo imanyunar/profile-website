@@ -40,21 +40,6 @@ export function GoogleCheckCircleFilled({ className = 'w-4 h-4' }: GoogleIconPro
   );
 }
 
-// Google Material: check
-export function GoogleCheck({ className = 'w-4 h-4' }: GoogleIconProps) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-    </svg>
-  );
-}
-
 // Google Material: arrow_forward
 export function GoogleArrowForward({ className = 'w-4 h-4' }: GoogleIconProps) {
   return (
@@ -66,21 +51,6 @@ export function GoogleArrowForward({ className = 'w-4 h-4' }: GoogleIconProps) {
       aria-hidden="true"
     >
       <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
-    </svg>
-  );
-}
-
-// Google Material: chevron_right
-export function GoogleChevronRight({ className = 'w-4 h-4' }: GoogleIconProps) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
     </svg>
   );
 }
@@ -126,36 +96,6 @@ export function GoogleMail({ className = 'w-4 h-4' }: GoogleIconProps) {
       aria-hidden="true"
     >
       <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-    </svg>
-  );
-}
-
-// Google Material: school
-export function GoogleSchool({ className = 'w-4 h-4' }: GoogleIconProps) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
-    </svg>
-  );
-}
-
-// Google Material: work
-export function GoogleWork({ className = 'w-4 h-4' }: GoogleIconProps) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
     </svg>
   );
 }
@@ -219,5 +159,3 @@ export function GoogleArrowUp({ className = 'w-4 h-4' }: GoogleIconProps) {
     </svg>
   );
 }
-
-

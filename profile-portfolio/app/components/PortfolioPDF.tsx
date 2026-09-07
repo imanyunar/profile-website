@@ -561,7 +561,7 @@ function SlideExperience() {
       num: '02',
       role: 'Secretary, Public Relations Dept',
       org: 'UKMP, Universitas Negeri Semarang',
-      period: 'Feb – Nov 2026',
+      period: 'Feb – Nov 2025',
       detail: 'Event Chairperson for 2 cross-university comparative study visits with UNESA & Universitas Brawijaya.',
     },
     {

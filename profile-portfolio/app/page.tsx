@@ -60,7 +60,7 @@ const EXPERIENCE = [
   {
     role: 'Secretary, Public Relations Dept',
     org: 'UKMP, Universitas Negeri Semarang',
-    period: 'Feb 2026 – Nov 2026',
+    period: 'Feb 2025 – Nov 2025',
     bullets: [
       'Event Chairperson for 2 cross-university comparative study visits (UNESA & Universitas Brawijaya)',
       'Coordinated logistics, delegation communications, and post-event reporting',
