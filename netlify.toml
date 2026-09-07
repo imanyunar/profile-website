@@ -1,0 +1,11 @@
+[build]
+  base =  profile-portfolio
+  command = npm run build
+  publish = profile-portfolio/out
+
+[[headers]]
+  for = /*
+  [headers.values]
+    X-Frame-Options = DENY
+    X-Content-Type-Options = nosniff
+    Referrer-Policy = strict-origin-when-cross-origin
