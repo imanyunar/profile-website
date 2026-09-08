@@ -184,7 +184,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} bg-white text-[#333333] antialiased`}>
+      <body
+        className={`${inter.className} bg-white text-[#333333] antialiased`}
+        suppressHydrationWarning
+      >
         <LazyMotion features={domMax}>
           <main className="min-h-screen">{children}</main>
         </LazyMotion>

@@ -449,12 +449,12 @@ function SlideCover() {
 
             {/* Quick Metrics Rows */}
             {[
+              { label: 'Leadership', val: 'McKinsey.org Forward (2026)' },
               { label: 'Primary Focus', val: 'Full-Stack & Applied AI' },
               { label: 'Industry Project', val: 'Document Management (TAS)' },
               { label: 'Testing Record', val: '100% Pass (77 Scenarios)' },
               { label: 'International', val: 'Inbound Mobility (UTHM)' },
               { label: 'Academic Impact', val: 'Published Journal Author' },
-              { label: 'Availability', val: 'Open for High-Impact Roles' },
             ].map((row, idx) => (
               <View
                 key={idx}
@@ -488,9 +488,9 @@ function SlideCover() {
 function SlideAbout() {
   const stats = [
     { num: '100%', label: 'QA PASS RATE', desc: '77 Black-Box test scenarios passed with zero defects' },
-    { num: '2×', label: 'EVENT CHAIRPERSON', desc: 'Led cross-university comparative studies with UNESA & UB' },
+    { num: 'McKinsey', label: 'FORWARD PROGRAM', desc: 'Selected for McKinsey.org global leadership program' },
     { num: '1', label: 'JOURNAL PUBLICATION', desc: 'Corresponding author on AI chatbot research in UNNES Journal' },
-    { num: 'Top 10', label: 'NATIONAL FINALIST', desc: 'Activation 7.0 National Academic Essay Competition' },
+    { num: '2×', label: 'EVENT CHAIRPERSON', desc: 'Led cross-university comparative studies with UNESA & UB' },
   ];
 
   return (
@@ -971,6 +971,14 @@ function SlideSkills() {
 function SlideAchievements() {
   const honors = [
     {
+      category: 'GLOBAL LEADERSHIP INITIATIVE',
+      title: 'Selected Participant — McKinsey Forward',
+      org: 'McKinsey.org · Accepted 2026',
+      description:
+        'Selected for McKinsey & Company’s Forward program. Developing structured problem-solving, digital toolkits, adaptable leadership, and executive communication competencies.',
+      stat: 'ACCEPTED',
+    },
+    {
       category: 'PEER-REVIEWED PUBLICATION',
       title: 'Corresponding Author & Lead Researcher',
       org: 'UNNES Journal  |  Published Feb 2024',
@@ -979,20 +987,12 @@ function SlideAchievements() {
       stat: 'PUBLISHED',
     },
     {
-      category: 'NATIONAL COMPETITION',
-      title: 'Top 10 Finalist — Activation 7.0',
-      org: 'HIMADIKA National Essay Competition  |  2024',
+      category: 'NATIONAL COMPETITIONS',
+      title: 'Top 10 Finalist & 5th Place Award',
+      org: 'Activation 7.0 & MEDISPRO  |  2024–2025',
       description:
-        'Recognized nationally among university students for analytical writing addressing technological literacy and modern educational reform.',
-      stat: 'FINALIST',
-    },
-    {
-      category: 'NATIONAL COMPETITION AWARD',
-      title: '5th Place Award — MEDISPRO Essay',
-      org: 'MEDISPRO Academic Symposium  |  2025',
-      description:
-        'Awarded 5th place nationally for structured academic inquiry regarding technological integration, health data systems, and policy innovation.',
-      stat: '5TH PLACE',
+        'Recognized nationwide for analytical research essays regarding technological integration, health data systems, and digital education policies.',
+      stat: 'HONORS',
     },
     {
       category: 'INDUSTRY CERTIFICATION',

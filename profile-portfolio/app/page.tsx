@@ -131,11 +131,21 @@ const PROJECTS = [
 
 const ACHIEVEMENTS = [
   {
+    icon: <GoogleWorkspacePremium className="w-5 h-5" />,
+    title: 'McKinsey.org Forward Program',
+    detail: 'Selected participant in McKinsey & Company’s global initiative developing core leadership, structured problem-solving, digital fluency, and agile adaptability skills.',
+    meta: 'McKinsey.org · Accepted 2026',
+    link: 'https://www.mckinsey.org/forward',
+    linkText: 'Explore Program',
+    image: '/images/mckinsey-forward.jpg',
+  },
+  {
     icon: <GoogleMenuBook className="w-5 h-5" />,
     title: 'Published Scientific Article',
     detail: 'Corresponding Author — AI Chatbots in Operating Systems Education',
     meta: 'UNNES Journal · Feb 2024',
     link: 'http://jurnalilmiah.org/journal/index.php/mediasi/article/view/753',
+    linkText: 'Read Paper',
   },
   {
     icon: <GoogleWorkspacePremium className="w-5 h-5" />,
@@ -246,10 +256,14 @@ export default function Home() {
                 animate="animate"
                 className="lg:col-span-7 space-y-4 sm:space-y-6"
               >
-                {/* Status Badge */}
-                <m.div variants={fadeIn}>
+                {/* Status Badges */}
+                <m.div variants={fadeIn} className="flex flex-wrap items-center gap-2.5">
+                  <span className="group inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50/80 border border-blue-200/80 text-label !text-xs hover:border-[var(--color-accent)] hover:bg-blue-100/60 hover:shadow-xs hover:scale-[1.02] transition-all duration-300 cursor-default select-none">
+                    <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] shrink-0 animate-pulse" />
+                    <span className="font-semibold text-[var(--color-accent)]">McKinsey Forward Participant</span>
+                  </span>
                   <span className="group inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-200/80 text-label !text-xs hover:border-[var(--color-accent)] hover:bg-blue-50/50 hover:shadow-xs hover:scale-[1.02] transition-all duration-300 cursor-default select-none">
-                    <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] shrink-0 transition-transform duration-300 group-hover:scale-125" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
                     <span className="transition-colors group-hover:text-[var(--color-primary)]">Open for Opportunities</span>
                   </span>
                 </m.div>
@@ -551,7 +565,7 @@ export default function Home() {
                   <div className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-[rgba(34,81,255,0.06)] text-[var(--color-accent)] shrink-0 rounded-md transition-all duration-300 group-hover:bg-[var(--color-accent)] group-hover:text-white group-hover:scale-110 group-hover:rotate-3 shadow-xs">
                     {item.icon}
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <h3 className="text-sm sm:text-base font-medium text-[var(--color-primary)] transition-colors group-hover:text-[var(--color-accent)]">
                       {item.title}
                     </h3>
@@ -564,13 +578,24 @@ export default function Home() {
                         href={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group/link inline-flex items-center gap-1 text-xs font-medium text-[var(--color-accent)] hover:text-blue-700 hover:underline mt-2 transition-colors"
+                        className="group/link inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-accent)] hover:text-blue-700 hover:underline mt-2.5 transition-colors"
                       >
-                        <span>Read Paper</span>
+                        <span>{item.linkText || 'View Details'}</span>
                         <GoogleOpenInNew className="w-3 h-3 transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                       </a>
                     )}
                   </div>
+                  {item.image && (
+                    <div className="hidden sm:block shrink-0 self-start ml-2">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        width={60}
+                        height={60}
+                        className="rounded-md object-cover border border-slate-200 shadow-2xs group-hover:scale-105 transition-transform"
+                      />
+                    </div>
+                  )}
                 </m.div>
               ))}
             </div>
