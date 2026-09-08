@@ -18,6 +18,7 @@ import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { animate } from 'animejs';
 import Navbar from './components/Navbar';
+import { downloadPortfolioPdf } from './lib/downloadPdf';
 import dynamic from 'next/dynamic';
 
 const PortfolioPDFDownload = dynamic(
@@ -272,6 +273,7 @@ export default function Home() {
                   <a
                     href="/Iman-Yunar-Noviadhi-Portfolio.pdf"
                     download="Iman-Yunar-Noviadhi-Portfolio.pdf"
+                    onClick={downloadPortfolioPdf}
                     className="btn-primary group w-full sm:w-auto justify-center !py-2.5 !px-5 !text-xs sm:!text-sm hover:shadow-lg active:scale-95 transition-all duration-200 cursor-pointer inline-flex items-center gap-2"
                   >
                     <GoogleFileDownload className="w-4 h-4 transition-transform duration-200 group-hover:translate-y-0.5" />
@@ -775,6 +777,7 @@ export default function Home() {
                 <a
                   href="/Iman-Yunar-Noviadhi-Portfolio.pdf"
                   download="Iman-Yunar-Noviadhi-Portfolio.pdf"
+                  onClick={downloadPortfolioPdf}
                   className="group text-sm text-slate-400 hover:text-white hover:scale-105 active:scale-95 transition-all duration-200 font-medium flex items-center gap-1.5 cursor-pointer"
                 >
                   <GoogleFileDownload className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-y-0.5" />

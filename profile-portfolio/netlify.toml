@@ -3,6 +3,14 @@
   publish = "out"
 
 [[headers]]
+  for = "/*.pdf"
+  [headers.values]
+    Content-Type = "application/pdf"
+    Content-Disposition = 'attachment; filename="Iman-Yunar-Noviadhi-Portfolio.pdf"'
+    Access-Control-Allow-Origin = "*"
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+[[headers]]
   for = "/fonts/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
@@ -14,3 +22,13 @@
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[redirects]]
+  from = "/cv"
+  to = "/Iman-Yunar-Noviadhi-Portfolio.pdf"
+  status = 200
+
+[[redirects]]
+  from = "/portfolio.pdf"
+  to = "/Iman-Yunar-Noviadhi-Portfolio.pdf"
+  status = 200

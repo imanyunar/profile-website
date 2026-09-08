@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import { Menu, X, Download, Github, Linkedin, Mail } from 'lucide-react';
+import { downloadPortfolioPdf } from '../lib/downloadPdf';
 
 const NAV_ITEMS = [
   { href: '#hero', label: 'Home' },
@@ -119,6 +120,7 @@ export default function Navbar() {
               <a
                 href="/Iman-Yunar-Noviadhi-Portfolio.pdf"
                 download="Iman-Yunar-Noviadhi-Portfolio.pdf"
+                onClick={downloadPortfolioPdf}
                 className="btn-primary group ml-2 !py-2 !px-4 !text-[13px] hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all duration-200 cursor-pointer inline-flex items-center gap-1.5"
               >
                 <Download className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-y-0.5" />
@@ -132,6 +134,7 @@ export default function Navbar() {
             <a
               href="/Iman-Yunar-Noviadhi-Portfolio.pdf"
               download="Iman-Yunar-Noviadhi-Portfolio.pdf"
+              onClick={downloadPortfolioPdf}
               className="btn-primary group !py-2 !px-3 !text-[12px] active:scale-95 transition-all cursor-pointer inline-flex items-center gap-1.5"
             >
               <Download className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-y-0.5" />
