@@ -116,25 +116,27 @@ export default function Navbar() {
               </a>
 
               {/* Download CV Button */}
-              <button
-                onClick={handleDownloadCV}
-                className="btn-primary group ml-2 !py-2 !px-4 !text-[13px] hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all duration-200 cursor-pointer"
+              <a
+                href="/Iman-Yunar-Noviadhi-Portfolio.pdf"
+                download="Iman-Yunar-Noviadhi-Portfolio.pdf"
+                className="btn-primary group ml-2 !py-2 !px-4 !text-[13px] hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all duration-200 cursor-pointer inline-flex items-center gap-1.5"
               >
                 <Download className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-y-0.5" />
                 Download CV
-              </button>
+              </a>
             </div>
           </div>
 
           {/* Mobile Toggle */}
           <div className="md:hidden flex items-center gap-3">
-            <button
-              onClick={handleDownloadCV}
-              className="btn-primary group !py-2 !px-3 !text-[12px] active:scale-95 transition-all cursor-pointer"
+            <a
+              href="/Iman-Yunar-Noviadhi-Portfolio.pdf"
+              download="Iman-Yunar-Noviadhi-Portfolio.pdf"
+              className="btn-primary group !py-2 !px-3 !text-[12px] active:scale-95 transition-all cursor-pointer inline-flex items-center gap-1.5"
             >
               <Download className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-y-0.5" />
               CV
-            </button>
+            </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-[var(--color-primary)] hover:bg-[var(--color-bg-alt)] hover:scale-105 active:scale-95 transition-all"

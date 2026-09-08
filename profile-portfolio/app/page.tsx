@@ -269,13 +269,14 @@ export default function Home() {
 
                 {/* CTAs */}
                 <m.div variants={fadeIn} className="flex flex-col sm:flex-row gap-3 pt-1">
-                  <button
-                    onClick={handleDownloadCV}
-                    className="btn-primary group w-full sm:w-auto justify-center !py-2.5 !px-5 !text-xs sm:!text-sm hover:shadow-lg active:scale-95 transition-all duration-200 cursor-pointer"
+                  <a
+                    href="/Iman-Yunar-Noviadhi-Portfolio.pdf"
+                    download="Iman-Yunar-Noviadhi-Portfolio.pdf"
+                    className="btn-primary group w-full sm:w-auto justify-center !py-2.5 !px-5 !text-xs sm:!text-sm hover:shadow-lg active:scale-95 transition-all duration-200 cursor-pointer inline-flex items-center gap-2"
                   >
                     <GoogleFileDownload className="w-4 h-4 transition-transform duration-200 group-hover:translate-y-0.5" />
                     Download CV (PDF)
-                  </button>
+                  </a>
                   <a
                     href="#experience"
                     className="btn-secondary group w-full sm:w-auto justify-center !py-2.5 !px-5 !text-xs sm:!text-sm active:scale-95 transition-all duration-200"
@@ -771,13 +772,14 @@ export default function Home() {
                 >
                   <GoogleMail className="w-4 h-4" />
                 </a>
-                <button
-                  onClick={handleDownloadCV}
+                <a
+                  href="/Iman-Yunar-Noviadhi-Portfolio.pdf"
+                  download="Iman-Yunar-Noviadhi-Portfolio.pdf"
                   className="group text-sm text-slate-400 hover:text-white hover:scale-105 active:scale-95 transition-all duration-200 font-medium flex items-center gap-1.5 cursor-pointer"
                 >
                   <GoogleFileDownload className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-y-0.5" />
                   Download CV
-                </button>
+                </a>
               </div>
             </div>
           </div>

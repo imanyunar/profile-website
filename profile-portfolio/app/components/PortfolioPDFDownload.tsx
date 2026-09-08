@@ -9,18 +9,48 @@ export default function PortfolioPDFDownload() {
 
   const generateAndDownload = useCallback(async () => {
     if (generating) return;
-    setGenerating(true);
 
+    // 1. Try instantaneous direct download from pre-compiled static file in /public
+    try {
+      const directUrl = '/Iman-Yunar-Noviadhi-Portfolio.pdf';
+      const check = await fetch(directUrl, { method: 'HEAD' });
+      if (check.ok) {
+        const link = document.createElement('a');
+        link.href = directUrl;
+        link.download = 'Iman-Yunar-Noviadhi-Portfolio.pdf';
+        link.setAttribute('target', '_blank');
+        document.body.appendChild(link);
+        link.click();
+        setTimeout(() => {
+          if (link.parentNode) link.parentNode.removeChild(link);
+        }, 3000);
+        return;
+      }
+    } catch {
+      // If direct fetch fails, proceed to dynamic on-the-fly generation
+    }
+
+    // 2. Dynamic generation fallback
+    setGenerating(true);
     try {
       const blob = await pdf(<PortfolioPDF />).toBlob();
-      const url = URL.createObjectURL(blob);
+      const pdfBlob = new Blob([blob], { type: 'application/pdf' });
+      const url = URL.createObjectURL(pdfBlob);
       const link = document.createElement('a');
       link.href = url;
       link.download = 'Iman-Yunar-Noviadhi-Portfolio.pdf';
       document.body.appendChild(link);
       link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
+
+      // IMPORTANT: Do NOT revokeObjectURL immediately!
+      // In Chromium (Chrome/Edge), revoking synchronously causes Chrome's download manager
+      // to lose the blob metadata and save the file with a random UUID name and no .pdf extension.
+      setTimeout(() => {
+        try {
+          if (link.parentNode) link.parentNode.removeChild(link);
+          URL.revokeObjectURL(url);
+        } catch {}
+      }, 60000);
     } catch (error) {
       console.error('PDF generation failed:', error);
       alert('Failed to generate PDF. Please try again.');
