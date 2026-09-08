@@ -9,8 +9,6 @@ import {
   Font,
   Svg,
   Circle,
-  Line,
-  Rect,
   Path,
 } from '@react-pdf/renderer';
 
@@ -33,17 +31,24 @@ Font.register({
    ============================================ */
 const C = {
   navy: '#051C2C',
+  navyDark: '#03121E',
+  navyCard: '#0A253A',
   accent: '#2251FF',
-  accent2: '#00A9F4',
+  accentCyan: '#00A9F4',
+  accentCyanLight: '#38BDF8',
   bg: '#FFFFFF',
-  bgAlt: '#F7F8FA',
-  text: '#333333',
-  textBody: '#444444',
-  muted: '#666666',
-  lightLine: '#E4E7EC',
-  lightBlue: '#99B3E6',
-  paleBlue: '#C7D4EE',
-  navyLight: 'rgba(5, 28, 44, 0.06)',
+  bgAlt: '#F8FAFC',
+  cardBg: '#F1F5F9',
+  cardBorder: '#E2E8F0',
+  textPrimary: '#0F172A',
+  textSecondary: '#475569',
+  textMuted: '#94A3B8',
+  lightLine: '#E2E8F0',
+  tagBg: '#EEF2FF',
+  tagBorder: '#C7D2FE',
+  tagText: '#3730A3',
+  lightBlue: '#93C5FD',
+  paleBlue: '#CBD5E1',
 };
 
 const SLIDE_W = 841.89; // A4 landscape width in pts
@@ -53,753 +58,1194 @@ const SLIDE_H = 595.28; // A4 landscape height in pts
    STYLES
    ============================================ */
 const s = StyleSheet.create({
-  /* --- Pages --- */
-  pageWhite: {
+  pageLight: {
     width: SLIDE_W,
     height: SLIDE_H,
     fontFamily: 'Inter',
     backgroundColor: C.bg,
+    paddingTop: 34,
+    paddingBottom: 36,
+    paddingHorizontal: 48,
     position: 'relative',
-    overflow: 'hidden',
   },
-  pageNavy: {
+  pageDark: {
     width: SLIDE_W,
     height: SLIDE_H,
     fontFamily: 'Inter',
     backgroundColor: C.navy,
+    paddingTop: 34,
+    paddingBottom: 36,
+    paddingHorizontal: 48,
     position: 'relative',
-    overflow: 'hidden',
   },
 
-  /* --- Slide body padded area --- */
-  body: {
-    padding: '50 60',
-    flex: 1,
+  /* Header */
+  headerContainer: {
+    marginBottom: 16,
   },
-
-  /* --- Section header (white slides) --- */
-  accentBar: {
-    width: 44,
-    height: 3,
-    backgroundColor: C.accent,
-    marginBottom: 10,
-  },
-  sectionLabel: {
-    fontSize: 10,
-    fontWeight: 600,
-    color: C.accent,
-    textTransform: 'uppercase' as const,
-    letterSpacing: 2.5,
-    marginBottom: 4,
-  },
-  sectionTitle: {
-    fontSize: 28,
-    fontWeight: 300,
-    color: C.navy,
-    letterSpacing: -0.5,
-  },
-
-  /* --- Footer bar (cover/closing dark slides) --- */
-  footerBarDark: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: 36,
-    backgroundColor: 'rgba(0,0,0,0.25)',
+  headerEyebrowRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingLeft: 60,
-    paddingRight: 60,
+    gap: 8,
+    marginBottom: 4,
   },
-  footerTextDark: {
-    fontSize: 7.5,
-    fontWeight: 500,
-    color: 'rgba(255,255,255,0.45)',
-    letterSpacing: 2,
-    textTransform: 'uppercase' as const,
+  eyebrowBadge: {
+    width: 18,
+    height: 18,
+    borderRadius: 9,
+    backgroundColor: C.accent,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  headerEyebrowTextLight: {
+    fontSize: 8.5,
+    fontWeight: 700,
+    color: C.accent,
+    letterSpacing: 1.5,
+    textTransform: 'uppercase',
+  },
+  headerEyebrowTextDark: {
+    fontSize: 8.5,
+    fontWeight: 700,
+    color: C.accentCyanLight,
+    letterSpacing: 1.5,
+    textTransform: 'uppercase',
+  },
+  headerTitleLight: {
+    fontSize: 22,
+    fontWeight: 700,
+    color: C.navy,
+    letterSpacing: -0.5,
+    marginTop: 2,
+  },
+  headerTitleDark: {
+    fontSize: 22,
+    fontWeight: 700,
+    color: C.bg,
+    letterSpacing: -0.5,
+    marginTop: 2,
+  },
+  headerSubtitleLight: {
+    fontSize: 9.5,
+    fontWeight: 400,
+    color: C.textSecondary,
+    marginTop: 3,
+  },
+  headerSubtitleDark: {
+    fontSize: 9.5,
+    fontWeight: 400,
+    color: C.lightBlue,
+    marginTop: 3,
+  },
+  headerDividerLight: {
+    height: 1,
+    backgroundColor: C.lightLine,
+    marginTop: 10,
+  },
+  headerDividerDark: {
+    height: 1,
+    backgroundColor: 'rgba(255, 255, 255, 0.12)',
+    marginTop: 10,
   },
 
-  /* --- Footer (white slides) --- */
-  slideNumber: {
+  /* Footer */
+  footerContainer: {
     position: 'absolute',
-    bottom: 20,
-    right: 60,
+    bottom: 18,
+    left: 48,
+    right: 48,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderTopWidth: 1,
+    borderTopStyle: 'solid',
+    paddingTop: 8,
+  },
+  footerBorderLight: {
+    borderTopColor: C.lightLine,
+  },
+  footerBorderDark: {
+    borderTopColor: 'rgba(255, 255, 255, 0.1)',
+  },
+  footerNameLight: {
+    fontSize: 7.5,
+    fontWeight: 600,
+    color: C.textMuted,
+    letterSpacing: 1.5,
+    textTransform: 'uppercase',
+  },
+  footerNameDark: {
+    fontSize: 7.5,
+    fontWeight: 600,
+    color: 'rgba(255, 255, 255, 0.45)',
+    letterSpacing: 1.5,
+    textTransform: 'uppercase',
+  },
+  footerIndexLight: {
     fontSize: 8,
-    fontWeight: 500,
-    color: C.muted,
+    fontWeight: 700,
+    color: C.accent,
     letterSpacing: 0.5,
   },
-  footerName: {
-    position: 'absolute',
-    bottom: 20,
-    left: 60,
-    fontSize: 7.5,
-    fontWeight: 500,
-    color: C.lightLine,
-    letterSpacing: 2,
-    textTransform: 'uppercase' as const,
-  },
-
-  /* --- IYN Watermark (navy slides) --- */
-  watermark: {
-    position: 'absolute',
-    bottom: 50,
-    right: 50,
-    fontSize: 120,
+  footerIndexDark: {
+    fontSize: 8,
     fontWeight: 700,
-    color: 'rgba(255,255,255,0.06)',
-    letterSpacing: 6,
+    color: C.accentCyanLight,
+    letterSpacing: 0.5,
   },
 });
 
 /* ============================================
-   DIAGONAL ACCENT LINES (Cover & Closing)
+   HEADER & FOOTER HELPERS
    ============================================ */
-function DiagonalLines() {
+function SlideHeader({
+  category,
+  title,
+  subtitle,
+  isDark = false,
+  icon,
+}: {
+  category: string;
+  title: string;
+  subtitle: string;
+  isDark?: boolean;
+  icon?: React.ReactNode;
+}) {
   return (
-    <Svg
-      style={{ position: 'absolute', top: 0, left: 0, width: SLIDE_W, height: SLIDE_H }}
-      viewBox={`0 0 ${SLIDE_W} ${SLIDE_H}`}
-    >
-      <Line x1={SLIDE_W - 60} y1={0} x2={180} y2={SLIDE_H} stroke={C.accent} strokeWidth="0.8" opacity="0.12" />
-      <Line x1={SLIDE_W - 20} y1={0} x2={260} y2={SLIDE_H} stroke={C.accent2} strokeWidth="0.6" opacity="0.10" />
-      <Line x1={SLIDE_W + 20} y1={0} x2={340} y2={SLIDE_H} stroke={C.accent} strokeWidth="0.5" opacity="0.07" />
-    </Svg>
-  );
-}
-
-/* ============================================
-   ICON SVGs (clean geometric line art)
-   ============================================ */
-function IconBriefcase({ color = C.accent, size = 14 }: { color?: string; size?: number }) {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 24 24">
-      <Path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z" stroke={color} strokeWidth="1.5" fill="none" />
-      <Path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" stroke={color} strokeWidth="1.5" fill="none" />
-    </Svg>
-  );
-}
-
-function IconStar({ color = C.accent, size = 14 }: { color?: string; size?: number }) {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 24 24">
-      <Path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01z" stroke={color} strokeWidth="1.5" fill="none" />
-    </Svg>
-  );
-}
-
-function IconLayers({ color = C.accent, size = 14 }: { color?: string; size?: number }) {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 24 24">
-      <Path d="M12 2L2 7l10 5 10-5-10-5z" stroke={color} strokeWidth="1.5" fill="none" />
-      <Path d="M2 17l10 5 10-5" stroke={color} strokeWidth="1.5" fill="none" />
-      <Path d="M2 12l10 5 10-5" stroke={color} strokeWidth="1.5" fill="none" />
-    </Svg>
-  );
-}
-
-function IconMail({ color = C.accent, size = 14 }: { color?: string; size?: number }) {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 24 24">
-      <Path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z" stroke={color} strokeWidth="1.5" fill="none" />
-      <Path d="M22 6l-10 7L2 6" stroke={color} strokeWidth="1.5" fill="none" />
-    </Svg>
-  );
-}
-
-function IconCode({ color = C.accent, size = 14 }: { color?: string; size?: number }) {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 24 24">
-      <Path d="M16 18l6-6-6-6" stroke={color} strokeWidth="1.5" fill="none" />
-      <Path d="M8 6l-6 6 6 6" stroke={color} strokeWidth="1.5" fill="none" />
-    </Svg>
-  );
-}
-
-function IconLink({ color = C.accent, size = 14 }: { color?: string; size?: number }) {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 24 24">
-      <Path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" stroke={color} strokeWidth="1.5" fill="none" />
-      <Path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" stroke={color} strokeWidth="1.5" fill="none" />
-    </Svg>
-  );
-}
-
-/* ============================================
-   EYEBROW (icon badge + label)
-   ============================================ */
-function Eyebrow({ label, icon }: { label: string; icon: React.ReactNode }) {
-  return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-      <View style={{ width: 24, height: 24, borderRadius: 12, backgroundColor: C.accent, alignItems: 'center', justifyContent: 'center' }}>
-        {icon}
+    <View style={s.headerContainer}>
+      <View style={s.headerEyebrowRow}>
+        {icon && (
+          <View style={[s.eyebrowBadge, isDark ? { backgroundColor: C.accentCyan } : {}]}>
+            {icon}
+          </View>
+        )}
+        <Text style={isDark ? s.headerEyebrowTextDark : s.headerEyebrowTextLight}>
+          {category}
+        </Text>
       </View>
-      <Text style={s.sectionLabel}>{label}</Text>
+      <Text style={isDark ? s.headerTitleDark : s.headerTitleLight}>
+        {title}
+      </Text>
+      <Text style={isDark ? s.headerSubtitleDark : s.headerSubtitleLight}>
+        {subtitle}
+      </Text>
+      <View style={isDark ? s.headerDividerDark : s.headerDividerLight} />
+    </View>
+  );
+}
+
+function SlideFooter({
+  slideNum,
+  isDark = false,
+}: {
+  slideNum: string;
+  isDark?: boolean;
+}) {
+  return (
+    <View style={[s.footerContainer, isDark ? s.footerBorderDark : s.footerBorderLight]}>
+      <Text style={isDark ? s.footerNameDark : s.footerNameLight}>
+        IMAN YUNAR NOVIADHI  |  PORTFOLIO 2026
+      </Text>
+      <Text style={isDark ? s.footerIndexDark : s.footerIndexLight}>
+        {slideNum} / 06
+      </Text>
     </View>
   );
 }
 
 /* ============================================
-   SLIDE 1 — COVER (Navy bg)
+   ICON SVGs (Small, safe dimensions)
+   ============================================ */
+function IconUser({ size = 10, color = '#FFFFFF' }: { size?: number; color?: string }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Circle cx="12" cy="7" r="4" stroke={color} strokeWidth="2" fill="none" />
+      <Path d="M4 21v-2a4 4 0 014-4h8a4 4 0 014 4v2" stroke={color} strokeWidth="2" fill="none" />
+    </Svg>
+  );
+}
+
+function IconBriefcase({ size = 10, color = '#FFFFFF' }: { size?: number; color?: string }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z" stroke={color} strokeWidth="2" fill="none" />
+      <Path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" stroke={color} strokeWidth="2" fill="none" />
+    </Svg>
+  );
+}
+
+function IconLayers({ size = 10, color = '#FFFFFF' }: { size?: number; color?: string }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M12 2L2 7l10 5 10-5-10-5z" stroke={color} strokeWidth="2" fill="none" />
+      <Path d="M2 17l10 5 10-5" stroke={color} strokeWidth="2" fill="none" />
+      <Path d="M2 12l10 5 10-5" stroke={color} strokeWidth="2" fill="none" />
+    </Svg>
+  );
+}
+
+function IconAward({ size = 10, color = '#FFFFFF' }: { size?: number; color?: string }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Circle cx="12" cy="8" r="7" stroke={color} strokeWidth="2" fill="none" />
+      <Path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12" stroke={color} strokeWidth="2" fill="none" />
+    </Svg>
+  );
+}
+
+function IconMail({ size = 12, color = '#FFFFFF' }: { size?: number; color?: string }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z" stroke={color} strokeWidth="2" fill="none" />
+      <Path d="M22 6l-10 7L2 6" stroke={color} strokeWidth="2" fill="none" />
+    </Svg>
+  );
+}
+
+function IconCode({ size = 12, color = '#FFFFFF' }: { size?: number; color?: string }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M16 18l6-6-6-6" stroke={color} strokeWidth="2" fill="none" />
+      <Path d="M8 6l-6 6 6 6" stroke={color} strokeWidth="2" fill="none" />
+    </Svg>
+  );
+}
+
+function IconExternalLink({ size = 12, color = '#FFFFFF' }: { size?: number; color?: string }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24">
+      <Path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" stroke={color} strokeWidth="2" fill="none" />
+      <Path d="M15 3h6v6" stroke={color} strokeWidth="2" fill="none" />
+      <Path d="M10 14L21 3" stroke={color} strokeWidth="2" fill="none" />
+    </Svg>
+  );
+}
+
+/* ============================================
+   SLIDE 1 — COVER (Navy Theme)
    ============================================ */
 function SlideCover() {
   return (
-    <Page size="A4" orientation="landscape" style={s.pageNavy}>
-      <DiagonalLines />
+    <Page size="A4" orientation="landscape" wrap={false} style={s.pageDark}>
+      {/* Top Accent Strip */}
+      <View style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: 4,
+        backgroundColor: C.accent,
+      }} />
 
-      {/* IYN Avatar Badge — top-right */}
-      <View style={{ position: 'absolute', top: 50, right: 70 }}>
-        {/* Outer ring */}
-        <Svg width={130} height={130} viewBox="0 0 130 130">
-          <Circle cx="65" cy="65" r="62" stroke={C.accent2} strokeWidth="2" fill="none" />
-          <Circle cx="65" cy="65" r="56" fill={C.accent} />
-        </Svg>
-        <Text style={{
-          position: 'absolute', top: 38, left: 0, right: 0,
-          textAlign: 'center', fontSize: 36, fontWeight: 700,
-          color: C.bg, letterSpacing: 3,
-        }}>IYN</Text>
-      </View>
-
-      {/* Eyebrow */}
-      <View style={{ position: 'absolute', top: 80, left: 60 }}>
-        <Text style={{
-          fontSize: 10, fontWeight: 600, color: C.accent2,
-          letterSpacing: 3, textTransform: 'uppercase' as const,
-        }}>
-          Portfolio · 2026
-        </Text>
-      </View>
-
-      {/* Name */}
-      <View style={{ position: 'absolute', top: 115, left: 60 }}>
-        <Text style={{ fontSize: 44, fontWeight: 300, color: C.bg, letterSpacing: -1 }}>
-          Iman Yunar
-        </Text>
-        <Text style={{ fontSize: 44, fontWeight: 700, color: C.bg, letterSpacing: -1 }}>
-          Noviadhi
-        </Text>
-      </View>
-
-      {/* Role */}
-      <View style={{ position: 'absolute', top: 220, left: 60 }}>
-        <Text style={{ fontSize: 18, fontWeight: 500, color: C.lightBlue, letterSpacing: 0.3 }}>
-          Full-Stack Developer & AI Practitioner
-        </Text>
-      </View>
-
-      {/* Tagline */}
-      <View style={{ position: 'absolute', top: 260, left: 60, maxWidth: 480 }}>
-        <Text style={{ fontSize: 11.5, fontWeight: 300, color: C.paleBlue, lineHeight: 1.7 }}>
-          Building reliable digital systems — combining full-stack engineering
-          depth with applied AI and a track record of cross-university leadership.
-        </Text>
-      </View>
-
-      {/* Contact line */}
-      <View style={{ position: 'absolute', bottom: 60, left: 60, flexDirection: 'row', gap: 20 }}>
-        <Text style={{ fontSize: 9, fontWeight: 400, color: C.lightBlue }}>imanyunar@gmail.com</Text>
-        <Text style={{ fontSize: 9, fontWeight: 400, color: C.lightBlue }}>github.com/imanyunar</Text>
-        <Text style={{ fontSize: 9, fontWeight: 400, color: C.lightBlue }}>Semarang, Indonesia</Text>
-      </View>
-
-      {/* IYN Watermark */}
-      <Text style={s.watermark}>IYN</Text>
-
-      {/* Footer bar */}
-      <View style={s.footerBarDark}>
-        <Text style={s.footerTextDark}>Iman Yunar Noviadhi</Text>
-        <Text style={s.footerTextDark}>01 / 06</Text>
-      </View>
-    </Page>
-  );
-}
-
-/* ============================================
-   SLIDE 2 — ABOUT (white bg)
-   ============================================ */
-function SlideAbout() {
-  const stats = [
-    { num: '100%', label: 'TEST PASS RATE\n(77 SCENARIOS)' },
-    { num: '2×', label: 'EVENT\nCHAIRPERSON' },
-    { num: '1', label: 'PUBLISHED\nRESEARCH PAPER' },
-    { num: '2×', label: 'ESSAY COMPETITION\nFINALIST' },
-  ];
-
-  return (
-    <Page size="A4" orientation="landscape" style={s.pageWhite}>
-      <View style={s.body}>
-        <Eyebrow label="About" icon={<IconLayers color={C.bg} size={12} />} />
-        <Text style={s.sectionTitle}>Profile Summary</Text>
-
-        {/* Summary paragraph */}
-        <View style={{ marginTop: 20, maxWidth: 580 }}>
-          <Text style={{ fontSize: 12.5, fontWeight: 400, color: C.textBody, lineHeight: 1.75 }}>
-            A Computer Science undergraduate at Universitas Negeri Semarang with
-            hands-on experience building production-ready web applications using
-            Laravel, Vue.js, TypeScript, and PostgreSQL — combining full-stack
-            depth with applied AI and a strong leadership record.
-          </Text>
-        </View>
-
-        {/* Stat cards */}
-        <View style={{ flexDirection: 'row', gap: 14, marginTop: 28 }}>
-          {stats.map((stat, i) => (
-            <View key={i} style={{
-              flex: 1,
-              backgroundColor: C.navy,
-              borderRadius: 6,
-              padding: '20 16',
-              alignItems: 'center',
-              position: 'relative',
-              overflow: 'hidden',
-            }}>
-              {/* Decorative circle (bleeding off bottom-right) */}
-              <Svg style={{ position: 'absolute', right: -12, bottom: -12, width: 60, height: 60 }} viewBox="0 0 60 60">
-                <Circle cx="30" cy="30" r="28" fill={C.accent} opacity="0.18" />
-              </Svg>
-              <Text style={{ fontSize: 28, fontWeight: 300, color: C.bg }}>{stat.num}</Text>
-              <Text style={{
-                fontSize: 8, fontWeight: 500, color: C.lightBlue,
-                textTransform: 'uppercase' as const, letterSpacing: 0.8,
-                marginTop: 6, textAlign: 'center', lineHeight: 1.4,
-              }}>{stat.label}</Text>
+      {/* Main Content Layout (2 Columns) */}
+      <View style={{ flexDirection: 'row', gap: 36, marginTop: 40, flex: 1 }}>
+        {/* Left Column: Headline & Bio */}
+        <View style={{ flex: 1 }}>
+          {/* Eyebrow */}
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+            <View style={{ width: 18, height: 18, borderRadius: 9, backgroundColor: C.accent, alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 9, fontWeight: 700, color: '#FFFFFF' }}>I</Text>
             </View>
-          ))}
-        </View>
+            <Text style={{ fontSize: 9, fontWeight: 700, color: C.accentCyanLight, letterSpacing: 2, textTransform: 'uppercase' }}>
+              Executive Portfolio  |  2026 Edition
+            </Text>
+          </View>
 
-        {/* Pull-quote */}
-        <View style={{
-          marginTop: 24,
-          backgroundColor: C.bgAlt,
-          borderRadius: 6,
-          padding: '18 28',
-          borderLeft: `3px solid ${C.accent}`,
-        }}>
-          <Text style={{
-            fontSize: 14, fontWeight: 300,
-            color: C.navy, lineHeight: 1.6,
-          }}>
-            &quot;Driven to solve complex problems and create measurable impact
-            through technology-driven solutions.&quot;
+          {/* Name */}
+          <Text style={{ fontSize: 36, fontWeight: 300, color: '#FFFFFF', letterSpacing: -0.5 }}>
+            Iman Yunar
           </Text>
-        </View>
-      </View>
+          <Text style={{ fontSize: 36, fontWeight: 700, color: '#FFFFFF', letterSpacing: -0.5 }}>
+            Noviadhi
+          </Text>
 
-      <Text style={s.footerName}>Iman Yunar Noviadhi</Text>
-      <Text style={s.slideNumber}>02 / 06</Text>
-    </Page>
-  );
-}
+          {/* Role */}
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 10 }}>
+            <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: C.accentCyan }} />
+            <Text style={{ fontSize: 14, fontWeight: 600, color: C.lightBlue, letterSpacing: 0.3 }}>
+              Full-Stack Developer & Applied AI Practitioner
+            </Text>
+          </View>
 
-/* ============================================
-   SLIDE 3 — EXPERIENCE (white bg)
-   ============================================ */
-function SlideExperience() {
-  const entries = [
-    {
-      num: '01', role: 'Web Developer Intern',
-      org: 'PT Teknologi Aplikasi Sejahtera', period: 'FEB – JUL 2026',
-      detail: 'Built Document Management System (Laravel, Vue.js, TypeScript, PostgreSQL). 100% pass rate across 77 Black Box Test scenarios. Rated EXCELLENT.',
-    },
-    {
-      num: '02', role: 'Secretary, Public Relations Dept',
-      org: 'UKMP, Universitas Negeri Semarang', period: 'FEB – NOV 2025',
-      detail: 'Event Chairperson for 2 cross-university comparative study visits with UNESA & Universitas Brawijaya.',
-    },
-    {
-      num: '03', role: 'Inbound Virtual Student Mobility',
-      org: 'UTHM Malaysia', period: 'JUL – SEP 2026',
-      detail: 'International academic exchange program in computer science.',
-    },
-    {
-      num: '04', role: 'Staff, Internal & Organizational Supervision',
-      org: 'ISAFIS', period: 'APR – DEC 2024',
-      detail: 'Built online voting system for presidential election. Organizational governance.',
-    },
-    {
-      num: '05', role: 'Corresponding Author',
-      org: 'UNNES Journal', period: 'AUG 2023 – FEB 2024',
-      detail: 'Published research on AI chatbot effectiveness in Operating Systems education.',
-    },
-  ];
+          {/* Divider */}
+          <View style={{ width: 48, height: 2, backgroundColor: C.accent, marginTop: 14, marginBottom: 14 }} />
 
-  const entryH = 82; // generous height per entry to prevent overlap
-  const timelineTop = 100;
+          {/* Value Proposition Statement */}
+          <Text style={{ fontSize: 10.5, fontWeight: 300, color: C.paleBlue, lineHeight: 1.65, maxWidth: 430 }}>
+            Building reliable digital systems — combining rigorous full-stack software engineering
+            depth (Laravel, Vue.js, TypeScript, PostgreSQL) with applied machine learning and
+            a proven track record of cross-university leadership.
+          </Text>
 
-  return (
-    <Page size="A4" orientation="landscape" style={s.pageWhite}>
-      <View style={s.body}>
-        <Eyebrow label="Experience" icon={<IconBriefcase color={C.bg} size={12} />} />
-        <Text style={s.sectionTitle}>Professional Timeline</Text>
-
-        {/* Timeline area */}
-        <View style={{ flexDirection: 'row', marginTop: 20, gap: 30 }}>
-          {/* Left: Timeline entries */}
-          <View style={{ flex: 1, position: 'relative' }}>
-            {/* Vertical connector line */}
-            <Svg style={{ position: 'absolute', left: 10, top: 8, width: 2, height: entries.length * entryH - 20 }}>
-              <Line x1="1" y1="0" x2="1" y2={entries.length * entryH - 20} stroke={C.lightLine} strokeWidth="1.5" />
-            </Svg>
-
-            {entries.map((e, i) => (
-              <View key={i} style={{ flexDirection: 'row', gap: 14, marginBottom: 12, minHeight: entryH - 12 }}>
-                {/* Numbered circle badge */}
-                <View style={{ width: 22, alignItems: 'center', paddingTop: 1 }}>
-                  <Svg width={22} height={22} viewBox="0 0 22 22">
-                    <Circle cx="11" cy="11" r="10" fill={C.navy} />
-                  </Svg>
-                  <Text style={{
-                    position: 'absolute', top: 5, left: 0, right: 0,
-                    textAlign: 'center', fontSize: 8, fontWeight: 700, color: C.bg,
-                  }}>{e.num}</Text>
-                </View>
-                {/* Entry content */}
-                <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 12, fontWeight: 600, color: C.navy }}>{e.role}</Text>
-                  <Text style={{ fontSize: 9.5, fontWeight: 400, color: C.muted, marginTop: 1 }}>{e.org}</Text>
-                  <Text style={{
-                    fontSize: 8.5, fontWeight: 600, color: C.accent,
-                    textTransform: 'uppercase' as const, letterSpacing: 1, marginTop: 3,
-                  }}>{e.period}</Text>
-                  <Text style={{ fontSize: 9.5, fontWeight: 300, color: C.textBody, lineHeight: 1.5, marginTop: 3 }}>
-                    {e.detail}
-                  </Text>
-                </View>
+          {/* Core Stack Pill Badges */}
+          <View style={{ flexDirection: 'row', gap: 8, marginTop: 20 }}>
+            {[
+              'Laravel & Vue.js',
+              'TypeScript & Next.js',
+              'PostgreSQL',
+              'Applied AI & Python',
+            ].map((tag, i) => (
+              <View
+                key={i}
+                style={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                  borderWidth: 1,
+                  borderStyle: 'solid',
+                  borderColor: 'rgba(255, 255, 255, 0.15)',
+                  borderRadius: 4,
+                  paddingVertical: 4,
+                  paddingHorizontal: 10,
+                }}
+              >
+                <Text style={{ fontSize: 8, fontWeight: 600, color: C.lightBlue }}>{tag}</Text>
               </View>
             ))}
           </View>
 
-          {/* Right: Summary panel */}
-          <View style={{
-            width: 200,
-            backgroundColor: C.navy,
-            borderRadius: 8,
-            padding: '28 24',
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'relative',
-            overflow: 'hidden',
-            alignSelf: 'flex-start',
-            marginTop: 10,
-          }}>
-            {/* Decorative outlined circle */}
-            <Svg style={{ position: 'absolute', top: -20, right: -20, width: 100, height: 100 }} viewBox="0 0 100 100">
-              <Circle cx="50" cy="50" r="45" stroke={C.accent} strokeWidth="1.5" fill="none" opacity="0.25" />
-            </Svg>
-            <Text style={{ fontSize: 56, fontWeight: 300, color: C.accent }}>5</Text>
-            <Text style={{
-              fontSize: 12, fontWeight: 600, color: C.bg,
-              textAlign: 'center', marginTop: 4,
-            }}>Roles &amp; Milestones</Text>
-            <Text style={{
-              fontSize: 9, fontWeight: 300, color: C.lightBlue,
-              textAlign: 'center', marginTop: 8, lineHeight: 1.5,
-            }}>
-              Spanning industry internship, international mobility, research, and student leadership.
-            </Text>
+          {/* Contact Bar */}
+          <View style={{ flexDirection: 'row', gap: 20, marginTop: 28 }}>
+            <Text style={{ fontSize: 8.5, fontWeight: 400, color: C.lightBlue }}>imanyunar@gmail.com</Text>
+            <Text style={{ fontSize: 8.5, fontWeight: 400, color: C.lightBlue }}>github.com/imanyunar</Text>
+            <Text style={{ fontSize: 8.5, fontWeight: 400, color: C.lightBlue }}>Semarang, Indonesia</Text>
+          </View>
+        </View>
+
+        {/* Right Column: Executive Snapshot Card */}
+        <View style={{ width: 250 }}>
+          <View
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.04)',
+              borderWidth: 1,
+              borderStyle: 'solid',
+              borderColor: 'rgba(255, 255, 255, 0.12)',
+              borderRadius: 8,
+              padding: 20,
+            }}
+          >
+            {/* Monogram Circle */}
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+              <View
+                style={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: 22,
+                  backgroundColor: C.accent,
+                  borderWidth: 2,
+                  borderStyle: 'solid',
+                  borderColor: C.accentCyan,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Text style={{ fontSize: 16, fontWeight: 700, color: '#FFFFFF', letterSpacing: 1 }}>IYN</Text>
+              </View>
+              <View>
+                <Text style={{ fontSize: 11, fontWeight: 700, color: '#FFFFFF' }}>Candidate Snapshot</Text>
+                <Text style={{ fontSize: 8, fontWeight: 400, color: C.lightBlue, marginTop: 1 }}>
+                  UNNES Computer Science
+                </Text>
+              </View>
+            </View>
+
+            {/* Quick Metrics Rows */}
+            {[
+              { label: 'Primary Focus', val: 'Full-Stack & Applied AI' },
+              { label: 'Industry Project', val: 'Document Management (TAS)' },
+              { label: 'Testing Record', val: '100% Pass (77 Scenarios)' },
+              { label: 'International', val: 'Inbound Mobility (UTHM)' },
+              { label: 'Academic Impact', val: 'Published Journal Author' },
+              { label: 'Availability', val: 'Open for High-Impact Roles' },
+            ].map((row, idx) => (
+              <View
+                key={idx}
+                style={{
+                  borderTopWidth: idx > 0 ? 1 : 0,
+                  borderTopStyle: 'solid',
+                  borderTopColor: 'rgba(255, 255, 255, 0.08)',
+                  paddingVertical: 7,
+                }}
+              >
+                <Text style={{ fontSize: 7, fontWeight: 600, color: C.textMuted, textTransform: 'uppercase', letterSpacing: 0.8 }}>
+                  {row.label}
+                </Text>
+                <Text style={{ fontSize: 9, fontWeight: 600, color: '#FFFFFF', marginTop: 1 }}>
+                  {row.val}
+                </Text>
+              </View>
+            ))}
           </View>
         </View>
       </View>
 
-      <Text style={s.footerName}>Iman Yunar Noviadhi</Text>
-      <Text style={s.slideNumber}>03 / 06</Text>
+      <SlideFooter slideNum="01" isDark />
     </Page>
   );
 }
 
 /* ============================================
-   SLIDE 4 — SKILLS (white bg)
+   SLIDE 2 — ABOUT (White Theme)
    ============================================ */
-function SkillBar({ name, pct }: { name: string; pct: number }) {
-  return (
-    <View style={{ marginBottom: 10 }}>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 3 }}>
-        <Text style={{ fontSize: 9, fontWeight: 400, color: C.text }}>{name}</Text>
-        <Text style={{ fontSize: 8, fontWeight: 600, color: C.accent }}>{pct}%</Text>
-      </View>
-      {/* Track */}
-      <View style={{ height: 5, backgroundColor: C.lightLine, borderRadius: 2.5 }}>
-        {/* Fill */}
-        <View style={{ height: 5, width: `${pct}%`, backgroundColor: C.accent2, borderRadius: 2.5 }} />
-      </View>
-    </View>
-  );
-}
-
-function SlideSkills() {
-  const columns = [
-    {
-      title: 'FRONTEND',
-      skills: [
-        { name: 'Next.js / Vue.js', pct: 92 },
-        { name: 'TypeScript', pct: 88 },
-        { name: 'TailwindCSS', pct: 85 },
-      ],
-    },
-    {
-      title: 'BACKEND',
-      skills: [
-        { name: 'Laravel / PHP', pct: 90 },
-        { name: 'REST API', pct: 88 },
-        { name: 'PostgreSQL', pct: 82 },
-      ],
-    },
-    {
-      title: 'DATA / AI',
-      skills: [
-        { name: 'Python', pct: 88 },
-        { name: 'TensorFlow / PyTorch', pct: 75 },
-        { name: 'Data Analytics', pct: 80 },
-      ],
-    },
+function SlideAbout() {
+  const stats = [
+    { num: '100%', label: 'QA PASS RATE', desc: '77 Black-Box test scenarios passed with zero defects' },
+    { num: '2×', label: 'EVENT CHAIRPERSON', desc: 'Led cross-university comparative studies with UNESA & UB' },
+    { num: '1', label: 'JOURNAL PUBLICATION', desc: 'Corresponding author on AI chatbot research in UNNES Journal' },
+    { num: 'Top 10', label: 'NATIONAL FINALIST', desc: 'Activation 7.0 National Academic Essay Competition' },
   ];
 
   return (
-    <Page size="A4" orientation="landscape" style={s.pageWhite}>
-      <View style={s.body}>
-        <Eyebrow label="Skills" icon={<IconLayers color={C.bg} size={12} />} />
-        <Text style={s.sectionTitle}>Technical Proficiency</Text>
+    <Page size="A4" orientation="landscape" wrap={false} style={s.pageLight}>
+      <SlideHeader
+        category="01 / Profile Overview"
+        title="Executive Summary & Value Proposition"
+        subtitle="A dedicated technologist bridging solid engineering practices with strategic organizational leadership."
+        icon={<IconUser size={10} color="#FFFFFF" />}
+      />
 
-        {/* 3 Column panels */}
-        <View style={{ flexDirection: 'row', gap: 18, marginTop: 24 }}>
-          {columns.map((col, ci) => (
-            <View key={ci} style={{
-              flex: 1,
+      {/* Main Content Area */}
+      <View style={{ flexDirection: 'row', gap: 24, marginTop: 4 }}>
+        {/* Left Column: Narrative & Quote */}
+        <View style={{ flex: 1.1 }}>
+          {/* Paragraphs */}
+          <View
+            style={{
               backgroundColor: C.bgAlt,
               borderRadius: 6,
-              borderTop: `3px solid ${C.accent}`,
-              padding: '18 20',
-            }}>
-              <Text style={{
-                fontSize: 9, fontWeight: 700, color: C.navy,
-                letterSpacing: 2, marginBottom: 14,
-                textTransform: 'uppercase' as const,
-              }}>{col.title}</Text>
-              {col.skills.map((sk, si) => (
-                <SkillBar key={si} name={sk.name} pct={sk.pct} />
-              ))}
-            </View>
-          ))}
-        </View>
+              borderWidth: 1,
+              borderStyle: 'solid',
+              borderColor: C.cardBorder,
+              padding: 16,
+            }}
+          >
+            <Text style={{ fontSize: 10, fontWeight: 700, color: C.navy, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 8 }}>
+              Professional Background
+            </Text>
+            <Text style={{ fontSize: 9.5, fontWeight: 400, color: C.textSecondary, lineHeight: 1.65 }}>
+              Undergraduate Computer Science student at Universitas Negeri Semarang with extensive hands-on
+              experience in production web application development. Proven track record architecting robust
+              database solutions and full-stack systems using Laravel, Vue.js, TypeScript, and PostgreSQL.
+            </Text>
+            <Text style={{ fontSize: 9.5, fontWeight: 400, color: C.textSecondary, lineHeight: 1.65, marginTop: 8 }}>
+              Demonstrated capability to combine technical execution with academic research rigor and organizational
+              governance. Adaptable communicator experienced in cross-institutional study programs and international
+              student mobility.
+            </Text>
+          </View>
 
-        {/* Navy summary strip */}
-        <View style={{
-          flexDirection: 'row',
-          marginTop: 24,
-          backgroundColor: C.navy,
-          borderRadius: 6,
-          overflow: 'hidden',
-        }}>
-          {[
-            { big: '12+', label: 'TECHNOLOGIES' },
-            { big: 'EXPERT', label: 'TEAMWORK & COLLABORATION' },
-            { big: 'EN/ID', label: 'FLUENT & NATIVE' },
-          ].map((item, i) => (
-            <View key={i} style={{
-              flex: 1,
-              padding: '14 20',
-              alignItems: 'center',
-              borderRight: i < 2 ? '1px solid rgba(255,255,255,0.1)' : 'none',
-            }}>
-              <Text style={{ fontSize: 16, fontWeight: 700, color: C.accent2 }}>{item.big}</Text>
-              <Text style={{
-                fontSize: 7.5, fontWeight: 500, color: C.lightBlue,
-                textTransform: 'uppercase' as const, letterSpacing: 1,
-                marginTop: 3, textAlign: 'center',
-              }}>{item.label}</Text>
-            </View>
-          ))}
-        </View>
-      </View>
-
-      <Text style={s.footerName}>Iman Yunar Noviadhi</Text>
-      <Text style={s.slideNumber}>04 / 06</Text>
-    </Page>
-  );
-}
-
-/* ============================================
-   SLIDE 5 — ACHIEVEMENTS (white bg)
-   ============================================ */
-function SlideAchievements() {
-  const items = [
-    {
-      tag: 'PUBLISHED ARTICLE',
-      title: 'Corresponding Author',
-      detail: 'AI Chatbots in Operating Systems Education, UNNES Journal, Feb 2024',
-    },
-    {
-      tag: 'NATIONAL COMPETITION',
-      title: 'Top 10 Finalist',
-      detail: 'Activation 7.0 Essay Competition 2024, HIMADIKA',
-    },
-    {
-      tag: 'NATIONAL COMPETITION',
-      title: '5th Place',
-      detail: 'MEDISPRO Essay Competition 2025',
-    },
-    {
-      tag: 'CERTIFICATE',
-      title: 'DevOps Fundamentals',
-      detail: 'Dicoding Indonesia × Amazon Web Services',
-    },
-  ];
-
-  return (
-    <Page size="A4" orientation="landscape" style={s.pageWhite}>
-      <View style={s.body}>
-        <Eyebrow label="Achievements & Certifications" icon={<IconStar color={C.bg} size={12} />} />
-        <Text style={s.sectionTitle}>Recognition</Text>
-
-        {/* 2x2 Grid */}
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 16, marginTop: 24 }}>
-          {items.map((item, i) => (
-            <View key={i} style={{
-              width: '47.5%',
-              backgroundColor: C.bgAlt,
+          {/* Pull Quote Box */}
+          <View
+            style={{
+              marginTop: 14,
+              backgroundColor: '#EFF6FF',
               borderRadius: 6,
-              padding: '18 20',
-              flexDirection: 'row',
-              gap: 14,
-            }}>
-              {/* Icon badge */}
-              <View style={{
-                width: 32, height: 32, borderRadius: 16,
-                backgroundColor: C.accent, alignItems: 'center', justifyContent: 'center',
-                marginTop: 2,
-              }}>
-                <IconStar color={C.bg} size={14} />
-              </View>
-              {/* Content */}
-              <View style={{ flex: 1 }}>
+              borderLeftWidth: 3,
+              borderLeftStyle: 'solid',
+              borderLeftColor: C.accent,
+              paddingVertical: 12,
+              paddingHorizontal: 16,
+            }}
+          >
+            <Text style={{ fontSize: 10, fontWeight: 500, color: C.navy, lineHeight: 1.55 }}>
+              &quot;Driven to deliver verifiable impact through rigorous testing, robust engineering, and AI-enabled innovation.&quot;
+            </Text>
+          </View>
+        </View>
+
+        {/* Right Column: 4 Key Metric Cards (2x2 Grid) */}
+        <View style={{ flex: 1 }}>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
+            {stats.map((stat, i) => (
+              <View
+                key={i}
+                style={{
+                  width: '47.5%',
+                  backgroundColor: C.navy,
+                  borderRadius: 6,
+                  padding: 14,
+                }}
+              >
+                <Text style={{ fontSize: 24, fontWeight: 300, color: '#FFFFFF' }}>{stat.num}</Text>
                 <Text style={{
-                  fontSize: 8, fontWeight: 600, color: C.accent,
-                  textTransform: 'uppercase' as const, letterSpacing: 1.5, marginBottom: 4,
-                }}>{item.tag}</Text>
-                <Text style={{ fontSize: 12, fontWeight: 600, color: C.navy }}>{item.title}</Text>
-                <Text style={{ fontSize: 9, fontWeight: 300, color: C.muted, marginTop: 3, lineHeight: 1.4 }}>
-                  {item.detail}
+                  fontSize: 7.5,
+                  fontWeight: 700,
+                  color: C.accentCyanLight,
+                  letterSpacing: 0.8,
+                  textTransform: 'uppercase',
+                  marginTop: 3,
+                }}>
+                  {stat.label}
+                </Text>
+                <Text style={{
+                  fontSize: 7.5,
+                  fontWeight: 400,
+                  color: C.lightBlue,
+                  lineHeight: 1.4,
+                  marginTop: 4,
+                }}>
+                  {stat.desc}
+                </Text>
+              </View>
+            ))}
+          </View>
+        </View>
+      </View>
+
+      {/* Bottom Core Pillars Banner */}
+      <View
+        style={{
+          flexDirection: 'row',
+          marginTop: 16,
+          backgroundColor: C.cardBg,
+          borderRadius: 6,
+          borderWidth: 1,
+          borderStyle: 'solid',
+          borderColor: C.cardBorder,
+          overflow: 'hidden',
+        }}
+      >
+        {[
+          {
+            pillar: 'ENGINEERING RIGOR',
+            detail: 'Full-stack development with disciplined black-box testing and reliable database modeling.',
+          },
+          {
+            pillar: 'APPLIED INTELLIGENCE',
+            detail: 'Practical integration of Python, machine learning workflows, and data-informed decision making.',
+          },
+          {
+            pillar: 'COLLABORATIVE LEADERSHIP',
+            detail: 'Cross-university event chairmanship, department administration, and international mobility.',
+          },
+        ].map((item, idx) => (
+          <View
+            key={idx}
+            style={{
+              flex: 1,
+              padding: 12,
+              borderRightWidth: idx < 2 ? 1 : 0,
+              borderRightStyle: 'solid',
+              borderRightColor: C.cardBorder,
+            }}
+          >
+            <Text style={{ fontSize: 8, fontWeight: 700, color: C.accent, letterSpacing: 1, textTransform: 'uppercase' }}>
+              {item.pillar}
+            </Text>
+            <Text style={{ fontSize: 8, fontWeight: 400, color: C.textSecondary, marginTop: 2, lineHeight: 1.4 }}>
+              {item.detail}
+            </Text>
+          </View>
+        ))}
+      </View>
+
+      <SlideFooter slideNum="02" />
+    </Page>
+  );
+}
+
+/* ============================================
+   SLIDE 3 — EXPERIENCE (White Theme)
+   ============================================ */
+function SlideExperience() {
+  const experiences = [
+    {
+      num: '01',
+      role: 'Web Developer Intern',
+      org: 'PT Teknologi Aplikasi Sejahtera',
+      period: 'FEB – JUL 2026',
+      badge: 'Corporate Internship',
+      detail: 'Engineered Document Management System using Laravel, Vue.js, TypeScript, and PostgreSQL. Achieved 100% pass rate across 77 Black Box test scenarios. Rated EXCELLENT by corporate supervisor.',
+    },
+    {
+      num: '02',
+      role: 'Secretary, Public Relations Dept',
+      org: 'UKMP, Universitas Negeri Semarang',
+      period: 'FEB – NOV 2025',
+      badge: 'Department Leadership',
+      detail: 'Served as Event Chairperson for 2 major cross-university comparative study visits with Universitas Negeri Surabaya (UNESA) and Universitas Brawijaya (UB). Managed stakeholder communications.',
+    },
+    {
+      num: '03',
+      role: 'Inbound Virtual Student Mobility',
+      org: 'Universiti Tun Hussein Onn Malaysia (UTHM)',
+      period: 'JUL – SEP 2026',
+      badge: 'International Mobility',
+      detail: 'Completed international academic exchange in computer science, participating in cross-border technical discussions and collaborative coursework.',
+    },
+    {
+      num: '04',
+      role: 'Staff, Internal & Organizational Supervision',
+      org: 'ISAFIS (Indonesian Student Association for International Studies)',
+      period: 'APR – DEC 2024',
+      badge: 'Organizational Governance',
+      detail: 'Engineered secure online voting system for presidential election, ensuring ballot integrity and transparency. Contributed to institutional governance policies.',
+    },
+    {
+      num: '05',
+      role: 'Corresponding Author & Lead Researcher',
+      org: 'UNNES Journal',
+      period: 'AUG 2023 – FEB 2024',
+      badge: 'Academic Research',
+      detail: 'Authored and published scientific article investigating AI chatbot instructional efficacy in university Operating Systems education.',
+    },
+  ];
+
+  return (
+    <Page size="A4" orientation="landscape" wrap={false} style={s.pageLight}>
+      <SlideHeader
+        category="02 / Track Record"
+        title="Professional Experience & Leadership Trajectory"
+        subtitle="Demonstrated delivery across software engineering, academic research, and institutional governance."
+        icon={<IconBriefcase size={10} color="#FFFFFF" />}
+      />
+
+      {/* Main Content Layout */}
+      <View style={{ flexDirection: 'row', gap: 24, marginTop: 4 }}>
+        {/* Left Column: 5 Structured Milestone Rows */}
+        <View style={{ flex: 1.25 }}>
+          {experiences.map((exp, idx) => (
+            <View
+              key={idx}
+              style={{
+                flexDirection: 'row',
+                gap: 12,
+                backgroundColor: idx % 2 === 0 ? C.bgAlt : C.bg,
+                borderWidth: 1,
+                borderStyle: 'solid',
+                borderColor: C.cardBorder,
+                borderRadius: 5,
+                padding: 10,
+                marginBottom: 8,
+              }}
+            >
+              {/* Number Badge */}
+              <View
+                style={{
+                  width: 24,
+                  height: 24,
+                  borderRadius: 12,
+                  backgroundColor: C.navy,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Text style={{ fontSize: 8.5, fontWeight: 700, color: '#FFFFFF' }}>{exp.num}</Text>
+              </View>
+
+              {/* Details */}
+              <View style={{ flex: 1 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Text style={{ fontSize: 10, fontWeight: 700, color: C.navy }}>{exp.role}</Text>
+                  <Text style={{ fontSize: 7.5, fontWeight: 700, color: C.accent, letterSpacing: 0.8 }}>
+                    {exp.period}
+                  </Text>
+                </View>
+
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 1 }}>
+                  <Text style={{ fontSize: 8.5, fontWeight: 500, color: C.textSecondary }}>{exp.org}</Text>
+                  <Text style={{ fontSize: 7, fontWeight: 600, color: C.textMuted }}>•</Text>
+                  <Text style={{ fontSize: 7.5, fontWeight: 600, color: C.accentCyan }}>{exp.badge}</Text>
+                </View>
+
+                <Text style={{ fontSize: 8, fontWeight: 400, color: C.textSecondary, lineHeight: 1.45, marginTop: 3 }}>
+                  {exp.detail}
                 </Text>
               </View>
             </View>
           ))}
         </View>
 
-        {/* Navy highlight strip */}
-        <View style={{
-          flexDirection: 'row',
-          marginTop: 24,
-          backgroundColor: C.navy,
-          borderRadius: 6,
-          overflow: 'hidden',
-        }}>
-          {[
-            { big: '4', label: 'RECOGNITIONS EARNED' },
-            { big: '2024–25', label: 'ACTIVE PERIOD' },
-            { big: 'NATIONAL', label: 'COMPETITION LEVEL' },
-          ].map((item, i) => (
-            <View key={i} style={{
-              flex: 1,
-              padding: '14 20',
-              alignItems: 'center',
-              borderRight: i < 2 ? '1px solid rgba(255,255,255,0.1)' : 'none',
-            }}>
-              <Text style={{ fontSize: 16, fontWeight: 700, color: C.accent2 }}>{item.big}</Text>
-              <Text style={{
-                fontSize: 7.5, fontWeight: 500, color: C.lightBlue,
-                textTransform: 'uppercase' as const, letterSpacing: 1,
-                marginTop: 3, textAlign: 'center',
-              }}>{item.label}</Text>
+        {/* Right Column: Experience Highlights Card */}
+        <View style={{ flex: 0.65 }}>
+          <View
+            style={{
+              backgroundColor: C.navy,
+              borderRadius: 6,
+              padding: 18,
+            }}
+          >
+            <Text style={{ fontSize: 8.5, fontWeight: 700, color: C.accentCyanLight, letterSpacing: 1.5, textTransform: 'uppercase' }}>
+              Execution Highlights
+            </Text>
+            <Text style={{ fontSize: 32, fontWeight: 300, color: '#FFFFFF', marginTop: 4 }}>
+              5 Key
+            </Text>
+            <Text style={{ fontSize: 11, fontWeight: 600, color: C.lightBlue, marginTop: -2 }}>
+              Milestones &amp; Responsibilities
+            </Text>
+
+            <View style={{ height: 1, backgroundColor: 'rgba(255, 255, 255, 0.12)', marginTop: 12, marginBottom: 12 }} />
+
+            {[
+              { title: 'Industry Delivery', desc: 'Built production DMS with strict QA' },
+              { title: 'Global Mobility', desc: 'International exchange with UTHM' },
+              { title: 'Peer-Reviewed Science', desc: 'Published lead author in UNNES Journal' },
+              { title: 'Team Leadership', desc: 'Led 2 comparative study delegations' },
+            ].map((item, i) => (
+              <View key={i} style={{ marginBottom: 10 }}>
+                <Text style={{ fontSize: 8.5, fontWeight: 700, color: '#FFFFFF' }}>{item.title}</Text>
+                <Text style={{ fontSize: 7.5, fontWeight: 400, color: C.paleBlue, marginTop: 1 }}>
+                  {item.desc}
+                </Text>
+              </View>
+            ))}
+
+            <View
+              style={{
+                backgroundColor: 'rgba(34, 81, 255, 0.25)',
+                borderWidth: 1,
+                borderStyle: 'solid',
+                borderColor: C.accent,
+                borderRadius: 4,
+                padding: 8,
+                marginTop: 4,
+              }}
+            >
+              <Text style={{ fontSize: 7.5, fontWeight: 500, color: '#FFFFFF', lineHeight: 1.4 }}>
+                Combines high-discipline software architecture with proven communication leadership.
+              </Text>
             </View>
-          ))}
+          </View>
         </View>
       </View>
 
-      <Text style={s.footerName}>Iman Yunar Noviadhi</Text>
-      <Text style={s.slideNumber}>05 / 06</Text>
+      <SlideFooter slideNum="03" />
     </Page>
   );
 }
 
 /* ============================================
-   SLIDE 6 — CLOSING / CONTACT (Navy bg)
+   SLIDE 4 — SKILLS & ARCHITECTURE (White Theme)
    ============================================ */
-function SlideContact() {
-  const contacts = [
-    { icon: <IconMail color={C.bg} size={14} />, label: 'EMAIL', value: 'imanyunar@gmail.com' },
-    { icon: <IconCode color={C.bg} size={14} />, label: 'GITHUB', value: 'github.com/imanyunar' },
-    { icon: <IconLink color={C.bg} size={14} />, label: 'LINKEDIN', value: 'linkedin.com/in/iman-yunar-noviadhi' },
+function SlideSkills() {
+  const pillars = [
+    {
+      title: 'FRONTEND ENGINEERING',
+      tagline: 'Modern Web & Interactive UIs',
+      skills: [
+        { name: 'Next.js & React', level: 'ADVANCED', focus: 'App Router, SSR, Server Components' },
+        { name: 'TypeScript', level: 'ADVANCED', focus: 'Type safety, generics, interfaces' },
+        { name: 'Vue.js', level: 'PROFICIENT', focus: 'Composition API, Pinia state management' },
+        { name: 'TailwindCSS', level: 'ADVANCED', focus: 'Design tokens, responsive layouts' },
+      ],
+    },
+    {
+      title: 'BACKEND & DATABASE',
+      tagline: 'APIs, Security & Data Modeling',
+      skills: [
+        { name: 'Laravel / PHP', level: 'ADVANCED', focus: 'Eloquent ORM, Auth, MVC architecture' },
+        { name: 'RESTful API Design', level: 'ADVANCED', focus: 'Clean contracts, Swagger documentation' },
+        { name: 'PostgreSQL / MySQL', level: 'PROFICIENT', focus: 'Schema design, indexing, optimization' },
+        { name: 'Docker & Linux', level: 'COMPETENT', focus: 'Containerized setups, shell workflows' },
+      ],
+    },
+    {
+      title: 'APPLIED AI & DATA',
+      tagline: 'Machine Learning & Analytics',
+      skills: [
+        { name: 'Python', level: 'ADVANCED', focus: 'Automation scripts, data pipelines' },
+        { name: 'Data Analytics', level: 'PROFICIENT', focus: 'Pandas, NumPy, exploratory analysis' },
+        { name: 'Machine Learning', level: 'COMPETENT', focus: 'TensorFlow, PyTorch, model testing' },
+        { name: 'AI / LLM Workflows', level: 'PROFICIENT', focus: 'Prompt engineering, API integration' },
+      ],
+    },
   ];
 
   return (
-    <Page size="A4" orientation="landscape" style={s.pageNavy}>
-      <DiagonalLines />
+    <Page size="A4" orientation="landscape" wrap={false} style={s.pageLight}>
+      <SlideHeader
+        category="03 / Core Capabilities"
+        title="Technical Architecture & Competency Matrix"
+        subtitle="Comprehensive full-stack engineering capabilities categorized by layer, stack, and proficiency."
+        icon={<IconLayers size={10} color="#FFFFFF" />}
+      />
 
-      {/* Eyebrow */}
-      <View style={{ position: 'absolute', top: 100, left: 60 }}>
-        <Text style={{
-          fontSize: 10, fontWeight: 600, color: C.accent2,
-          letterSpacing: 3, textTransform: 'uppercase' as const,
-        }}>
-          Contact
-        </Text>
-      </View>
+      {/* 3 Structured Pillar Cards */}
+      <View style={{ flexDirection: 'row', gap: 16, marginTop: 6 }}>
+        {pillars.map((p, idx) => (
+          <View
+            key={idx}
+            style={{
+              flex: 1,
+              backgroundColor: C.bgAlt,
+              borderRadius: 6,
+              borderTopWidth: 3,
+              borderTopStyle: 'solid',
+              borderTopColor: C.accent,
+              borderWidth: 1,
+              borderStyle: 'solid',
+              borderColor: C.cardBorder,
+              padding: 14,
+            }}
+          >
+            {/* Pillar Header */}
+            <Text style={{ fontSize: 9.5, fontWeight: 700, color: C.navy, letterSpacing: 1.2, textTransform: 'uppercase' }}>
+              {p.title}
+            </Text>
+            <Text style={{ fontSize: 7.5, fontWeight: 500, color: C.textMuted, marginTop: 2, marginBottom: 12 }}>
+              {p.tagline}
+            </Text>
 
-      {/* Headline */}
-      <View style={{ position: 'absolute', top: 130, left: 60 }}>
-        <Text style={{ fontSize: 32, fontWeight: 300, color: C.bg, letterSpacing: -0.5 }}>
-          Let&apos;s build something
-        </Text>
-        <Text style={{ fontSize: 32, fontWeight: 700, color: C.accent2, letterSpacing: -0.5 }}>
-          reliable together.
-        </Text>
-      </View>
-
-      {/* Contact pill cards */}
-      <View style={{ position: 'absolute', top: 260, left: 60, right: 60, flexDirection: 'row', gap: 20 }}>
-        {contacts.map((c, i) => (
-          <View key={i} style={{
-            flex: 1,
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: 12,
-            backgroundColor: 'rgba(255,255,255,0.07)',
-            borderRadius: 8,
-            padding: '14 18',
-            border: '1px solid rgba(255,255,255,0.1)',
-          }}>
-            {/* Icon circle */}
-            <View style={{
-              width: 32, height: 32, borderRadius: 16,
-              backgroundColor: C.accent,
-              alignItems: 'center', justifyContent: 'center',
-            }}>
-              {c.icon}
-            </View>
-            <View>
-              <Text style={{
-                fontSize: 8, fontWeight: 600, color: C.lightBlue,
-                textTransform: 'uppercase' as const, letterSpacing: 1.5,
-              }}>{c.label}</Text>
-              <Text style={{ fontSize: 10, fontWeight: 400, color: C.bg, marginTop: 2 }}>
-                {c.value}
-              </Text>
-            </View>
+            {/* Skills List */}
+            {p.skills.map((sk, sIdx) => (
+              <View
+                key={sIdx}
+                style={{
+                  backgroundColor: C.bg,
+                  borderWidth: 1,
+                  borderStyle: 'solid',
+                  borderColor: C.cardBorder,
+                  borderRadius: 4,
+                  padding: 8,
+                  marginBottom: 8,
+                }}
+              >
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Text style={{ fontSize: 9, fontWeight: 700, color: C.navy }}>{sk.name}</Text>
+                  <View
+                    style={{
+                      backgroundColor: C.tagBg,
+                      borderWidth: 1,
+                      borderStyle: 'solid',
+                      borderColor: C.tagBorder,
+                      borderRadius: 3,
+                      paddingVertical: 1,
+                      paddingHorizontal: 4,
+                    }}
+                  >
+                    <Text style={{ fontSize: 6.5, fontWeight: 700, color: C.tagText }}>{sk.level}</Text>
+                  </View>
+                </View>
+                <Text style={{ fontSize: 7.5, fontWeight: 400, color: C.textSecondary, marginTop: 3 }}>
+                  {sk.focus}
+                </Text>
+              </View>
+            ))}
           </View>
         ))}
       </View>
 
-      {/* Watermark */}
-      <Text style={s.watermark}>IYN</Text>
-
-      {/* Footer bar */}
-      <View style={s.footerBarDark}>
-        <Text style={s.footerTextDark}>Iman Yunar Noviadhi</Text>
-        <Text style={s.footerTextDark}>06 / 06</Text>
+      {/* Bottom Architectural Highlights Strip */}
+      <View
+        style={{
+          flexDirection: 'row',
+          marginTop: 14,
+          backgroundColor: C.navy,
+          borderRadius: 6,
+          padding: 12,
+        }}
+      >
+        {[
+          { title: '12+ TECHNOLOGIES', desc: 'Spanning modern frontend, backend, databases, and applied AI.' },
+          { title: 'TESTING DISCIPLINE', desc: '100% verified test scenarios and clean code conventions.' },
+          { title: 'BILINGUAL COMMUNICATION', desc: 'English (Professional working proficiency) & Indonesian (Native).' },
+        ].map((item, i) => (
+          <View
+            key={i}
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              borderRightWidth: i < 2 ? 1 : 0,
+              borderRightStyle: 'solid',
+              borderRightColor: 'rgba(255, 255, 255, 0.12)',
+              paddingHorizontal: 12,
+            }}
+          >
+            <Text style={{ fontSize: 8.5, fontWeight: 700, color: C.accentCyanLight, letterSpacing: 1 }}>
+              {item.title}
+            </Text>
+            <Text style={{ fontSize: 7.5, fontWeight: 400, color: C.lightBlue, textAlign: 'center', marginTop: 2 }}>
+              {item.desc}
+            </Text>
+          </View>
+        ))}
       </View>
+
+      <SlideFooter slideNum="04" />
+    </Page>
+  );
+}
+
+/* ============================================
+   SLIDE 5 — ACHIEVEMENTS & HONORS (White Theme)
+   ============================================ */
+function SlideAchievements() {
+  const honors = [
+    {
+      category: 'PEER-REVIEWED PUBLICATION',
+      title: 'Corresponding Author & Lead Researcher',
+      org: 'UNNES Journal  |  Published Feb 2024',
+      description:
+        'Published empirical study examining AI chatbot pedagogical efficacy in computer science higher education (Operating Systems course). Conducted statistical analysis and literature synthesis.',
+      stat: 'PUBLISHED',
+    },
+    {
+      category: 'NATIONAL COMPETITION',
+      title: 'Top 10 Finalist — Activation 7.0',
+      org: 'HIMADIKA National Essay Competition  |  2024',
+      description:
+        'Recognized nationally among university students for analytical writing addressing technological literacy and modern educational reform.',
+      stat: 'FINALIST',
+    },
+    {
+      category: 'NATIONAL COMPETITION AWARD',
+      title: '5th Place Award — MEDISPRO Essay',
+      org: 'MEDISPRO Academic Symposium  |  2025',
+      description:
+        'Awarded 5th place nationally for structured academic inquiry regarding technological integration, health data systems, and policy innovation.',
+      stat: '5TH PLACE',
+    },
+    {
+      category: 'INDUSTRY CERTIFICATION',
+      title: 'Cloud & DevOps Fundamentals',
+      org: 'Dicoding Indonesia × Amazon Web Services (AWS)',
+      description:
+        'Mastered foundational AWS cloud infrastructure, CI/CD pipeline automation, virtualization, and reliable containerized application hosting.',
+      stat: 'CERTIFIED',
+    },
+  ];
+
+  return (
+    <Page size="A4" orientation="landscape" wrap={false} style={s.pageLight}>
+      <SlideHeader
+        category="04 / Honors & Verification"
+        title="Academic Honors, Competitions & Certifications"
+        subtitle="Documented verification of analytical rigor, scientific communication, and cloud infrastructure knowledge."
+        icon={<IconAward size={10} color="#FFFFFF" />}
+      />
+
+      {/* 2x2 Grid of Achievement Cards */}
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 16, marginTop: 6 }}>
+        {honors.map((item, idx) => (
+          <View
+            key={idx}
+            style={{
+              width: '48.5%',
+              backgroundColor: C.bgAlt,
+              borderRadius: 6,
+              borderWidth: 1,
+              borderStyle: 'solid',
+              borderColor: C.cardBorder,
+              padding: 14,
+            }}
+          >
+            {/* Card Header */}
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+              <View
+                style={{
+                  backgroundColor: C.tagBg,
+                  borderWidth: 1,
+                  borderStyle: 'solid',
+                  borderColor: C.tagBorder,
+                  borderRadius: 3,
+                  paddingVertical: 2,
+                  paddingHorizontal: 6,
+                }}
+              >
+                <Text style={{ fontSize: 7, fontWeight: 700, color: C.accent, letterSpacing: 0.8 }}>
+                  {item.category}
+                </Text>
+              </View>
+
+              <View
+                style={{
+                  backgroundColor: C.navy,
+                  borderRadius: 3,
+                  paddingVertical: 2,
+                  paddingHorizontal: 6,
+                }}
+              >
+                <Text style={{ fontSize: 6.5, fontWeight: 700, color: '#FFFFFF' }}>{item.stat}</Text>
+              </View>
+            </View>
+
+            {/* Title & Organization */}
+            <Text style={{ fontSize: 11, fontWeight: 700, color: C.navy, marginTop: 8 }}>
+              {item.title}
+            </Text>
+            <Text style={{ fontSize: 8, fontWeight: 500, color: C.textMuted, marginTop: 2 }}>
+              {item.org}
+            </Text>
+
+            {/* Description */}
+            <Text style={{ fontSize: 8, fontWeight: 400, color: C.textSecondary, lineHeight: 1.5, marginTop: 6 }}>
+              {item.description}
+            </Text>
+          </View>
+        ))}
+      </View>
+
+      {/* Bottom Summary Banner */}
+      <View
+        style={{
+          marginTop: 16,
+          backgroundColor: C.navy,
+          borderRadius: 6,
+          paddingVertical: 12,
+          paddingHorizontal: 18,
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: 16,
+        }}
+      >
+        <View
+          style={{
+            width: 32,
+            height: 32,
+            borderRadius: 16,
+            backgroundColor: C.accent,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <IconAward size={14} color="#FFFFFF" />
+        </View>
+        <View style={{ flex: 1 }}>
+          <Text style={{ fontSize: 9, fontWeight: 700, color: '#FFFFFF' }}>
+            Verified Commitment to Technical Excellence & Academic Rigor
+          </Text>
+          <Text style={{ fontSize: 8, fontWeight: 400, color: C.lightBlue, marginTop: 2, lineHeight: 1.4 }}>
+            From peer-reviewed publication to national competitive writing and industry cloud certification,
+            each milestone demonstrates consistent quality and dedication.
+          </Text>
+        </View>
+      </View>
+
+      <SlideFooter slideNum="05" />
+    </Page>
+  );
+}
+
+/* ============================================
+   SLIDE 6 — CLOSING / ENGAGEMENT (Navy Theme)
+   ============================================ */
+function SlideContact() {
+  const channels = [
+    {
+      title: 'DIRECT EMAIL',
+      val: 'imanyunar@gmail.com',
+      desc: 'Preferred for recruitment, technical interviews, and formal inquiries.',
+      icon: <IconMail size={14} color="#FFFFFF" />,
+    },
+    {
+      title: 'CODE REPOSITORY',
+      val: 'github.com/imanyunar',
+      desc: 'Browse open-source projects, architecture patterns, and technical tests.',
+      icon: <IconCode size={14} color="#FFFFFF" />,
+    },
+    {
+      title: 'LINKEDIN NETWORK',
+      val: 'linkedin.com/in/iman-yunar-noviadhi',
+      desc: 'Explore professional endorsements, verified experience, and connections.',
+      icon: <IconExternalLink size={14} color="#FFFFFF" />,
+    },
+  ];
+
+  return (
+    <Page size="A4" orientation="landscape" wrap={false} style={s.pageDark}>
+      {/* Top Accent Strip */}
+      <View style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: 4,
+        backgroundColor: C.accent,
+      }} />
+
+      <SlideHeader
+        category="Collaboration  |  2026"
+        title="Let's build reliable, high-impact systems together."
+        subtitle="Available for software engineering roles, technical internships, and innovative AI-driven development."
+        isDark
+        icon={<IconMail size={10} color="#FFFFFF" />}
+      />
+
+      {/* Center 3 Action Cards */}
+      <View style={{ flexDirection: 'row', gap: 18, marginTop: 12 }}>
+        {channels.map((ch, idx) => (
+          <View
+            key={idx}
+            style={{
+              flex: 1,
+              backgroundColor: 'rgba(255, 255, 255, 0.04)',
+              borderWidth: 1,
+              borderStyle: 'solid',
+              borderColor: 'rgba(255, 255, 255, 0.12)',
+              borderRadius: 8,
+              padding: 18,
+            }}
+          >
+            {/* Icon & Category */}
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+              <View
+                style={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: 16,
+                  backgroundColor: C.accent,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                {ch.icon}
+              </View>
+              <Text style={{ fontSize: 8, fontWeight: 700, color: C.accentCyanLight, letterSpacing: 1.5, textTransform: 'uppercase' }}>
+                {ch.title}
+              </Text>
+            </View>
+
+            {/* Value */}
+            <Text style={{ fontSize: 10.5, fontWeight: 700, color: '#FFFFFF', marginTop: 2 }}>
+              {ch.val}
+            </Text>
+
+            {/* Description */}
+            <Text style={{ fontSize: 8, fontWeight: 400, color: C.paleBlue, lineHeight: 1.5, marginTop: 8 }}>
+              {ch.desc}
+            </Text>
+          </View>
+        ))}
+      </View>
+
+      {/* Location & Availability Banner */}
+      <View
+        style={{
+          marginTop: 24,
+          backgroundColor: 'rgba(255, 255, 255, 0.03)',
+          borderWidth: 1,
+          borderStyle: 'solid',
+          borderColor: 'rgba(255, 255, 255, 0.08)',
+          borderRadius: 6,
+          padding: 16,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <View>
+          <Text style={{ fontSize: 8, fontWeight: 700, color: C.accentCyanLight, letterSpacing: 1, textTransform: 'uppercase' }}>
+            Location &amp; Work Eligibility
+          </Text>
+          <Text style={{ fontSize: 9.5, fontWeight: 500, color: '#FFFFFF', marginTop: 2 }}>
+            Based in Semarang, Central Java, Indonesia  •  Open to Remote, Hybrid, &amp; On-Site Opportunities
+          </Text>
+        </View>
+
+        <View
+          style={{
+            backgroundColor: C.accent,
+            borderRadius: 4,
+            paddingVertical: 6,
+            paddingHorizontal: 12,
+          }}
+        >
+          <Text style={{ fontSize: 8, fontWeight: 700, color: '#FFFFFF', letterSpacing: 0.5 }}>
+            READY TO CONTRIBUTE
+          </Text>
+        </View>
+      </View>
+
+      <SlideFooter slideNum="06" isDark />
     </Page>
   );
 }
@@ -810,10 +1256,10 @@ function SlideContact() {
 export default function PortfolioPDF() {
   return (
     <Document
-      title="Iman Yunar Noviadhi — Portfolio"
+      title="Iman Yunar Noviadhi — Executive Portfolio"
       author="Iman Yunar Noviadhi"
-      subject="Full-Stack Developer & AI Practitioner Portfolio"
-      keywords="portfolio, full-stack, developer, AI, Iman Yunar"
+      subject="Full-Stack Developer & AI Practitioner Portfolio (McKinsey Presentation Style)"
+      keywords="portfolio, full-stack, developer, AI, Iman Yunar Noviadhi, software engineer, Laravel, TypeScript, React"
     >
       <SlideCover />
       <SlideAbout />
