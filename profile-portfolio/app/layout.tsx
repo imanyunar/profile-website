@@ -27,6 +27,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://imanyunar.my.id",
   },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/apple-icon.png",
+  },
   openGraph: {
     title: "Iman Yunar Noviadhi — Full-Stack Developer & AI Practitioner",
     description:

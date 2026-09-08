@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient: Deep Slate to Midnight -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="50%" stop-color="#090D1A" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <!-- Subtle Radial Glow behind Monogram -->
+    <radialGradient id="ambientGlow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#2563EB" stop-opacity="0.25" />
+      <stop offset="70%" stop-color="#1D4ED8" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Border Gradient -->
+    <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.6" />
+      <stop offset="40%" stop-color="#2563EB" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#1E293B" stop-opacity="0.4" />
+    </linearGradient>
+
+    <!-- "I" Bar Gradient: Crisp Pure White to Soft Slate -->
+    <linearGradient id="iGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#E2E8F0" />
+    </linearGradient>
+
+    <!-- "N" Gradient: Bright Electric Blue to Royal Indigo -->
+    <linearGradient id="nGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="50%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+
+    <!-- Accent Dot Gradient -->
+    <linearGradient id="dotGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA" />
+      <stop offset="100%" stop-color="#2251FF" />
+    </linearGradient>
+
+    <!-- Subtle Drop Shadow for 3D Pop -->
+    <filter id="shadowFilter" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.45" />
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#2563EB" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Base Rounded Container (Squircle) -->
+  <rect x="24" y="24" width="464" height="464" rx="116" fill="url(#bgGradient)" stroke="url(#borderGradient)" stroke-width="8" />
+
+  <!-- Ambient Glow -->
+  <rect x="24" y="24" width="464" height="464" rx="116" fill="url(#ambientGlow)" />
+
+  <!-- Monogram Group with Shadow -->
+  <g filter="url(#shadowFilter)">
+    <!-- Letter "I" -->
+    <!-- Top rounded cap, solid stem, bottom rounded cap -->
+    <rect x="110" y="146" width="52" height="220" rx="18" fill="url(#iGradient)" />
+
+    <!-- Letter "N" -->
+    <!-- Unified geometric path for N: Left vertical, diagonal blade, right vertical -->
+    <path
+      d="M 198 164
+         C 198 154 206 146 216 146
+         C 226 146 234 154 234 164
+         L 234 290
+         L 318 152
+         C 322 147 329 146 335 146
+         C 346 146 354 154 354 165
+         L 354 348
+         C 354 358 346 366 336 366
+         C 326 366 318 358 318 348
+         L 318 222
+         L 234 360
+         C 230 365 223 366 217 366
+         C 206 366 198 358 198 347
+         Z"
+      fill="url(#nGradient)"
+    />
+
+    <!-- Signature Accent Dot (Matching "Iman Yunar." branding) -->
+    <circle cx="396" cy="346" r="20" fill="url(#dotGradient)" />
+  </g>
+</svg>
