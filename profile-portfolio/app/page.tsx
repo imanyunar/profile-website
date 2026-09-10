@@ -13,7 +13,7 @@ import {
   GoogleWorkspacePremium,
   GoogleMilitaryTech,
 } from './components/GoogleIcon';
-import { Github, Linkedin } from 'lucide-react';
+import { Github, Linkedin, Phone, GraduationCap, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { animate } from 'animejs';
@@ -46,55 +46,82 @@ const stagger = {
 
 const EXPERIENCE = [
   {
+    role: 'McKinsey Forward Program Participant',
+    org: 'McKinsey & Company',
+    orgUrl: 'https://www.mckinsey.org/our-programs/forward/overview',
+    period: 'Sep 2026 – Present',
+    bullets: [
+      'Selected for an intensive global learning initiative focused on structured problem-solving, digital transformation, business communication, and agile adaptation.',
+      'Applied core management consulting frameworks (such as MECE, issue trees, and hypothesis-driven analysis) to evaluate complex business scenarios and synthesize data-backed solutions.',
+      'Developed advanced capabilities in digital tools, workplace adaptability, and leadership techniques to drive strategic impact in high-velocity professional environments.',
+    ],
+    metric: 'Global Initiative · Problem Solving & Digital Fluency',
+    filled: true,
+  },
+  {
     role: 'Web Developer Intern',
-    org: 'PT Teknologi Aplikasi Sejahtera',
+    org: 'PT Teknologi Aplikasi Sejahtera (TAS)',
+    orgUrl: 'https://teknosejahtera.co.id/',
     period: 'Feb 2026 – Jul 2026',
     bullets: [
-      'Built a Document Management System using Laravel, Vue.js, TypeScript, and PostgreSQL',
-      'Implemented REST API integration and role-based access control across the platform',
-      'Conducted Black Box Testing across 77 scenarios with 100% pass rate',
+      'Engineered an enterprise Document Management System (DMS) using Laravel, Vue.js, TypeScript, and PostgreSQL to digitize administrative workflows and enhance document traceability.',
+      'Designed and integrated RESTful APIs to enable seamless frontend-backend communication, optimizing data transfer efficiency.',
+      'Implemented Role-Based Access Control (RBAC) to enforce data security, access governance, and compliance standards.',
+      'Executed Black Box Testing across 77 functional scenarios, validating end-to-end system requirements, data integrity, and feature compliance prior to deployment.',
     ],
-    metric: '100% Pass Rate · 77 Test Scenarios',
+    metric: '77 Functional Scenarios Validated · Zero Defects',
     rating: 'Performance: EXCELLENT',
     filled: true,
   },
   {
-    role: 'Secretary, Public Relations Dept',
-    org: 'UKMP, Universitas Negeri Semarang',
-    period: 'Feb 2025 – Nov 2025',
-    bullets: [
-      'Event Chairperson for 2 cross-university comparative study visits (UNESA & Universitas Brawijaya)',
-      'Coordinated logistics, delegation communications, and post-event reporting',
-    ],
-    filled: false,
-  },
-  {
-    role: 'Inbound Virtual Student Mobility',
-    org: 'Universiti Tun Hussein Onn Malaysia (UTHM)',
+    role: 'Inbound (Virtual) Student Mobility Participant',
+    org: 'Universiti Tun Hussein Onn Malaysia (UTHM) – Faculty of Technical and Vocational Education',
+    orgUrl: 'https://www.uthm.edu.my/',
     period: 'Jul 2026 – Sep 2026',
     bullets: [
-      'Participated in international academic exchange program in computer science',
+      'Completed international academic exchange under the Faculty of Technical and Vocational Education, focusing on Industrial Revolution 4.0 concepts and technology trends.',
+      'Engaged in cross-border technical discussions, analyzing global digital transformation frameworks alongside international peers and faculty.',
+      'Demonstrated cross-cultural communication and independent learning, adapting effectively to an international academic framework.',
     ],
+    metric: 'International Mobility · IR 4.0 Focus',
     filled: false,
   },
   {
-    role: 'Staff, Internal & Organizational Supervision',
-    org: 'ISAFIS',
+    role: 'Secretary of the Public Relations Department',
+    org: 'Student Research Activity Unit (UKMP), Universitas Negeri Semarang',
+    orgUrl: 'https://sites.unnes.ac.id/ukmpenelitian/',
+    period: 'Feb 2025 – Nov 2025',
+    bullets: [
+      'Spearheaded 2 cross-university comparative study programs with UNESA and Universitas Brawijaya as Event Chairperson, managing cross-functional student delegations.',
+      'Managed external stakeholder communications and institutional partnerships, streamlining event planning, administrative workflows, and inter-organization coordination.',
+      'Delegated operational tasks across multiple divisions, facilitating knowledge exchange on research methodologies and organizational governance for partner universities.',
+    ],
+    metric: 'Event Chairperson · 2 Cross-University Programs',
+    filled: false,
+  },
+  {
+    role: 'Staff of Internal And Organizational Supervision',
+    org: 'Indonesian Student Association For International Studies (ISAFIS)',
     period: 'Apr 2024 – Dec 2024',
     bullets: [
-      'Built an online voting system for a presidential election',
-      'Contributed to organizational governance and internal audit processes',
+      'Developed and deployed an online voting system for the ISAFIS presidential election, ensuring ballot security, user authorization, and real-time result aggregation.',
+      'Maintained central member databases and internal communications, supporting organizational governance, policy enforcement, and cross-chapter member engagement.',
+      'Co-executed national orientation programs (MOCA 2024), coordinating logistics, candidate onboarding, and administrative alignment across nationwide chapters.',
     ],
+    metric: 'E-Voting Architecture · Governance & Compliance',
     filled: false,
   },
   {
-    role: 'Corresponding Author',
-    org: 'Published Scientific Article — UNNES Journal',
+    role: 'Corresponding Author & Lead Researcher',
+    org: 'Article Publications — UNNES Journal (Mediasi)',
+    orgUrl: 'https://jurnalilmiah.org/journal/index.php/mediasi/article/view/753',
     period: 'Aug 2023 – Feb 2024',
     bullets: [
-      'Published research on AI chatbot effectiveness in Operating Systems education',
-      'Experimental study demonstrating measurable improvements in student engagement',
+      'Authored a peer-reviewed research paper on AI chatbot integration in Operating Systems education, analyzing technology adoption in higher education.',
+      'Conducted empirical data collection and statistical analysis to evaluate the pedagogical efficacy and usability of AI-driven conversational agents.',
+      'Synthesized research findings into actionable insights, contributing to academic literature on educational technology and adaptive learning tools.',
     ],
+    metric: 'Peer-Reviewed Publication · AI Chatbots in OS',
     filled: false,
   },
 ];
@@ -133,84 +160,94 @@ const ACHIEVEMENTS = [
   {
     icon: <GoogleWorkspacePremium className="w-5 h-5" />,
     title: 'McKinsey.org Forward Program',
-    detail: 'Selected participant in McKinsey & Company’s global initiative developing core leadership, structured problem-solving, digital fluency, and agile adaptability skills.',
-    meta: 'McKinsey.org · Accepted 2026',
-    link: 'https://www.mckinsey.org/forward',
+    detail: 'Selected for intensive global learning initiative developing core leadership, structured problem-solving (MECE), digital transformation, and agile adaptation.',
+    meta: 'McKinsey & Company · Accepted Sep 2026',
+    link: 'https://www.mckinsey.org/our-programs/forward/overview',
     linkText: 'Explore Program',
     image: '/images/mckinsey-forward.jpg',
   },
   {
     icon: <GoogleMenuBook className="w-5 h-5" />,
     title: 'Published Scientific Article',
-    detail: 'Corresponding Author — AI Chatbots in Operating Systems Education',
-    meta: 'UNNES Journal · Feb 2024',
+    detail: 'Corresponding Author — "Pemanfaatan AI Chatbot dalam Pembelajaran Sistem Operasi" (Operating Systems education research paper).',
+    meta: 'UNNES Journal (Mediasi) · Published Feb 2024',
     link: 'http://jurnalilmiah.org/journal/index.php/mediasi/article/view/753',
     linkText: 'Read Paper',
   },
   {
     icon: <GoogleWorkspacePremium className="w-5 h-5" />,
-    title: 'Top 10 Finalist',
-    detail: 'Activation 7.0 Essay Competition 2024',
-    meta: 'National Competition',
+    title: 'Top 10 Finalist — Activation 7.0 Essay Competition',
+    detail: 'Author of "Stoddlers": Interactive website-based learning platform with animated videos & educational games on sexual education & reproductive health for toddlers.',
+    meta: 'HIMADIKA Universitas Brawijaya · Nov 2, 2024',
   },
   {
     icon: <GoogleWorkspacePremium className="w-5 h-5" />,
-    title: '5th Place',
-    detail: 'MEDISPRO Essay Competition 2025',
-    meta: 'National Competition',
+    title: '5th Place Finalist — MEDISPRO Essay Competition 2025',
+    detail: 'Author of "SkinAlyzr": Innovative deep learning-based mobile application with multi-task learning for early detection & accelerated treatment of skin diseases.',
+    meta: 'Faculty of Medicine, UNNES · Sep 15, 2025',
   },
   {
     icon: <GoogleMilitaryTech className="w-5 h-5" />,
-    title: 'DevOps Fundamentals Certificate',
-    detail: 'Learning the Fundamentals of DevOps',
-    meta: 'Dicoding Indonesia × AWS',
+    title: 'Web Developer Internship (EXCELLENT)',
+    detail: 'Successfully built enterprise full-stack Document Management System (DMS) and executed Black Box Testing across 77 functional scenarios with zero critical defects.',
+    meta: 'PT Teknologi Aplikasi Sejahtera · Feb–Jul 2026',
+    link: 'https://teknosejahtera.co.id/',
+    linkText: 'Company Profile',
+  },
+  {
+    icon: <GoogleMilitaryTech className="w-5 h-5" />,
+    title: 'DevOps & AWS Cloud Fundamentals Certificate',
+    detail: 'Certified in AWS & Cloud Fundamentals by Dicoding; validated core knowledge in cloud deployment models, network security, and infrastructure management.',
+    meta: 'Dicoding Indonesia × AWS · Nov 2023 – Nov 2026',
+    link: 'https://www.dicoding.com/certificates/1RXY0GQM3ZVM',
+    linkText: 'Verify Certificate',
   },
 ];
 
 const SKILLS: { category: string; items: { name: string; level: number; label: string }[] }[] = [
   {
-    category: 'Frontend',
+    category: 'Consulting & Strategic Capabilities',
     items: [
-      { name: 'Next.js', level: 90, label: 'Advanced' },
-      { name: 'Vue.js', level: 90, label: 'Advanced' },
+      { name: 'Structured Problem Solving (MECE Framework)', level: 92, label: 'Advanced' },
+      { name: 'Data-Driven Business Analysis', level: 95, label: 'Expert' },
+      { name: 'Cross-Functional Team Leadership', level: 90, label: 'Advanced' },
+      { name: 'Digital Transformation Strategy', level: 90, label: 'Advanced' },
+      { name: 'Agile Project Management', level: 88, label: 'Advanced' },
+      { name: 'Requirement Gathering & System Mapping', level: 88, label: 'Advanced' },
+      { name: 'Change Management & Governance', level: 85, label: 'Advanced' },
+      { name: 'Stakeholder Management', level: 80, label: 'Intermediate' },
+    ],
+  },
+  {
+    category: 'Languages & Frameworks',
+    items: [
+      { name: 'Python', level: 95, label: 'Expert' },
+      { name: 'Javascript', level: 92, label: 'Expert' },
       { name: 'TypeScript', level: 90, label: 'Advanced' },
-      { name: 'JavaScript', level: 80, label: 'Intermediate' },
-      { name: 'TailwindCSS', level: 85, label: 'Advanced' },
+      { name: 'Laravel', level: 92, label: 'Expert' },
+      { name: 'Vue.js', level: 90, label: 'Expert' },
+      { name: 'Next.js', level: 88, label: 'Advanced' },
+      { name: 'PHP', level: 90, label: 'Expert' },
+      { name: 'C++', level: 90, label: 'Expert' },
     ],
   },
   {
-    category: 'Backend',
+    category: 'Databases, Cloud & Tools',
     items: [
-      { name: 'Laravel', level: 90, label: 'Advanced' },
-      { name: 'PHP', level: 90, label: 'Advanced' },
-      { name: 'REST API', level: 85, label: 'Advanced' },
-      { name: 'PostgreSQL', level: 80, label: 'Advanced' },
+      { name: 'PostgreSQL', level: 92, label: 'Expert' },
+      { name: 'MySQL', level: 90, label: 'Expert' },
+      { name: 'Docker', level: 90, label: 'Expert' },
+      { name: 'Git', level: 92, label: 'Expert' },
+      { name: 'RESTful APIs', level: 90, label: 'Advanced' },
+      { name: 'Amazon Web Services', level: 85, label: 'Advanced' },
+      { name: 'Postman', level: 88, label: 'Advanced' },
     ],
   },
   {
-    category: 'Data / AI',
+    category: 'Languages',
     items: [
-      { name: 'Python', level: 90, label: 'Advanced' },
-      { name: 'TensorFlow', level: 80, label: 'Advanced' },
-      { name: 'PyTorch', level: 78, label: 'Advanced' },
-      { name: 'Data Analytics', level: 88, label: 'Advanced' },
-    ],
-  },
-  {
-    category: 'Systems & Tools',
-    items: [
-      { name: 'Docker', level: 70, label: 'Intermediate' },
-      { name: 'C++', level: 85, label: 'Advanced' },
-      { name: 'Git', level: 85, label: 'Advanced' },
-    ],
-  },
-  {
-    category: 'Professional',
-    items: [
-      { name: 'Teamwork & Collaboration', level: 95, label: 'Expert' },
-      { name: 'Communication', level: 90, label: 'Advanced' },
-      { name: 'Leadership', level: 88, label: 'Advanced' },
-      { name: 'Event Management', level: 85, label: 'Advanced' },
+      { name: 'Bahasa Indonesia', level: 100, label: 'Native' },
+      { name: 'English', level: 88, label: 'Fluent' },
     ],
   },
 ];
@@ -275,10 +312,8 @@ export default function Home() {
                     <br />
                     <span className="text-[var(--color-accent)] font-normal hover:brightness-110 transition-all inline-block hover:translate-x-0.5 duration-200">&amp; AI Practitioner</span>
                   </h1>
-                  <p className="text-sm sm:text-base md:text-lg text-[var(--color-text-muted)] font-light leading-relaxed max-w-xl">
-                    Computer Science undergraduate at Universitas Negeri Semarang specializing in
-                    full-stack development and applied AI, with a track record of delivering
-                    production-ready systems and leading cross-university teams.
+                  <p className="text-sm sm:text-base md:text-lg text-[var(--color-text-muted)] font-light leading-relaxed max-w-2xl">
+                    Computer Science undergraduate at Universitas Negeri Semarang and McKinsey Forward Program Participant with strong capabilities in software engineering, applied AI, and project leadership. Proven track record architecting enterprise solutions (Laravel, Vue.js, PostgreSQL) and conducting rigorous functional QA across 77 test scenarios.
                   </p>
                 </m.div>
 
@@ -346,11 +381,11 @@ export default function Home() {
                           <div className="text-xs sm:text-sm font-semibold text-[var(--color-primary)] flex items-center gap-1 group-hover/stat:text-[var(--color-accent)] transition-colors">
                             <GoogleCheckCircleFilled className="w-3.5 h-3.5 text-emerald-600 shrink-0 transition-transform duration-200 group-hover/stat:scale-110" />
                             <span>
-                              <CounterStat key={`stat-pass-${statKey}`} target={100} suffix="%" /> Pass Rate
+                              GPA 3.84 <span className="text-[10px] sm:text-[11px] font-normal text-[var(--color-text-muted)]">out of 4.00</span>
                             </span>
                           </div>
                           <p className="text-[10px] sm:text-[11px] text-[var(--color-text-muted)] font-medium">
-                            <CounterStat key={`stat-scen-${statKey}`} target={77} /> Scenarios · PT TAS Intern
+                            UNNES Computer Science · 77 Scenarios (TAS)
                           </p>
                         </div>
                         <span className="text-[10px] sm:text-[11px] font-bold px-1.5 py-0.5 bg-blue-50 text-[var(--color-accent)] border border-blue-200/60 rounded group-hover/stat:bg-[var(--color-accent)] group-hover/stat:text-white group-hover/stat:scale-105 transition-all duration-200">
@@ -443,9 +478,177 @@ export default function Home() {
         </section>
 
         {/* ============================================
+            EDUCATION SECTION
+            ============================================ */}
+        <section id="education" className="py-12 sm:py-16 md:py-20 bg-white">
+          <div className="container-narrow">
+            <m.div
+              variants={fadeIn}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              className="mb-8 sm:mb-10"
+            >
+              <AccentRule />
+              <h2 className="text-section-heading text-2xl sm:text-3xl md:text-[36px]">Education</h2>
+              <p className="text-xs sm:text-sm text-[var(--color-text-muted)] font-light mt-2 max-w-xl">
+                Academic foundation in Computer Science, software engineering rigor, and international academic exchange.
+              </p>
+            </m.div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              {/* Primary Degree Card (Universitas Negeri Semarang) */}
+              <m.div
+                variants={fadeIn}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                className="lg:col-span-8 card p-6 sm:p-7 rounded-xl bg-gradient-to-br from-white via-slate-50/50 to-blue-50/20 border border-slate-200 hover:border-[var(--color-accent)] hover:shadow-xl transition-all duration-300"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-5 border-b border-slate-100">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100/80 flex items-center justify-center text-[var(--color-accent)] shrink-0 shadow-2xs">
+                      <GraduationCap className="w-6 h-6" />
+                    </div>
+                    <div className="space-y-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-label text-[11px] font-semibold text-[var(--color-accent)] uppercase tracking-wider">
+                          Undergraduate Degree
+                        </span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-slate-300" />
+                        <span className="text-xs text-[var(--color-text-muted)] font-medium">08/2023 – Present</span>
+                      </div>
+                      <h3 className="text-lg sm:text-xl font-medium text-[var(--color-primary)]">
+                        Universitas Negeri Semarang (UNNES)
+                      </h3>
+                      <p className="text-sm text-[var(--color-text)] font-normal">
+                        Bachelor of Computer Science
+                      </p>
+                      <p className="text-xs text-[var(--color-text-muted)] flex items-center gap-1 pt-0.5">
+                        <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                        Semarang, Central Java, Indonesia
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* GPA Highlight Badge */}
+                  <div className="self-start sm:self-auto sm:text-right shrink-0">
+                    <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-emerald-50 border border-emerald-200/80 text-emerald-800 shadow-2xs">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                      <div>
+                        <div className="text-[10px] text-emerald-600 font-semibold tracking-wide uppercase text-left sm:text-right">
+                          Cumulative GPA
+                        </div>
+                        <div className="text-base sm:text-lg font-bold text-emerald-700 leading-tight">
+                          3.84 <span className="text-xs font-normal text-emerald-600">out of 4.00</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Core Academic Competencies & Highlights */}
+                <div className="pt-5 space-y-4">
+                  <div>
+                    <h4 className="text-xs font-semibold text-[var(--color-primary)] uppercase tracking-wider mb-2.5">
+                      Core Academic Focus Areas
+                    </h4>
+                    <div className="flex flex-wrap gap-1.5">
+                      {[
+                        'Software Engineering',
+                        'Data Structures & Algorithms',
+                        'Database Systems & Modeling',
+                        'Applied Machine Learning',
+                        'Operating Systems Architecture',
+                        'Computer Networks',
+                        'Web & Cloud Systems',
+                      ].map((course, cIdx) => (
+                        <span
+                          key={cIdx}
+                          className="tech-tag !text-xs !py-1 !px-2.5 bg-white border-slate-200"
+                        >
+                          {course}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-2">
+                    <h4 className="text-xs font-semibold text-[var(--color-primary)] uppercase tracking-wider mb-2">
+                      Academic &amp; Research Contributions
+                    </h4>
+                    <ul className="space-y-1.5 text-xs text-[var(--color-text)] font-light leading-relaxed">
+                      <li className="flex items-start gap-2">
+                        <GoogleCheckCircle className="w-3.5 h-3.5 text-[var(--color-accent)] shrink-0 mt-0.5" />
+                        <span><strong>Corresponding Author:</strong> Peer-reviewed research paper on AI chatbot instructional efficacy published in UNNES Journal (Mediasi, Feb 2024).</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <GoogleCheckCircle className="w-3.5 h-3.5 text-[var(--color-accent)] shrink-0 mt-0.5" />
+                        <span><strong>National Essay Finalist:</strong> 5th Place in MEDISPRO Essay Competition (UNNES FK, 2025) for AI-driven mobile dermatology platform "SkinAlyzr".</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <GoogleCheckCircle className="w-3.5 h-3.5 text-[var(--color-accent)] shrink-0 mt-0.5" />
+                        <span><strong>Student Governance:</strong> Secretary of Public Relations &amp; 2x Cross-University Comparative Study Event Chair (UKMP UNNES).</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </m.div>
+
+              {/* International Mobility Card (UTHM Malaysia) */}
+              <m.div
+                variants={fadeIn}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                className="lg:col-span-4 card p-6 sm:p-7 rounded-xl bg-white border border-slate-200 hover:border-[var(--color-accent)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="metric-badge !text-[11px] font-semibold text-[var(--color-accent)]">
+                      International Exchange
+                    </span>
+                    <span className="text-xs text-[var(--color-text-muted)] font-medium">07/2026 – 09/2026</span>
+                  </div>
+
+                  <div>
+                    <h3 className="text-base sm:text-lg font-medium text-[var(--color-primary)]">
+                      Universiti Tun Hussein Onn Malaysia
+                    </h3>
+                    <p className="text-xs text-[var(--color-text-muted)] font-medium mt-0.5">
+                      Faculty of Technical &amp; Vocational Education (UTHM)
+                    </p>
+                    <p className="text-xs text-[var(--color-text-muted)] flex items-center gap-1 pt-1">
+                      <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                      Johor, Malaysia (Virtual Mobility)
+                    </p>
+                  </div>
+
+                  <div className="pt-2 border-t border-slate-100 space-y-2">
+                    <h4 className="text-xs font-semibold text-[var(--color-primary)] uppercase tracking-wider">
+                      Curriculum &amp; Exchange Focus
+                    </h4>
+                    <p className="text-xs text-[var(--color-text)] font-light leading-relaxed">
+                      Completed an intensive international academic exchange exploring Industrial Revolution 4.0 (IR 4.0) frameworks, modern educational technology integration, and cross-border digital transformation.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-4 mt-4 border-t border-slate-100">
+                  <div className="flex items-center gap-2 text-xs text-[var(--color-accent)] font-semibold">
+                    <GoogleWorkspacePremium className="w-4 h-4" />
+                    <span>Global Perspective &amp; IR 4.0</span>
+                  </div>
+                </div>
+              </m.div>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================
             PROJECTS SECTION
             ============================================ */}
-        <section id="projects" className="py-12 sm:py-16 md:py-20">
+        <section id="projects" className="py-12 sm:py-16 md:py-20 bg-[var(--color-bg-alt)]">
           <div className="container-narrow">
             <m.div
               variants={fadeIn}
@@ -711,9 +914,9 @@ export default function Home() {
                 </div>
               </m.a>
 
-              {/* GitHub Card */}
+              {/* Direct Phone / WhatsApp Card */}
               <m.a
-                href="https://github.com/imanyunar"
+                href="https://wa.me/6285172247452"
                 target="_blank"
                 rel="noopener noreferrer"
                 variants={fadeIn}
@@ -724,22 +927,22 @@ export default function Home() {
               >
                 <div>
                   <div className="w-10 h-10 flex items-center justify-center bg-blue-50 text-[var(--color-accent)] mb-4 rounded-md transition-all duration-300 group-hover:bg-[var(--color-accent)] group-hover:text-white group-hover:scale-110 group-hover:rotate-3 shadow-xs">
-                    <Github className="w-5 h-5" />
+                    <Phone className="w-5 h-5" />
                   </div>
-                  <span className="text-label text-[11px] block mb-1">GitHub</span>
-                  <h3 className="text-base font-medium text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors">
-                    github.com/imanyunar
+                  <span className="text-label text-[11px] block mb-1">Phone / WhatsApp</span>
+                  <h3 className="text-sm sm:text-[15px] font-medium text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors">
+                    +62 851-7224-7452
                   </h3>
                 </div>
                 <div className="mt-6 flex items-center gap-1.5 text-xs font-semibold text-[var(--color-accent)] group-hover:text-blue-700 transition-colors">
-                  <span>View Code</span>
+                  <span>Chat on WhatsApp</span>
                   <GoogleOpenInNew className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-0.5" />
                 </div>
               </m.a>
 
               {/* PDF Portfolio Deck Card */}
               <m.div
-                onClick={handleDownloadCV}
+                onClick={downloadPortfolioPdf}
                 variants={fadeIn}
                 initial="initial"
                 whileInView="animate"
@@ -756,11 +959,30 @@ export default function Home() {
                   </h3>
                 </div>
                 <div className="mt-6 flex items-center gap-1.5 text-xs font-semibold text-[var(--color-accent)] group-hover:text-blue-700 transition-colors">
-                  <span>Download Deck</span>
+                  <span>Instant Download</span>
                   <GoogleFileDownload className="w-3 h-3 transition-transform duration-200 group-hover:translate-y-0.5" />
                 </div>
               </m.div>
             </div>
+
+            {/* Location & Eligibility Banner */}
+            <m.div
+              variants={fadeIn}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              className="mt-6 p-4 rounded-xl border border-slate-200 bg-slate-50/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[var(--color-text-muted)]"
+            >
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+                <span><strong>Location:</strong> Semarang, Central Java, Indonesia • Open to Remote, Hybrid &amp; On-Site roles</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <a href="https://github.com/imanyunar" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-accent)] transition-colors font-medium">GitHub: imanyunar</a>
+                <span>•</span>
+                <span className="font-medium text-slate-600">imanyunar.my.id</span>
+              </div>
+            </m.div>
           </div>
         </section>
 

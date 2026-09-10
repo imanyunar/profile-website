@@ -8,6 +8,7 @@ import { downloadPortfolioPdf } from '../lib/downloadPdf';
 const NAV_ITEMS = [
   { href: '#hero', label: 'Home' },
   { href: '#experience', label: 'Experience' },
+  { href: '#education', label: 'Education' },
   { href: '#projects', label: 'Projects' },
   { href: '#achievements', label: 'Achievements' },
   { href: '#contact', label: 'Contact' },

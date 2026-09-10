@@ -403,9 +403,10 @@ function SlideCover() {
           </View>
 
           {/* Contact Bar */}
-          <View style={{ flexDirection: 'row', gap: 20, marginTop: 28 }}>
+          <View style={{ flexDirection: 'row', gap: 16, marginTop: 28 }}>
+            <Text style={{ fontSize: 8.5, fontWeight: 500, color: C.lightBlue }}>0851-7224-7452</Text>
             <Text style={{ fontSize: 8.5, fontWeight: 400, color: C.lightBlue }}>imanyunar@gmail.com</Text>
-            <Text style={{ fontSize: 8.5, fontWeight: 400, color: C.lightBlue }}>github.com/imanyunar</Text>
+            <Text style={{ fontSize: 8.5, fontWeight: 400, color: C.lightBlue }}>imanyunar.my.id</Text>
             <Text style={{ fontSize: 8.5, fontWeight: 400, color: C.lightBlue }}>Semarang, Indonesia</Text>
           </View>
         </View>
@@ -451,9 +452,9 @@ function SlideCover() {
             {[
               { label: 'Leadership', val: 'McKinsey.org Forward (2026)' },
               { label: 'Primary Focus', val: 'Full-Stack & Applied AI' },
-              { label: 'Industry Project', val: 'Document Management (TAS)' },
-              { label: 'Testing Record', val: '100% Pass (77 Scenarios)' },
-              { label: 'International', val: 'Inbound Mobility (UTHM)' },
+              { label: 'Education & GPA', val: 'UNNES CS · GPA: 3.84 out of 4.00' },
+              { label: 'Industry Project', val: 'Enterprise DMS (TAS · EXCELLENT)' },
+              { label: 'Testing Record', val: '77 Functional Scenarios Validated' },
               { label: 'Academic Impact', val: 'Published Journal Author' },
             ].map((row, idx) => (
               <View
@@ -487,7 +488,7 @@ function SlideCover() {
    ============================================ */
 function SlideAbout() {
   const stats = [
-    { num: '100%', label: 'QA PASS RATE', desc: '77 Black-Box test scenarios passed with zero defects' },
+    { num: '3.84', label: 'CUMULATIVE GPA', desc: 'Bachelor of Computer Science at UNNES (out of 4.00)' },
     { num: 'McKinsey', label: 'FORWARD PROGRAM', desc: 'Selected for McKinsey.org global leadership program' },
     { num: '1', label: 'JOURNAL PUBLICATION', desc: 'Corresponding author on AI chatbot research in UNNES Journal' },
     { num: '2×', label: 'EVENT CHAIRPERSON', desc: 'Led cross-university comparative studies with UNESA & UB' },
@@ -520,33 +521,33 @@ function SlideAbout() {
             <Text style={{ fontSize: 10, fontWeight: 700, color: C.navy, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 8 }}>
               Professional Background
             </Text>
-            <Text style={{ fontSize: 9.5, fontWeight: 400, color: C.textSecondary, lineHeight: 1.65 }}>
-              Undergraduate Computer Science student at Universitas Negeri Semarang with extensive hands-on
-              experience in production web application development. Proven track record architecting robust
-              database solutions and full-stack systems using Laravel, Vue.js, TypeScript, and PostgreSQL.
+            <Text style={{ fontSize: 9.5, fontWeight: 400, color: C.textSecondary, lineHeight: 1.6 }}>
+              Computer Science undergraduate at Universitas Negeri Semarang and McKinsey Forward Program Participant
+              with strong capabilities in software engineering, applied AI, and project leadership. Proven track record
+              architecting enterprise solutions (Laravel, Vue.js, PostgreSQL) and conducting rigorous functional QA across 77 test scenarios.
             </Text>
-            <Text style={{ fontSize: 9.5, fontWeight: 400, color: C.textSecondary, lineHeight: 1.65, marginTop: 8 }}>
-              Demonstrated capability to combine technical execution with academic research rigor and organizational
-              governance. Adaptable communicator experienced in cross-institutional study programs and international
-              student mobility.
+            <Text style={{ fontSize: 9.5, fontWeight: 400, color: C.textSecondary, lineHeight: 1.6, marginTop: 7 }}>
+              Skilled in bridging technical execution with strategic organizational goals, experienced in leading cross-institutional
+              initiatives and managing multi-stakeholder projects. Eager to drive measurable business value and digital transformation
+              in consulting and global enterprise environments.
             </Text>
           </View>
 
           {/* Pull Quote Box */}
           <View
             style={{
-              marginTop: 14,
+              marginTop: 12,
               backgroundColor: '#EFF6FF',
               borderRadius: 6,
               borderLeftWidth: 3,
               borderLeftStyle: 'solid',
               borderLeftColor: C.accent,
-              paddingVertical: 12,
-              paddingHorizontal: 16,
+              paddingVertical: 10,
+              paddingHorizontal: 14,
             }}
           >
-            <Text style={{ fontSize: 10, fontWeight: 500, color: C.navy, lineHeight: 1.55 }}>
-              &quot;Driven to deliver verifiable impact through rigorous testing, robust engineering, and AI-enabled innovation.&quot;
+            <Text style={{ fontSize: 9.5, fontWeight: 500, color: C.navy, lineHeight: 1.5 }}>
+              &quot;Bridging technical execution with strategic organizational goals to drive measurable business value and digital transformation.&quot;
             </Text>
           </View>
         </View>
@@ -594,7 +595,7 @@ function SlideAbout() {
       <View
         style={{
           flexDirection: 'row',
-          marginTop: 16,
+          marginTop: 14,
           backgroundColor: C.cardBg,
           borderRadius: 6,
           borderWidth: 1,
@@ -606,15 +607,15 @@ function SlideAbout() {
         {[
           {
             pillar: 'ENGINEERING RIGOR',
-            detail: 'Full-stack development with disciplined black-box testing and reliable database modeling.',
+            detail: 'Enterprise Laravel, Vue.js & PostgreSQL architecture with rigorous QA across 77 functional test scenarios.',
           },
           {
-            pillar: 'APPLIED INTELLIGENCE',
-            detail: 'Practical integration of Python, machine learning workflows, and data-informed decision making.',
+            pillar: 'STRATEGIC PROBLEM SOLVING',
+            detail: 'McKinsey Forward participant applying MECE frameworks, issue trees, and digital transformation.',
           },
           {
-            pillar: 'COLLABORATIVE LEADERSHIP',
-            detail: 'Cross-university event chairmanship, department administration, and international mobility.',
+            pillar: 'PROJECT LEADERSHIP',
+            detail: 'Cross-university event chairperson, multi-stakeholder coordination, and international exchange.',
           },
         ].map((item, idx) => (
           <View
@@ -649,19 +650,19 @@ function SlideExperience() {
   const experiences = [
     {
       num: '01',
-      role: 'Web Developer Intern',
-      org: 'PT Teknologi Aplikasi Sejahtera',
-      period: 'FEB – JUL 2026',
-      badge: 'Corporate Internship',
-      detail: 'Engineered Document Management System using Laravel, Vue.js, TypeScript, and PostgreSQL. Achieved 100% pass rate across 77 Black Box test scenarios. Rated EXCELLENT by corporate supervisor.',
+      role: 'McKinsey Forward Program Participant',
+      org: 'McKinsey & Company',
+      period: 'SEP 2026 – PRESENT',
+      badge: 'Global Initiative',
+      detail: 'Selected for intensive global learning initiative. Applying MECE frameworks, issue trees, and digital transformation to evaluate complex business scenarios.',
     },
     {
       num: '02',
-      role: 'Secretary, Public Relations Dept',
-      org: 'UKMP, Universitas Negeri Semarang',
-      period: 'FEB – NOV 2025',
-      badge: 'Department Leadership',
-      detail: 'Served as Event Chairperson for 2 major cross-university comparative study visits with Universitas Negeri Surabaya (UNESA) and Universitas Brawijaya (UB). Managed stakeholder communications.',
+      role: 'Web Developer Intern',
+      org: 'PT Teknologi Aplikasi Sejahtera (TAS)',
+      period: 'FEB – JUL 2026',
+      badge: 'Corporate Internship',
+      detail: 'Engineered enterprise Document Management System (Laravel, Vue.js, TypeScript, PostgreSQL) and executed 77 Black Box test scenarios with zero critical defects. Rating: EXCELLENT.',
     },
     {
       num: '03',
@@ -669,23 +670,31 @@ function SlideExperience() {
       org: 'Universiti Tun Hussein Onn Malaysia (UTHM)',
       period: 'JUL – SEP 2026',
       badge: 'International Mobility',
-      detail: 'Completed international academic exchange in computer science, participating in cross-border technical discussions and collaborative coursework.',
+      detail: 'Completed international academic exchange focusing on Industrial Revolution 4.0 concepts, digital transformation trends, and cross-border technical discussions.',
     },
     {
       num: '04',
-      role: 'Staff, Internal & Organizational Supervision',
-      org: 'ISAFIS (Indonesian Student Association for International Studies)',
-      period: 'APR – DEC 2024',
-      badge: 'Organizational Governance',
-      detail: 'Engineered secure online voting system for presidential election, ensuring ballot integrity and transparency. Contributed to institutional governance policies.',
+      role: 'Secretary, Public Relations Dept',
+      org: 'UKMP, Universitas Negeri Semarang',
+      period: 'FEB – NOV 2025',
+      badge: 'Department Leadership',
+      detail: 'Event Chairperson for 2 cross-university comparative study programs with UNESA & UB. Managed stakeholder communications, logistics, and student delegations.',
     },
     {
       num: '05',
+      role: 'Staff of Internal & Organizational Supervision',
+      org: 'ISAFIS (Indonesian Student Assoc. for Int. Studies)',
+      period: 'APR – DEC 2024',
+      badge: 'Systems & Governance',
+      detail: 'Developed and deployed secure online voting system for presidential election. Maintained central member databases and co-executed MOCA 2024 orientation.',
+    },
+    {
+      num: '06',
       role: 'Corresponding Author & Lead Researcher',
-      org: 'UNNES Journal',
+      org: 'UNNES Journal (Mediasi)',
       period: 'AUG 2023 – FEB 2024',
       badge: 'Academic Research',
-      detail: 'Authored and published scientific article investigating AI chatbot instructional efficacy in university Operating Systems education.',
+      detail: 'Authored peer-reviewed paper on AI chatbot instructional efficacy in university Operating Systems education, conducting statistical and usability analysis.',
     },
   ];
 
@@ -694,59 +703,60 @@ function SlideExperience() {
       <SlideHeader
         category="02 / Track Record"
         title="Professional Experience & Leadership Trajectory"
-        subtitle="Demonstrated delivery across software engineering, academic research, and institutional governance."
+        subtitle="Demonstrated delivery across software engineering, strategic problem-solving, and institutional governance."
         icon={<IconBriefcase size={10} color="#FFFFFF" />}
       />
 
       {/* Main Content Layout */}
-      <View style={{ flexDirection: 'row', gap: 24, marginTop: 4 }}>
-        {/* Left Column: 5 Structured Milestone Rows */}
-        <View style={{ flex: 1.25 }}>
+      <View style={{ flexDirection: 'row', gap: 20, marginTop: 4 }}>
+        {/* Left Column: 6 Structured Milestone Rows */}
+        <View style={{ flex: 1.3 }}>
           {experiences.map((exp, idx) => (
             <View
               key={idx}
               style={{
                 flexDirection: 'row',
-                gap: 12,
+                gap: 10,
                 backgroundColor: idx % 2 === 0 ? C.bgAlt : C.bg,
                 borderWidth: 1,
                 borderStyle: 'solid',
                 borderColor: C.cardBorder,
                 borderRadius: 5,
-                padding: 10,
-                marginBottom: 8,
+                paddingVertical: 6,
+                paddingHorizontal: 9,
+                marginBottom: 5,
               }}
             >
               {/* Number Badge */}
               <View
                 style={{
-                  width: 24,
-                  height: 24,
-                  borderRadius: 12,
+                  width: 22,
+                  height: 22,
+                  borderRadius: 11,
                   backgroundColor: C.navy,
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
               >
-                <Text style={{ fontSize: 8.5, fontWeight: 700, color: '#FFFFFF' }}>{exp.num}</Text>
+                <Text style={{ fontSize: 8, fontWeight: 700, color: '#FFFFFF' }}>{exp.num}</Text>
               </View>
 
               {/* Details */}
               <View style={{ flex: 1 }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Text style={{ fontSize: 10, fontWeight: 700, color: C.navy }}>{exp.role}</Text>
-                  <Text style={{ fontSize: 7.5, fontWeight: 700, color: C.accent, letterSpacing: 0.8 }}>
+                  <Text style={{ fontSize: 9, fontWeight: 700, color: C.navy }}>{exp.role}</Text>
+                  <Text style={{ fontSize: 7, fontWeight: 700, color: C.accent, letterSpacing: 0.6 }}>
                     {exp.period}
                   </Text>
                 </View>
 
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 1 }}>
-                  <Text style={{ fontSize: 8.5, fontWeight: 500, color: C.textSecondary }}>{exp.org}</Text>
-                  <Text style={{ fontSize: 7, fontWeight: 600, color: C.textMuted }}>•</Text>
-                  <Text style={{ fontSize: 7.5, fontWeight: 600, color: C.accentCyan }}>{exp.badge}</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 1 }}>
+                  <Text style={{ fontSize: 7.5, fontWeight: 500, color: C.textSecondary }}>{exp.org}</Text>
+                  <Text style={{ fontSize: 6.5, fontWeight: 600, color: C.textMuted }}>•</Text>
+                  <Text style={{ fontSize: 7, fontWeight: 600, color: C.accentCyan }}>{exp.badge}</Text>
                 </View>
 
-                <Text style={{ fontSize: 8, fontWeight: 400, color: C.textSecondary, lineHeight: 1.45, marginTop: 3 }}>
+                <Text style={{ fontSize: 7.5, fontWeight: 400, color: C.textSecondary, lineHeight: 1.4, marginTop: 2 }}>
                   {exp.detail}
                 </Text>
               </View>
@@ -755,35 +765,36 @@ function SlideExperience() {
         </View>
 
         {/* Right Column: Experience Highlights Card */}
-        <View style={{ flex: 0.65 }}>
+        <View style={{ flex: 0.6 }}>
           <View
             style={{
               backgroundColor: C.navy,
               borderRadius: 6,
-              padding: 18,
+              padding: 14,
             }}
           >
-            <Text style={{ fontSize: 8.5, fontWeight: 700, color: C.accentCyanLight, letterSpacing: 1.5, textTransform: 'uppercase' }}>
+            <Text style={{ fontSize: 8, fontWeight: 700, color: C.accentCyanLight, letterSpacing: 1.3, textTransform: 'uppercase' }}>
               Execution Highlights
             </Text>
-            <Text style={{ fontSize: 32, fontWeight: 300, color: '#FFFFFF', marginTop: 4 }}>
-              5 Key
+            <Text style={{ fontSize: 26, fontWeight: 300, color: '#FFFFFF', marginTop: 2 }}>
+              6 Key
             </Text>
-            <Text style={{ fontSize: 11, fontWeight: 600, color: C.lightBlue, marginTop: -2 }}>
+            <Text style={{ fontSize: 9.5, fontWeight: 600, color: C.lightBlue, marginTop: -2 }}>
               Milestones &amp; Responsibilities
             </Text>
 
-            <View style={{ height: 1, backgroundColor: 'rgba(255, 255, 255, 0.12)', marginTop: 12, marginBottom: 12 }} />
+            <View style={{ height: 1, backgroundColor: 'rgba(255, 255, 255, 0.12)', marginTop: 8, marginBottom: 8 }} />
 
             {[
-              { title: 'Industry Delivery', desc: 'Built production DMS with strict QA' },
-              { title: 'Global Mobility', desc: 'International exchange with UTHM' },
-              { title: 'Peer-Reviewed Science', desc: 'Published lead author in UNNES Journal' },
-              { title: 'Team Leadership', desc: 'Led 2 comparative study delegations' },
+              { title: 'Strategic Leadership', desc: 'McKinsey Forward consulting toolkit' },
+              { title: 'Academic Honors', desc: 'UNNES CS · GPA: 3.84 out of 4.00' },
+              { title: 'Industry Delivery', desc: 'Enterprise DMS & 77 QA scenarios (EXCELLENT)' },
+              { title: 'Global Mobility', desc: 'International exchange with UTHM Malaysia' },
+              { title: 'Peer-Reviewed Science', desc: 'Lead author on AI chatbots in UNNES Journal' },
             ].map((item, i) => (
-              <View key={i} style={{ marginBottom: 10 }}>
-                <Text style={{ fontSize: 8.5, fontWeight: 700, color: '#FFFFFF' }}>{item.title}</Text>
-                <Text style={{ fontSize: 7.5, fontWeight: 400, color: C.paleBlue, marginTop: 1 }}>
+              <View key={i} style={{ marginBottom: 6 }}>
+                <Text style={{ fontSize: 7.5, fontWeight: 700, color: '#FFFFFF' }}>{item.title}</Text>
+                <Text style={{ fontSize: 6.5, fontWeight: 400, color: C.paleBlue, marginTop: 1 }}>
                   {item.desc}
                 </Text>
               </View>
@@ -796,12 +807,12 @@ function SlideExperience() {
                 borderStyle: 'solid',
                 borderColor: C.accent,
                 borderRadius: 4,
-                padding: 8,
-                marginTop: 4,
+                padding: 6,
+                marginTop: 2,
               }}
             >
-              <Text style={{ fontSize: 7.5, fontWeight: 500, color: '#FFFFFF', lineHeight: 1.4 }}>
-                Combines high-discipline software architecture with proven communication leadership.
+              <Text style={{ fontSize: 7, fontWeight: 500, color: '#FFFFFF', lineHeight: 1.35 }}>
+                Bridges technical software execution with strategic problem-solving and institutional governance.
               </Text>
             </View>
           </View>
@@ -819,33 +830,33 @@ function SlideExperience() {
 function SlideSkills() {
   const pillars = [
     {
-      title: 'FRONTEND ENGINEERING',
-      tagline: 'Modern Web & Interactive UIs',
+      title: 'CONSULTING & STRATEGY',
+      tagline: 'Problem Solving & Leadership',
       skills: [
-        { name: 'Next.js & React', level: 'ADVANCED', focus: 'App Router, SSR, Server Components' },
-        { name: 'TypeScript', level: 'ADVANCED', focus: 'Type safety, generics, interfaces' },
-        { name: 'Vue.js', level: 'PROFICIENT', focus: 'Composition API, Pinia state management' },
-        { name: 'TailwindCSS', level: 'ADVANCED', focus: 'Design tokens, responsive layouts' },
+        { name: 'Structured Problem Solving', level: 'ADVANCED', focus: 'MECE framework, issue trees, hypothesis analysis' },
+        { name: 'Data-Driven Business Analysis', level: 'EXPERT', focus: 'Synthesizing metrics into strategic executive decisions' },
+        { name: 'Team Leadership & Governance', level: 'ADVANCED', focus: 'Cross-functional delegation, institutional partnerships' },
+        { name: 'Digital Transformation', level: 'ADVANCED', focus: 'Process digitization, agile PM, tech adoption' },
       ],
     },
     {
-      title: 'BACKEND & DATABASE',
-      tagline: 'APIs, Security & Data Modeling',
+      title: 'LANGUAGES & FRAMEWORKS',
+      tagline: 'Full-Stack Software Engineering',
       skills: [
-        { name: 'Laravel / PHP', level: 'ADVANCED', focus: 'Eloquent ORM, Auth, MVC architecture' },
-        { name: 'RESTful API Design', level: 'ADVANCED', focus: 'Clean contracts, Swagger documentation' },
-        { name: 'PostgreSQL / MySQL', level: 'PROFICIENT', focus: 'Schema design, indexing, optimization' },
-        { name: 'Docker & Linux', level: 'COMPETENT', focus: 'Containerized setups, shell workflows' },
+        { name: 'Python & Applied AI', level: 'EXPERT', focus: 'Deep learning, automation scripts, data analytics' },
+        { name: 'Laravel & PHP', level: 'EXPERT', focus: 'Enterprise MVC architecture, Eloquent ORM, Auth' },
+        { name: 'Vue.js & Next.js', level: 'EXPERT', focus: 'Composition API, Pinia, SSR, reactive web apps' },
+        { name: 'TypeScript & JavaScript', level: 'ADVANCED', focus: 'Strict type safety, modern async patterns, clean code' },
       ],
     },
     {
-      title: 'APPLIED AI & DATA',
-      tagline: 'Machine Learning & Analytics',
+      title: 'DATABASES, CLOUD & TOOLS',
+      tagline: 'Infrastructure, Data & DevOps',
       skills: [
-        { name: 'Python', level: 'ADVANCED', focus: 'Automation scripts, data pipelines' },
-        { name: 'Data Analytics', level: 'PROFICIENT', focus: 'Pandas, NumPy, exploratory analysis' },
-        { name: 'Machine Learning', level: 'COMPETENT', focus: 'TensorFlow, PyTorch, model testing' },
-        { name: 'AI / LLM Workflows', level: 'PROFICIENT', focus: 'Prompt engineering, API integration' },
+        { name: 'PostgreSQL & MySQL', level: 'EXPERT', focus: 'Relational schema design, RBAC, indexing, optimization' },
+        { name: 'Docker & Git', level: 'EXPERT', focus: 'Containerized setups, branch workflows, CI/CD' },
+        { name: 'Amazon Web Services', level: 'ADVANCED', focus: 'Certified cloud fundamentals, security, deployment' },
+        { name: 'RESTful APIs & Postman', level: 'ADVANCED', focus: 'Contract design, automated testing, documentation' },
       ],
     },
   ];
@@ -854,8 +865,8 @@ function SlideSkills() {
     <Page size="A4" orientation="landscape" wrap={false} style={s.pageLight}>
       <SlideHeader
         category="03 / Core Capabilities"
-        title="Technical Architecture & Competency Matrix"
-        subtitle="Comprehensive full-stack engineering capabilities categorized by layer, stack, and proficiency."
+        title="Technical Architecture & Strategic Competency Matrix"
+        subtitle="Comprehensive capabilities bridging executive-level consulting frameworks with robust software engineering."
         icon={<IconLayers size={10} color="#FFFFFF" />}
       />
 
@@ -874,14 +885,14 @@ function SlideSkills() {
               borderWidth: 1,
               borderStyle: 'solid',
               borderColor: C.cardBorder,
-              padding: 14,
+              padding: 13,
             }}
           >
             {/* Pillar Header */}
             <Text style={{ fontSize: 9.5, fontWeight: 700, color: C.navy, letterSpacing: 1.2, textTransform: 'uppercase' }}>
               {p.title}
             </Text>
-            <Text style={{ fontSize: 7.5, fontWeight: 500, color: C.textMuted, marginTop: 2, marginBottom: 12 }}>
+            <Text style={{ fontSize: 7.5, fontWeight: 500, color: C.textMuted, marginTop: 2, marginBottom: 10 }}>
               {p.tagline}
             </Text>
 
@@ -895,12 +906,13 @@ function SlideSkills() {
                   borderStyle: 'solid',
                   borderColor: C.cardBorder,
                   borderRadius: 4,
-                  padding: 8,
-                  marginBottom: 8,
+                  paddingVertical: 6,
+                  paddingHorizontal: 8,
+                  marginBottom: 7,
                 }}
               >
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Text style={{ fontSize: 9, fontWeight: 700, color: C.navy }}>{sk.name}</Text>
+                  <Text style={{ fontSize: 8.5, fontWeight: 700, color: C.navy }}>{sk.name}</Text>
                   <View
                     style={{
                       backgroundColor: C.tagBg,
@@ -915,7 +927,7 @@ function SlideSkills() {
                     <Text style={{ fontSize: 6.5, fontWeight: 700, color: C.tagText }}>{sk.level}</Text>
                   </View>
                 </View>
-                <Text style={{ fontSize: 7.5, fontWeight: 400, color: C.textSecondary, marginTop: 3 }}>
+                <Text style={{ fontSize: 7.5, fontWeight: 400, color: C.textSecondary, marginTop: 2 }}>
                   {sk.focus}
                 </Text>
               </View>
@@ -928,16 +940,16 @@ function SlideSkills() {
       <View
         style={{
           flexDirection: 'row',
-          marginTop: 14,
+          marginTop: 12,
           backgroundColor: C.navy,
           borderRadius: 6,
-          padding: 12,
+          padding: 11,
         }}
       >
         {[
-          { title: '12+ TECHNOLOGIES', desc: 'Spanning modern frontend, backend, databases, and applied AI.' },
-          { title: 'TESTING DISCIPLINE', desc: '100% verified test scenarios and clean code conventions.' },
-          { title: 'BILINGUAL COMMUNICATION', desc: 'English (Professional working proficiency) & Indonesian (Native).' },
+          { title: 'STRATEGIC CONSULTING', desc: 'McKinsey Forward participant applying MECE problem-solving & digital fluency.' },
+          { title: 'ENGINEERING RIGOR', desc: 'Production systems with comprehensive test coverage across 77 functional scenarios.' },
+          { title: 'BILINGUAL COMMUNICATION', desc: 'Bahasa Indonesia (Native) & English (Fluent professional working proficiency).' },
         ].map((item, i) => (
           <View
             key={i}
@@ -950,10 +962,10 @@ function SlideSkills() {
               paddingHorizontal: 12,
             }}
           >
-            <Text style={{ fontSize: 8.5, fontWeight: 700, color: C.accentCyanLight, letterSpacing: 1 }}>
+            <Text style={{ fontSize: 8, fontWeight: 700, color: C.accentCyanLight, letterSpacing: 1 }}>
               {item.title}
             </Text>
-            <Text style={{ fontSize: 7.5, fontWeight: 400, color: C.lightBlue, textAlign: 'center', marginTop: 2 }}>
+            <Text style={{ fontSize: 7, fontWeight: 400, color: C.lightBlue, textAlign: 'center', marginTop: 2 }}>
               {item.desc}
             </Text>
           </View>
@@ -973,33 +985,33 @@ function SlideAchievements() {
     {
       category: 'GLOBAL LEADERSHIP INITIATIVE',
       title: 'Selected Participant — McKinsey Forward',
-      org: 'McKinsey.org · Accepted 2026',
+      org: 'McKinsey & Company · Sep 2026 – Present',
       description:
-        'Selected for McKinsey & Company’s Forward program. Developing structured problem-solving, digital toolkits, adaptable leadership, and executive communication competencies.',
+        'Selected for intensive global learning initiative. Applying MECE frameworks, issue trees, digital transformation, and agile adaptation to evaluate complex business scenarios.',
       stat: 'ACCEPTED',
     },
     {
       category: 'PEER-REVIEWED PUBLICATION',
       title: 'Corresponding Author & Lead Researcher',
-      org: 'UNNES Journal  |  Published Feb 2024',
+      org: 'UNNES Journal (Mediasi) · Published Feb 2024',
       description:
-        'Published empirical study examining AI chatbot pedagogical efficacy in computer science higher education (Operating Systems course). Conducted statistical analysis and literature synthesis.',
+        'Authored peer-reviewed paper on AI chatbot instructional efficacy in university Operating Systems education. Conducted statistical data analysis and usability evaluation.',
       stat: 'PUBLISHED',
     },
     {
-      category: 'NATIONAL COMPETITIONS',
-      title: 'Top 10 Finalist & 5th Place Award',
-      org: 'Activation 7.0 & MEDISPRO  |  2024–2025',
+      category: 'NATIONAL ESSAY COMPETITIONS',
+      title: 'Activation 7.0 & MEDISPRO Honors',
+      org: 'Universitas Brawijaya & UNNES · 2024–2025',
       description:
-        'Recognized nationwide for analytical research essays regarding technological integration, health data systems, and digital education policies.',
+        'Top 10 Finalist for "Stoddlers" (interactive edutech platform, UB, Nov 2024) and 5th Place for "SkinAlyzr" (deep learning multi-task mobile app for skin diseases, UNNES FK, Sep 2025).',
       stat: 'HONORS',
     },
     {
-      category: 'INDUSTRY CERTIFICATION',
-      title: 'Cloud & DevOps Fundamentals',
-      org: 'Dicoding Indonesia × Amazon Web Services (AWS)',
+      category: 'INDUSTRY CERTIFICATION & INTERNSHIP',
+      title: 'AWS Cloud DevOps & PT TAS Rating EXCELLENT',
+      org: 'Dicoding Indonesia × AWS & PT TAS · 2023–2026',
       description:
-        'Mastered foundational AWS cloud infrastructure, CI/CD pipeline automation, virtualization, and reliable containerized application hosting.',
+        'Completed Web Dev Internship rated EXCELLENT with 77 functional Black Box test scenarios passed. Certified in AWS DevOps Fundamentals (Verification ID: 1RXY0GQM3ZVM).',
       stat: 'CERTIFIED',
     },
   ];
@@ -1025,7 +1037,7 @@ function SlideAchievements() {
               borderWidth: 1,
               borderStyle: 'solid',
               borderColor: C.cardBorder,
-              padding: 14,
+              padding: 13,
             }}
           >
             {/* Card Header */}
@@ -1059,15 +1071,15 @@ function SlideAchievements() {
             </View>
 
             {/* Title & Organization */}
-            <Text style={{ fontSize: 11, fontWeight: 700, color: C.navy, marginTop: 8 }}>
+            <Text style={{ fontSize: 10.5, fontWeight: 700, color: C.navy, marginTop: 7 }}>
               {item.title}
             </Text>
-            <Text style={{ fontSize: 8, fontWeight: 500, color: C.textMuted, marginTop: 2 }}>
+            <Text style={{ fontSize: 7.5, fontWeight: 500, color: C.textMuted, marginTop: 2 }}>
               {item.org}
             </Text>
 
             {/* Description */}
-            <Text style={{ fontSize: 8, fontWeight: 400, color: C.textSecondary, lineHeight: 1.5, marginTop: 6 }}>
+            <Text style={{ fontSize: 7.5, fontWeight: 400, color: C.textSecondary, lineHeight: 1.45, marginTop: 5 }}>
               {item.description}
             </Text>
           </View>
@@ -1077,34 +1089,34 @@ function SlideAchievements() {
       {/* Bottom Summary Banner */}
       <View
         style={{
-          marginTop: 16,
+          marginTop: 14,
           backgroundColor: C.navy,
           borderRadius: 6,
-          paddingVertical: 12,
-          paddingHorizontal: 18,
+          paddingVertical: 11,
+          paddingHorizontal: 16,
           flexDirection: 'row',
           alignItems: 'center',
-          gap: 16,
+          gap: 14,
         }}
       >
         <View
           style={{
-            width: 32,
-            height: 32,
-            borderRadius: 16,
+            width: 30,
+            height: 30,
+            borderRadius: 15,
             backgroundColor: C.accent,
             alignItems: 'center',
             justifyContent: 'center',
           }}
         >
-          <IconAward size={14} color="#FFFFFF" />
+          <IconAward size={13} color="#FFFFFF" />
         </View>
         <View style={{ flex: 1 }}>
-          <Text style={{ fontSize: 9, fontWeight: 700, color: '#FFFFFF' }}>
+          <Text style={{ fontSize: 8.5, fontWeight: 700, color: '#FFFFFF' }}>
             Verified Commitment to Technical Excellence & Academic Rigor
           </Text>
-          <Text style={{ fontSize: 8, fontWeight: 400, color: C.lightBlue, marginTop: 2, lineHeight: 1.4 }}>
-            From peer-reviewed publication to national competitive writing and industry cloud certification,
+          <Text style={{ fontSize: 7.5, fontWeight: 400, color: C.lightBlue, marginTop: 2, lineHeight: 1.35 }}>
+            From peer-reviewed publication to national competitive writing, McKinsey leadership, and AWS cloud certification,
             each milestone demonstrates consistent quality and dedication.
           </Text>
         </View>
@@ -1123,20 +1135,20 @@ function SlideContact() {
     {
       title: 'DIRECT EMAIL',
       val: 'imanyunar@gmail.com',
-      desc: 'Preferred for recruitment, technical interviews, and formal inquiries.',
+      desc: 'Preferred for recruitment, consulting inquiries, and formal interview invitations.',
       icon: <IconMail size={14} color="#FFFFFF" />,
     },
     {
-      title: 'CODE REPOSITORY',
-      val: 'github.com/imanyunar',
-      desc: 'Browse open-source projects, architecture patterns, and technical tests.',
-      icon: <IconCode size={14} color="#FFFFFF" />,
+      title: 'DIRECT PHONE / WHATSAPP',
+      val: '+62 851-7224-7452',
+      desc: 'Available for immediate contact and professional discussions via voice or WhatsApp.',
+      icon: <IconExternalLink size={14} color="#FFFFFF" />,
     },
     {
-      title: 'LINKEDIN NETWORK',
+      title: 'PROFESSIONAL NETWORK & CODE',
       val: 'linkedin.com/in/iman-yunar-noviadhi',
-      desc: 'Explore professional endorsements, verified experience, and connections.',
-      icon: <IconExternalLink size={14} color="#FFFFFF" />,
+      desc: 'Connect on LinkedIn & browse production repositories on github.com/imanyunar.',
+      icon: <IconCode size={14} color="#FFFFFF" />,
     },
   ];
 
@@ -1155,7 +1167,7 @@ function SlideContact() {
       <SlideHeader
         category="Collaboration  |  2026"
         title="Let's build reliable, high-impact systems together."
-        subtitle="Available for software engineering roles, technical internships, and innovative AI-driven development."
+        subtitle="Available for software engineering roles, management consulting tracks, and digital transformation initiatives."
         isDark
         icon={<IconMail size={10} color="#FFFFFF" />}
       />
@@ -1195,7 +1207,7 @@ function SlideContact() {
             </View>
 
             {/* Value */}
-            <Text style={{ fontSize: 10.5, fontWeight: 700, color: '#FFFFFF', marginTop: 2 }}>
+            <Text style={{ fontSize: 10, fontWeight: 700, color: '#FFFFFF', marginTop: 2 }}>
               {ch.val}
             </Text>
 
@@ -1226,8 +1238,8 @@ function SlideContact() {
           <Text style={{ fontSize: 8, fontWeight: 700, color: C.accentCyanLight, letterSpacing: 1, textTransform: 'uppercase' }}>
             Location &amp; Work Eligibility
           </Text>
-          <Text style={{ fontSize: 9.5, fontWeight: 500, color: '#FFFFFF', marginTop: 2 }}>
-            Based in Semarang, Central Java, Indonesia  •  Open to Remote, Hybrid, &amp; On-Site Opportunities
+          <Text style={{ fontSize: 9, fontWeight: 500, color: '#FFFFFF', marginTop: 2 }}>
+            Based in Semarang, Central Java, Indonesia  •  DOB: 08 Nov 2005  •  GPA: 3.84 / 4.00  •  Open to Opportunities
           </Text>
         </View>
 
